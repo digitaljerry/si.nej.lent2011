@@ -1,11 +1,9 @@
 Titanium.include ('../model/programme.js');
- 
-// Load UI elements
-
 Titanium.include ('../view/programme.js');
-var win = Titanium.UI.currentWindow;
+
+// Load UI elements
 view_init(win);
- 
+
 // Define events
  
 /*win1.b1.addEventListener('click', function () {

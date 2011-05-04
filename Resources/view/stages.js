@@ -13,3 +13,5 @@ function view_init(win) {
 	});
 	win.add(win.label1);
 }
+
+var win = Titanium.UI.currentWindow;

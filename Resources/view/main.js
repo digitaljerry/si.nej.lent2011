@@ -39,3 +39,12 @@ var tab2 = Titanium.UI.createTab({
 	title:'Prizorišča',
 	window:win2
 });
+
+//
+//  add tabs
+//
+tabGroup.addTab(tab1);  
+tabGroup.addTab(tab2);
+
+// open tab group
+tabGroup.open();

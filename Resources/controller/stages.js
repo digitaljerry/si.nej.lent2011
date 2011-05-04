@@ -1,9 +1,7 @@
 Titanium.include ('../model/stages.js');
- 
-// Load UI elements
-
 Titanium.include ('../view/stages.js');
-var win = Titanium.UI.currentWindow;
+
+// Load UI elements
 view_init(win);
 
 // Define events
