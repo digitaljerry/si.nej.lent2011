@@ -24,6 +24,34 @@ var win2 = Titanium.UI.createWindow({
 	orientationModes: appOrientationModes
 });
 
+var win3 = Titanium.UI.createWindow({  
+    title:'Novice',
+    backgroundColor:'#fff',
+	url:'controller/news.js',
+	orientationModes: appOrientationModes
+});
+
+var win4 = Titanium.UI.createWindow({  
+    title:'Priljubljene',
+    backgroundColor:'#fff',
+	url:'controller/favorites.js',
+	orientationModes: appOrientationModes
+});
+
+var win5 = Titanium.UI.createWindow({  
+    title:'Nastavitve',
+    backgroundColor:'#fff',
+	url:'controller/settings.js',
+	orientationModes: appOrientationModes
+});
+
+var win6 = Titanium.UI.createWindow({  
+    title:'Info',
+    backgroundColor:'#fff',
+	url:'controller/info.js',
+	orientationModes: appOrientationModes
+});
+
 // create tab group
 var tabGroup = Titanium.UI.createTabGroup();
 
@@ -40,11 +68,39 @@ var tab2 = Titanium.UI.createTab({
 	window:win2
 });
 
+var tab3 = Titanium.UI.createTab({  
+	icon:'KS_nav_views.png',
+	title:'Novice',
+	window:win3
+});
+
+var tab4 = Titanium.UI.createTab({  
+	icon:'KS_nav_views.png',
+	title:'Priljubljene',
+	window:win4
+});
+
+var tab5 = Titanium.UI.createTab({  
+	icon:'KS_nav_views.png',
+	title:'Nastavitve',
+	window:win5
+});
+
+var tab6 = Titanium.UI.createTab({  
+	icon:'KS_nav_views.png',
+	title:'Info',
+	window:win6
+});
+
 //
 //  add tabs
 //
 tabGroup.addTab(tab1);  
 tabGroup.addTab(tab2);
+tabGroup.addTab(tab3);
+tabGroup.addTab(tab4);
+tabGroup.addTab(tab5);
+tabGroup.addTab(tab6);
 
 // open tab group
 tabGroup.open();
