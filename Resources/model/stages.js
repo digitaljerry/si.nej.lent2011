@@ -1,0 +1,29 @@
+// testing
+var maribor = {latitude:46.55964925,longitude:15.646033,latitudeDelta:0.02, longitudeDelta:0.02};
+
+var appLocations=new Array();
+appLocations[0] = Titanium.Map.createAnnotation({title: "SNG Maribor", latitude: 46.5597013, longitude: 15.643866});
+appLocations[1] = Titanium.Map.createAnnotation({title: "Oder Rotovž", latitude: 46.5581373, longitude: 15.6454968});
+appLocations[2] = Titanium.Map.createAnnotation({title: "Jazzlent", longitude: 46.536221, longitude: 15.6532024});
+appLocations[3] = Titanium.Map.createAnnotation({title: "Večerov oder", longitude: 46.5566618, longitude: 15.6435441});
+appLocations[4] = Titanium.Map.createAnnotation({title: "Jurčkov oder", longitude: 46.536221, longitude: 15.6532024});
+appLocations[5] = Titanium.Map.createAnnotation({title: "Sodni stolp", longitude: 46.5568684, longitude: 15.6410336});
+appLocations[6] = Titanium.Map.createAnnotation({title: "Naskov dvorec", longitude: 46.558698, longitude: 15.6363344});
+appLocations[7] = Titanium.Map.createAnnotation({title: "Mladinin oder", longitude: 46.5572815, longitude: 15.6415486});
+appLocations[8] = Titanium.Map.createAnnotation({title: "Muzej NO", longitude: 46.5626225, longitude: 15.6478571});
+appLocations[9] = Titanium.Map.createAnnotation({title: "Glavni trg", longitude: 46.557332, longitude: 15.6459971});
+appLocations[10] = Titanium.Map.createAnnotation({title: "Grajski trg", longitude: 46.5599862, longitude: 15.6478955});
+appLocations[11] = Titanium.Map.createAnnotation({title: "Kavarna Kavajo", longitude: 46.5535631, longitude: 15.6456685});
+appLocations[12] = Titanium.Map.createAnnotation({title: "Klub KGB", longitude: 46.5577537, longitude: 15.641849});
+appLocations[13] = Titanium.Map.createAnnotation({title: "KMŠ oder", longitude: 46.5580488, longitude: 15.6361842});
+appLocations[14] = Titanium.Map.createAnnotation({title: "Glavni oder na Dravi", longitude: 46.536221, longitude: 15.6532024});
+appLocations[15] = Titanium.Map.createAnnotation({title: "Narodni dom", longitude: 46.5576504, longitude: 15.6492519});
+appLocations[16] = Titanium.Map.createAnnotation({title: "Sinagoga", longitude: 46.5567356, longitude: 15.6477284});
+appLocations[17] = Titanium.Map.createAnnotation({title: "Slovenska ulica", longitude: 46.5602767, longitude: 15.6467628});
+appLocations[18] = Titanium.Map.createAnnotation({title: "Lent", longitude: 46.556603, longitude: 15.64481});
+appLocations[19] = Titanium.Map.createAnnotation({title: "Večer stage", longitude: 46.5566618, longitude: 15.6435441});
+appLocations[20] = Titanium.Map.createAnnotation({title: "Mestni park", longitude: 46.5657354, longitude: 15.6471276});
+appLocations[21] = Titanium.Map.createAnnotation({title: "Trg generala Maistra", longitude: 46.561575, longitude: 15.6490588});
+appLocations[22] = Titanium.Map.createAnnotation({title: "Ostala prizorišča", longitude: 46.536221, longitude: 15.6532024});
+appLocations[23] = Titanium.Map.createAnnotation({title: "Trg Svobode", longitude: 46.560557, longitude: 15.6491661});
+appLocations[24] = Titanium.Map.createAnnotation({title: "Dvorana Union", longitude: 46.536221, longitude: 15.6532024});
