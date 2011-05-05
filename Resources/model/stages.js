@@ -2,9 +2,9 @@
 var maribor = {latitude:46.55964925,longitude:15.646033,latitudeDelta:0.02, longitudeDelta:0.02};
 
 var appLocations=new Array();
-appLocations[0] = Titanium.Map.createAnnotation({title: "SNG Maribor", latitude: 46.5597013, longitude: 15.643866});
-appLocations[1] = Titanium.Map.createAnnotation({title: "Oder Rotovž", latitude: 46.5581373, longitude: 15.6454968});
-appLocations[2] = Titanium.Map.createAnnotation({title: "Jazzlent", longitude: 46.536221, longitude: 15.6532024});
+appLocations[0] = Titanium.Map.createAnnotation({title: "SNG Maribor", latitude: 46.5597013, longitude: 15.643866, rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE});
+appLocations[1] = Titanium.Map.createAnnotation({title: "Oder Rotovž", latitude: 46.5581373, longitude: 15.6454968, rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE});
+appLocations[2] = Titanium.Map.createAnnotation({title: "Jazzlent", longitude: 46.536221, longitude: 15.6532024, rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE});
 appLocations[3] = Titanium.Map.createAnnotation({title: "Večerov oder", longitude: 46.5566618, longitude: 15.6435441});
 appLocations[4] = Titanium.Map.createAnnotation({title: "Jurčkov oder", longitude: 46.536221, longitude: 15.6532024});
 appLocations[5] = Titanium.Map.createAnnotation({title: "Sodni stolp", longitude: 46.5568684, longitude: 15.6410336});

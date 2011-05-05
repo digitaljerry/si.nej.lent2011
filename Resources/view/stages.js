@@ -27,36 +27,47 @@ function view_init(win) {
 	
 	win.add(mapview);
 	
-	// switch
-	var bb1 = Titanium.UI.createButtonBar({
-		labels:['Karta', 'Seznam'],
-		//backgroundColor:'#336699',
-		top:30,
-		style:Titanium.UI.iPhone.SystemButtonStyle.BAR,
-		height:25,
-		width:200
+	// CREATE TABLE VIEW
+	// searchbar
+	var search = Titanium.UI.createSearchBar();
+	// create table view
+	var tableview = Titanium.UI.createTableView({
+	//	data:data,
+		search:search
 	});
-
-	win.add(bb1);
+	tableview.hide();
+	win.add(tableview);
 	
 	//
 	// NAVBAR
 	// 
-	var bb3 = Titanium.UI.createButton({
+	var buttonSwitch = Titanium.UI.createButton({
 		title:'Seznam'
 	});
 	
-	win.setRightNavButton(bb3);
+	win.setRightNavButton(buttonSwitch);
 	
 	//
 	// EVENT (shouldn't this go to the controller?)
 	//
-	bb3.addEventListener('click', function(e)
+	buttonSwitch.addEventListener('click', function(e)
 	{
-		if ( bb3.title == 'Seznam' )
-			bb3.title = 'Karta';
-		else
-			bb3.title = 'Seznam';
+		if ( buttonSwitch.title == 'Seznam' ) {
+			buttonSwitch.title = 'Karta';
+			tableview.show();
+			mapview.hide();
+		} else {
+			buttonSwitch.title = 'Seznam';
+			mapview.show();
+			tableview.hide();
+		}
+	});
+	// map view click event listener
+	mapview.addEventListener('click',function(evt)
+	{
+		if (evt.clicksource == 'rightButton') {
+			alert('U clicked stage: ' + evt.title);
+		}
 	});
 }
 
