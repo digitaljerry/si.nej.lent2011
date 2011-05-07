@@ -21,9 +21,21 @@ function view_init(win) {
 		region: maribor,
 		animate:true,
 		regionFit:true,
-		userLocation:true,
-		annotations:appLocations
+		userLocation:true
 	});
+	
+	// adding annotations
+	for (var i = 0; i < stages.length; i++) {
+		plotPoints = Titanium.Map.createAnnotation({
+        	latitude: stages[i].latitude,
+            longitude: stages[i].longitude,
+            title: stages[i].name,
+            pincolor: Titanium.Map.ANNOTATION_GREEN,
+            rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE
+		});
+        
+		mapview.addAnnotation(plotPoints);
+	};
 	
 	win.add(mapview);
 	
@@ -36,6 +48,12 @@ function view_init(win) {
 		search:search
 	});
 	tableview.hide();
+	
+	var data = new Array();
+	for (var i = 0; i < stages.length; i++){
+		data.push({title:stages[i].name, hasChild:true});
+	}
+	tableview.data = data;
 	win.add(tableview);
 	
 	//
@@ -65,9 +83,20 @@ function view_init(win) {
 	// map view click event listener
 	mapview.addEventListener('click',function(evt)
 	{
-		if (evt.clicksource == 'rightButton') {
-			alert('U clicked stage: ' + evt.title);
-		}
+		var winDetail = Titanium.UI.createWindow({
+			url:'stages_detail.js',
+			title:evt.title
+		});
+		Titanium.UI.currentTab.open(winDetail,{animated:true});
+	});
+	// create table view event listener
+	tableview.addEventListener('click', function(e)
+	{
+		var winDetail = Titanium.UI.createWindow({
+			url:'stages_detail.js',
+			title:e.rowData.title
+		});
+		Titanium.UI.currentTab.open(winDetail,{animated:true});
 	});
 }
 
