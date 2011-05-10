@@ -6,7 +6,7 @@ function view_init(win) {
 	
 	win.label1 = Titanium.UI.createLabel({
 		color:'#999',
-		text:'I am Window 2',
+		text:'Nalagam...',
 		font:{fontSize:20,fontFamily:'Helvetica Neue'},
 		textAlign:'center',
 		width:'auto'
