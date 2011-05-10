@@ -30,6 +30,7 @@ function view_init(win) {
         	latitude: stages[i].latitude,
             longitude: stages[i].longitude,
             title: stages[i].name,
+            location_uid: stages[i].uid,
             pincolor: Titanium.Map.ANNOTATION_GREEN,
             rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE
 		});
@@ -51,7 +52,7 @@ function view_init(win) {
 	
 	var data = new Array();
 	for (var i = 0; i < stages.length; i++){
-		data.push({title:stages[i].name, hasChild:true});
+		data.push({title:stages[i].name, uid:stages[i].uid, hasChild:true});
 	}
 	tableview.data = data;
 	win.add(tableview);
@@ -83,12 +84,18 @@ function view_init(win) {
 	// map view click event listener
 	mapview.addEventListener('click',function(evt)
 	{
-		var winDetail = Titanium.UI.createWindow({
-			url:'stages_detail.js',
-			title:evt.title
-		});
-		Titanium.UI.currentTab.open(winDetail,{animated:true});
+		// only if right button was clicked
+		if ( evt.clicksource == 'rightButton' ) {
+			var winDetail = Titanium.UI.createWindow({
+				url:'stages_detail.js',
+				title:evt.title,
+				location_uid:evt.annotation.location_uid
+			});
+			
+			Titanium.UI.currentTab.open(winDetail,{animated:true});
+		}
 	});
+	
 	// create table view event listener
 	tableview.addEventListener('click', function(e)
 	{
@@ -96,6 +103,10 @@ function view_init(win) {
 			url:'stages_detail.js',
 			title:e.rowData.title
 		});
+		
+		// passing the location uid
+		winDetail.location_uid = e.rowData.uid;
+		 
 		Titanium.UI.currentTab.open(winDetail,{animated:true});
 	});
 }
