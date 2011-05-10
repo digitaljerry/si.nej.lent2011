@@ -22,10 +22,10 @@ function showEventsForStage(location_uid) {
 		var prev_start_date = 'long time ago';
 		for (var i = 0; i < incomingData.length; i++){
 			if ( incomingData[i].start_date != prev_start_date ) {
-				data.push({title:incomingData[i].title, hasChild:true, header:incomingData[i].start_date});
+				data.push({title:incomingData[i].title, uid:incomingData[i].uid, hasChild:true, header:incomingData[i].start_date});
 				prev_start_date = incomingData[i].start_date;
 			} else {
-				data.push({title:incomingData[i].title, hasChild:true});
+				data.push({title:incomingData[i].title, uid:incomingData[i].uid, hasChild:true});
 			}
 		};
 	
@@ -71,14 +71,18 @@ function view_init(win) {
 	win.add(tableview);
 	
 	// create table view event listener
-	/*tableview.addEventListener('click', function(e)
+	tableview.addEventListener('click', function(e)
 	{
 		var winDetail = Titanium.UI.createWindow({
 			url:'stages_detail.js',
 			title:e.rowData.title
 		});
+		
+		// passing the event uid
+		winDetail.event_uid = e.rowData.uid;
+		
 		Titanium.UI.currentTab.open(winDetail,{animated:true});
-	});*/
+	});
 }
 
 var win = Titanium.UI.currentWindow;

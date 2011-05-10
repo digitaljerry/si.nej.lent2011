@@ -40,10 +40,10 @@ function showEventsForDay(showDate) {
 		var prev_location_id = -1;
 		for (var i = 0; i < incomingData.length; i++) {
 			if ( incomingData[i].location_id != prev_location_id ) {
-				data.push({title:incomingData[i].title, hasChild:true, header:getStageTitle(incomingData[i].location_id)});
+				data.push({title:incomingData[i].title, uid:incomingData[i].uid, hasChild:true, header:getStageTitle(incomingData[i].location_id)});
 				prev_location_id = incomingData[i].location_id;
 			} else {
-				data.push({title:incomingData[i].title, hasChild:true});
+				data.push({title:incomingData[i].title, uid:incomingData[i].uid, hasChild:true});
 			}
 		};
 	
@@ -107,6 +107,10 @@ function view_init(win) {
 			url:'programme_detail.js',
 			title:e.rowData.title
 		});
+		
+		// passing the event uid
+		winDetail.event_uid = e.rowData.uid;
+		
 		Titanium.UI.currentTab.open(winDetail,{animated:true});
 	});
 	// events for buttons
