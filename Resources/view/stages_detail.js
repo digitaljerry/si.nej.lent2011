@@ -51,10 +51,12 @@ function view_init(win) {
 	// CREATE TABLE VIEW
 	// searchbar
 	var search = Titanium.UI.createSearchBar();
+	search.hide();
 	// create table view
 	tableview = Titanium.UI.createTableView({
 	//	data:data,
-		search:search
+		search:search,
+		searchHidden:true
 	});
 		
 	var data = new Array();

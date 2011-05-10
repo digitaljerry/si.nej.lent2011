@@ -71,7 +71,8 @@ function view_init(win) {
 	var search = Titanium.UI.createSearchBar();
 	// create table view
 	tableview = Titanium.UI.createTableView({
-		search:search
+		search:search,
+		searchHidden:true
 	});
 	
 	// create buttons
