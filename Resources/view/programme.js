@@ -80,7 +80,7 @@ function view_init(win) {
 		title:'Včeraj'
 	});
 	nextNavButton = Titanium.UI.createButton({
-		style:Titanium.UI.iPhone.SystemButtonStyle.BORDERED,
+		//style:Titanium.UI.iPhone.SystemButtonStyle.BORDERED,
 		title:'Jutri'
 	});
 	win.leftNavButton = prevNavButton;
