@@ -80,7 +80,7 @@ function view_init(win) {
 		title:'Včeraj'
 	});
 	nextNavButton = Titanium.UI.createButton({
-		//style:Titanium.UI.iPhone.SystemButtonStyle.BORDERED,
+		style:Titanium.UI.iPhone.SystemButtonStyle.BORDERED,
 		title:'Jutri'
 	});
 	win.leftNavButton = prevNavButton;
@@ -93,6 +93,7 @@ function view_init(win) {
 	tableview.data = data;*/
 	
 	// default date to show on start
+	win.title = outputDate(date,true);
 	showEventsForDay(outputDate(date));
 	
 	win.add(tableview);
