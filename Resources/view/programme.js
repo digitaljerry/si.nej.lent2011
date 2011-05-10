@@ -37,8 +37,14 @@ function showEventsForDay(showDate) {
 		incomingData = null;
 		incomingData = JSON.parse(this.responseText);
 		
-		for (var i = 0; i < incomingData.length; i++){
-			data.push({title:incomingData[i].title, hasChild:true});
+		var prev_location_id = -1;
+		for (var i = 0; i < incomingData.length; i++) {
+			if ( incomingData[i].location_id != prev_location_id ) {
+				data.push({title:incomingData[i].title, hasChild:true, header:getStageTitle(incomingData[i].location_id)});
+				prev_location_id = incomingData[i].location_id;
+			} else {
+				data.push({title:incomingData[i].title, hasChild:true});
+			}
 		};
 	
 		tableview.data = data;

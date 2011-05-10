@@ -5,7 +5,7 @@ function showEventsForStage(location_uid) {
 	data = new Array();
 	
 	var xhr = Titanium.Network.createHTTPClient();
-	var geturl = 'http://lent10.slovenija.net/index.php?eID=tx_mnmysql2json_Table&tx_mnmysql2json[action]=getTable&tx_mnmysql2json[tableName]=tx_cal_event&tx_mnmysql2json[orderBy]=location_id&tx_mnmysql2json[fields]=uid,title,start_date,end_date,start_time,end_time,category_id,location,location_id&&tx_mnmysql2json[where]=sys_language_uid=0%20AND%20hidden=0%20AND%20deleted=0%20AND%20location_id='+location_uid;
+	var geturl = 'http://lent10.slovenija.net/index.php?eID=tx_mnmysql2json_Table&tx_mnmysql2json[action]=getTable&tx_mnmysql2json[tableName]=tx_cal_event&tx_mnmysql2json[orderBy]=start_date&tx_mnmysql2json[fields]=uid,title,start_date,end_date,start_time,end_time,category_id,location,location_id&&tx_mnmysql2json[where]=sys_language_uid=0%20AND%20hidden=0%20AND%20deleted=0%20AND%20location_id='+location_uid;
 	
 	xhr.setTimeout(20000);
 	xhr.open('GET', geturl, false);
@@ -19,8 +19,14 @@ function showEventsForStage(location_uid) {
 		incomingData = null;
 		incomingData = JSON.parse(this.responseText);
 		
+		var prev_start_date = 'long time ago';
 		for (var i = 0; i < incomingData.length; i++){
-			data.push({title:incomingData[i].title, hasChild:true});
+			if ( incomingData[i].start_date != prev_start_date ) {
+				data.push({title:incomingData[i].title, hasChild:true, header:incomingData[i].start_date});
+				prev_start_date = incomingData[i].start_date;
+			} else {
+				data.push({title:incomingData[i].title, hasChild:true});
+			}
 		};
 	
 		tableview.data = data;
