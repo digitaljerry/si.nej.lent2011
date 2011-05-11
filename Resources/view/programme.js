@@ -104,7 +104,7 @@ function view_init(win) {
 	tableview.addEventListener('click', function(e)
 	{
 		var winDetail = Titanium.UI.createWindow({
-			url:'programme_detail.js',
+			url:'event.js',
 			title:e.rowData.title
 		});
 		
