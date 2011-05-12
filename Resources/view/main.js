@@ -57,37 +57,37 @@ var tabGroup = Titanium.UI.createTabGroup();
 
 // tabs
 var tab1 = Titanium.UI.createTab({  
-	icon:'KS_nav_views.png',
+	icon:'tab_programme.png',
 	title:'Program',
 	window:win1
 });
 
 var tab2 = Titanium.UI.createTab({  
-	icon:'KS_nav_views.png',
+	icon:'tab_stages.png',
 	title:'Prizorišča',
 	window:win2
 });
 
 var tab3 = Titanium.UI.createTab({  
-	icon:'KS_nav_views.png',
+	icon:'tab_news.png',
 	title:'Novice',
 	window:win3
 });
 
 var tab4 = Titanium.UI.createTab({  
-	icon:'KS_nav_views.png',
+	icon:'tab_favorites.png',
 	title:'Priljubljene',
 	window:win4
 });
 
 var tab5 = Titanium.UI.createTab({  
-	icon:'KS_nav_views.png',
+	icon:'tab_settings.png',
 	title:'Nastavitve',
 	window:win5
 });
 
 var tab6 = Titanium.UI.createTab({  
-	icon:'KS_nav_views.png',
+	icon:'tab_info.png',
 	title:'Info',
 	window:win6
 });
