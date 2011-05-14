@@ -127,7 +127,7 @@ function view_init(win) {
 	//
 	var mapview = Titanium.Map.createView({
 		mapType: Titanium.Map.STANDARD_TYPE,
-		region: maribor,
+		region: Ti.App.location_maribor,
 		animate:true,
 		regionFit:true,
 		userLocation:true,

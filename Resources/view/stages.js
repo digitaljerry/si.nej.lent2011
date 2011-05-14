@@ -1,4 +1,3 @@
-// define the UI elements
 function view_init(win) {
 	
 	win.title = 'Prizorišča';
@@ -16,101 +15,52 @@ function view_init(win) {
 	//
 	// CREATE MAP VIEW
 	//
-	var mapview = Titanium.Map.createView({
+	win.mapview = Titanium.Map.createView({
 		mapType: Titanium.Map.STANDARD_TYPE,
-		region: maribor,
+		region: Ti.App.location_maribor,
 		animate:true,
 		regionFit:true,
 		userLocation:true
 	});
 	
 	// adding annotations
-	for (var i = 0; i < stages.length; i++) {
+	for (var i = 0; i < Ti.App.stages.length; i++) {
 		plotPoints = Titanium.Map.createAnnotation({
-        	latitude: stages[i].latitude,
-            longitude: stages[i].longitude,
-            title: stages[i].name,
-            location_uid: stages[i].uid,
+        	latitude: Ti.App.stages[i].latitude,
+            longitude: Ti.App.stages[i].longitude,
+            title: Ti.App.stages[i].name,
+            location_uid: Ti.App.stages[i].uid,
             pincolor: Titanium.Map.ANNOTATION_GREEN,
             rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE
 		});
         
-		mapview.addAnnotation(plotPoints);
+		win.mapview.addAnnotation(plotPoints);
 	};
 	
-	win.add(mapview);
+	win.add(win.mapview);
 	
+	//
 	// CREATE TABLE VIEW
-	// searchbar
-	var search = Titanium.UI.createSearchBar();
-	
-	// create table view
-	var tableview = Titanium.UI.createTableView({
-	//	data:data,
-		search:search,
+	//
+	win.tableview = Titanium.UI.createTableView({
+		search:Titanium.UI.createSearchBar(),
 		searchHidden:true
 	});
-	tableview.hide();
+	win.tableview.hide();
 	
 	var data = new Array();
-	for (var i = 0; i < stages.length; i++){
-		data.push({title:stages[i].name, uid:stages[i].uid, hasChild:true});
+	for (var i = 0; i < Ti.App.stages.length; i++){
+		data.push({title:Ti.App.stages[i].name, uid:Ti.App.stages[i].uid, hasChild:true});
 	}
-	tableview.data = data;
-	win.add(tableview);
+	win.tableview.data = data;
+	
+	win.add(win.tableview);
 	
 	//
 	// NAVBAR
 	// 
-	var buttonSwitch = Titanium.UI.createButton({
+	win.buttonSwitch = Titanium.UI.createButton({
 		title:'Seznam'
 	});
-	
-	win.setRightNavButton(buttonSwitch);
-	
-	//
-	// EVENT (shouldn't this go to the controller?)
-	//
-	buttonSwitch.addEventListener('click', function(e)
-	{
-		if ( buttonSwitch.title == 'Seznam' ) {
-			buttonSwitch.title = 'Karta';
-			tableview.show();
-			mapview.hide();
-		} else {
-			buttonSwitch.title = 'Seznam';
-			mapview.show();
-			tableview.hide();
-		}
-	});
-	// map view click event listener
-	mapview.addEventListener('click',function(evt)
-	{
-		// only if right button was clicked
-		if ( evt.clicksource == 'rightButton' ) {
-			var winDetail = Titanium.UI.createWindow({
-				url:'stages_detail.js',
-				title:evt.title,
-				location_uid:evt.annotation.location_uid
-			});
-			
-			Titanium.UI.currentTab.open(winDetail,{animated:true});
-		}
-	});
-	
-	// create table view event listener
-	tableview.addEventListener('click', function(e)
-	{
-		var winDetail = Titanium.UI.createWindow({
-			url:'stages_detail.js',
-			title:e.rowData.title
-		});
-		
-		// passing the location uid
-		winDetail.location_uid = e.rowData.uid;
-		 
-		Titanium.UI.currentTab.open(winDetail,{animated:true});
-	});
+	win.setRightNavButton(win.buttonSwitch);
 }
-
-var win = Titanium.UI.currentWindow;
