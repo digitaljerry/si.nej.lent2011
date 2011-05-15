@@ -12,30 +12,6 @@ view_init(win);
 // Define functions
 //
 
-function getStageTitle(uid) {
-	for (var i = 0; i < Ti.App.stages.length; i++) {
-		if ( Ti.App.stages[i].uid == uid )
-			return Ti.App.stages[i].name;
-	}
-	return 'Ostala prizorišča';
-}
-
-function outputDate(date,nice) {
-	year = date.getFullYear().toString();
-	month = date.getMonth().toString();
-	day = date.getDate().toString();
-	
-	if (month.length < 2)
-		month = '0'+month;
-	if (day.length == 1)
-		day = '0'+day;
-	
-	if (nice == true)
-		return day+'.'+month+'.'+year;
-	else
-		return year+month+day;
-}
-
 function showEventsForDay(showDate) {
 	
 	// reset
@@ -60,7 +36,7 @@ function showEventsForDay(showDate) {
 		var prev_location_id = -1;
 		for (var i = 0; i < incomingData.length; i++) {
 			if ( incomingData[i].location_id != prev_location_id ) {
-				data.push({title:incomingData[i].title, uid:incomingData[i].uid, hasChild:true, header:getStageTitle(incomingData[i].location_id)});
+				data.push({title:incomingData[i].title, uid:incomingData[i].uid, hasChild:true, header:Ti.App.Stages.getStageTitle(incomingData[i].location_id)});
 				prev_location_id = incomingData[i].location_id;
 			} else {
 				data.push({title:incomingData[i].title, uid:incomingData[i].uid, hasChild:true});
@@ -94,14 +70,14 @@ win.tableview.addEventListener('click', function(e)
 win.prevNavButton.addEventListener('click', function()
 {
 	date.setDate(date.getDate()-1);
-	win.title = outputDate(date,true);
-	showEventsForDay(outputDate(date));
+	win.title = Ti.App.DateLent.outputDate(date,true);
+	showEventsForDay(Ti.App.DateLent.outputDate(date));
 });
 win.nextNavButton.addEventListener('click', function()
 {	
 	date.setDate(date.getDate()+1);
-	win.title = outputDate(date,true);
+	win.title = Ti.App.DateLent.outputDate(date,true);
 	win.tableview.data = null;
 	win.tableview.index = null;
-	showEventsForDay(outputDate(date));
+	showEventsForDay(Ti.App.DateLent.outputDate(date));
 });

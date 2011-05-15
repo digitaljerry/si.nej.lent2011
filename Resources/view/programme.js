@@ -31,8 +31,8 @@ function view_init(win) {
 	win.rightNavButton = win.nextNavButton;
 	
 	// default date to show on start
-	win.title = outputDate(date,true);
-	showEventsForDay(outputDate(date));
+	win.title = Ti.App.DateLent.outputDate(date,true);
+	showEventsForDay(Ti.App.DateLent.outputDate(date));
 	
 	win.add(win.tableview);
 }

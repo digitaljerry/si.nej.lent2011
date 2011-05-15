@@ -1,0 +1,51 @@
+
+function DateLent() {
+	
+	//*** 'me' acts as an alias that can be used within the methods
+	var me = this;
+	
+	//*** Public properties:
+	this.someValue;
+	this.someOtherValue;
+	
+	DateLent.prototype.outputDate = function(date,nice) {
+		year = date.getFullYear().toString();
+		month = date.getMonth().toString();
+		day = date.getDate().toString();
+		
+		if (month.length < 2)
+			month = '0'+month;
+		if (day.length == 1)
+			day = '0'+day;
+		
+		if (nice == true)
+			return day+'.'+month+'.'+year;
+		else
+			return year+month+day;
+	}
+
+}
+
+function Stages() {
+	
+	//*** Public methods:
+    Stages.prototype.getStageTitle = function(uid) {
+	    for (var i = 0; i < Ti.App.stages.length; i++) {
+			if ( Ti.App.stages[i].uid == uid )
+				return Ti.App.stages[i].name;
+		}
+		return 'Ostala prizorišča';
+	};
+	
+	Stages.prototype.getStageLocation = function(uid) {
+		var location_data;
+		for (var i = 0; i < Ti.App.stages.length; i++) {
+			if ( Ti.App.stages[i].uid == uid ) {
+				location_data = [{"longitude":Ti.App.stages[i].longitude,"latitude":Ti.App.stages[i].latitude}];
+				return location_data;
+			}
+		}
+		return null;
+	};
+ 	
+}
