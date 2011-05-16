@@ -8,20 +8,21 @@ function DateLent() {
 	this.someValue;
 	this.someOtherValue;
 	
-	DateLent.prototype.outputDate = function(date,nice) {
-		year = date.getFullYear().toString();
-		month = date.getMonth().toString();
-		day = date.getDate().toString();
+	DateLent.prototype.outputDate = function(given_date,nice) {
+		year = given_date.getFullYear().toString();
+		month = (given_date.getMonth()+1).toString();
+		day = given_date.getDate().toString();
 		
 		if (month.length < 2)
 			month = '0'+month;
 		if (day.length == 1)
 			day = '0'+day;
 		
-		if (nice == true)
-			return day+'.'+month+'.'+year;
-		else
+		if (nice == true) {
+			return day+'.'+month+'. ' + Ti.App.days[given_date.getDay()];
+		} else {
 			return year+month+day;
+		}
 	}
 
 }

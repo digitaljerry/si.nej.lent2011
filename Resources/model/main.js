@@ -1,6 +1,8 @@
 // geo location of festival
 Ti.App.location_maribor = {latitude:46.55964925,longitude:15.646033,latitudeDelta:0.013, longitudeDelta:0.013};
 
+Ti.App.days = ["Ned","Pon","Tor","Sre","Čet","Pet","Sob","Ned"];
+
 // stages used in multiple views
 // data from:
 // http://lent10.slovenija.net/index.php?eID=tx_mnmysql2json_Table&tx_mnmysql2json[action]=getTable&tx_mnmysql2json[tableName]=tx_cal_location&tx_mnmysql2json[fields]=uid,name,street,zip,city,longitude,latitude&tx_mnmysql2json[where]=deleted=0%20AND%20hidden=0%20AND%20sys_language_uid=0

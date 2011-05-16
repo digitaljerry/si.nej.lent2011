@@ -22,17 +22,17 @@ function view_init(win) {
 	
 	// create buttons
 	win.prevNavButton = Titanium.UI.createButton({
-		title:'Včeraj'
+		title:'',
+		style:Titanium.UI.iPhone.SystemButtonStyle.BORDERED
 	});
 	win.nextNavButton = Titanium.UI.createButton({
-		title:'Jutri'
+		title:'',
+		style:Titanium.UI.iPhone.SystemButtonStyle.BORDERED
 	});
-	win.leftNavButton = win.prevNavButton;
-	win.rightNavButton = win.nextNavButton;
 	
 	// default date to show on start
-	win.title = Ti.App.DateLent.outputDate(date,true);
-	showEventsForDay(Ti.App.DateLent.outputDate(date));
+	win.title = Ti.App.DateLent.outputDate(datum,true);
+	showEventsForDay(Ti.App.DateLent.outputDate(datum));
 	
 	win.add(win.tableview);
 }

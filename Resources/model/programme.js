@@ -1,5 +1,5 @@
-var date_day = 10;
-var date_month = 7;
-var date_year = 2010;
-var date = new Date( date_year, date_month, date_day );
+var datum = new Date(2010, 5, 25);
 
+// 05 = june, 06=july
+var startDate = new Date(2010,5,25);
+var endDate = new Date(2010,6,10);

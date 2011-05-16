@@ -33,6 +33,8 @@ function showEventsForDay(showDate) {
 		incomingData = null;
 		incomingData = JSON.parse(this.responseText);
 		
+		updateNavButtons();
+		
 		var prev_location_id = -1;
 		for (var i = 0; i < incomingData.length; i++) {
 			if ( incomingData[i].location_id != prev_location_id ) {
@@ -46,6 +48,38 @@ function showEventsForDay(showDate) {
 		win.tableview.data = data;
 	};
 	xhr.send();
+}
+
+function getPrevDay(oldDate) {
+	return new Date(oldDate.getTime() - (1000 * 60 * 60 * 24));
+}
+
+function getNextDay(oldDate) {
+	return new Date(oldDate.getTime() + (1000 * 60 * 60 * 24));
+}
+
+function updateNavButtons() {
+	
+	var prevDate = getPrevDay(datum);
+	var nextDate = getNextDay(datum);
+	
+	/*alert('datum: ' + datum);
+	alert('prev: ' + prevDate);
+	alert('next: ' + nextDate);*/
+	
+	if ( prevDate < startDate ) {
+		win.leftNavButton = null;
+	} else {
+		win.leftNavButton = win.prevNavButton;
+		win.prevNavButton.title = Ti.App.days[prevDate.getDay()];
+	}
+		
+	if ( nextDate > endDate ) {
+		win.rightNavButton = null;
+	} else {
+		win.rightNavButton = win.nextNavButton;
+		win.nextNavButton.title = Ti.App.days[nextDate.getDay()];
+	}
 }
 
 //
@@ -69,15 +103,16 @@ win.tableview.addEventListener('click', function(e)
 // events for buttons
 win.prevNavButton.addEventListener('click', function()
 {
-	date.setDate(date.getDate()-1);
-	win.title = Ti.App.DateLent.outputDate(date,true);
-	showEventsForDay(Ti.App.DateLent.outputDate(date));
+	datum = getPrevDay(datum);
+	win.title = Ti.App.DateLent.outputDate(datum,true);
+	showEventsForDay(Ti.App.DateLent.outputDate(datum));
 });
 win.nextNavButton.addEventListener('click', function()
 {	
-	date.setDate(date.getDate()+1);
-	win.title = Ti.App.DateLent.outputDate(date,true);
+	datum = getNextDay(datum);
+	win.title = Ti.App.DateLent.outputDate(datum,true);
 	win.tableview.data = null;
 	win.tableview.index = null;
-	showEventsForDay(Ti.App.DateLent.outputDate(date));
+	showEventsForDay(Ti.App.DateLent.outputDate(datum));
 });
+
