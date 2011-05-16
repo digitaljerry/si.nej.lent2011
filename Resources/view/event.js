@@ -5,47 +5,68 @@ function view_init(win) {
 	win.backgroundColor = '#fff';
 	
 	var upperView = Ti.UI.createView({
-		top:20,
+		top:10,
+		left:10,
 		height:'auto',
-		width:'100%',
+		width:'auto',
 		layout:'vertical'
 	});
 	win.add(upperView);
 	
 	win.label_title = Titanium.UI.createLabel({
-		height:20,
-		left:120,
-		width:'100%',
-		color:'#000000',
-		font:{fontSize:15, fontStyle:'bold'},
+		height:25,
+		left:0,
+		width:'auto',
+		color:'#576996',
+		font:{fontSize:16,fontWeight:'bold', fontFamily:'Arial'},
 		textAlign:'left'
 	});
 	upperView.add(win.label_title);
 	
 	win.label_date = Titanium.UI.createLabel({
-		height:20,
-		left:120,
+		height:25,
+		left:160,
 		width:'auto',
 		color:'#000000',
-		font:{fontSize:12},
+		font:{fontSize:18,fontWeight:'bold'},
 		textAlign:'left'
 	});
 	upperView.add(win.label_date);
 	
-	win.label_stage = Titanium.UI.createLabel({
-		height:20,
-		left:120,
+	win.label_time = Titanium.UI.createLabel({
+		height:27,
+		left:160,
 		width:'auto',
 		color:'#000000',
-		font:{fontSize:12},
+		font:{fontSize:18,fontWeight:'bold'},
+		textAlign:'left'
+	});
+	upperView.add(win.label_time);
+	
+	win.label_stage = Titanium.UI.createLabel({
+		height:25,
+		left:160,
+		width:'auto',
+		color:'#000000',
+		font:{fontSize:14},
 		textAlign:'left'
 	});
 	upperView.add(win.label_stage);
 	
+	win.label_category = Titanium.UI.createLabel({
+		height:25,
+		left:160,
+		width:'auto',
+		color:'#000000',
+		font:{fontSize:14},
+		textAlign:'left'
+	});
+	upperView.add(win.label_category);
+	
 	// tabbed bar
 	win.tb1 = Titanium.UI.createTabbedBar({
 		labels:['Opis', 'Karta'],
-		top:'46%',
+		top:'42%',
 		style:Titanium.UI.iPhone.SystemButtonStyle.BAR,
 		height:25,
 		width:200,
@@ -61,10 +82,10 @@ function view_init(win) {
 		var image = Ti.UI.createImageView({
 			url:'http://lent10.slovenija.net/typo3temp/pics/0c62b85bfc.jpg',
 			defaultImage:'../images/cloud.png',
-			top:0,
+			top:15,
 			left:10,
-			height:100,
-			width:100
+			height:140,
+			width:140
 		});
 	
 	}
@@ -73,10 +94,10 @@ function view_init(win) {
 		var image = Ti.UI.createImageView({
 			image:'http://lent10.slovenija.net/typo3temp/pics/0c62b85bfc.jpg',
 			defaultImage:'../images/cloud.png',
-			top:0,
+			top:15,
 			left:10,
-			height:100,
-			width:100
+			height:140,
+			width:140
 		});
 		
 	}
@@ -114,7 +135,7 @@ function view_init(win) {
 	//
 	win.webView = Ti.UI.createWebView({
 		top:40,
-		height:'100%',
+		height:'auto',
 		width:'100%'
 	});
 	win.scrollView.add(win.webView);

@@ -40,8 +40,13 @@ function showEvent(uid) {
 		
 		/* set data in view - start */
 		win.label_title.text = data.title;
-		win.label_date.text = data.start_date + ' ' + data.start_time;
-		win.label_stage.text = Ti.App.Stages.getStageTitle(data.location_id);
+		win.label_date.text = Ti.App.DateLent.outputNiceDate(Ti.App.DateLent.date2object(data.start_date));
+		win.label_time.text = Ti.App.DateLent.secondsToHm(data.start_time);
+		var stage = Ti.App.Stages.getStageTitle(data.location_id);
+		if ( stage == -1 )
+			stage = data.location;
+		win.label_stage.text = stage;
+		win.label_category.text = Ti.App.Categories.getCategoryTitle(data.category_id);
 		
 		// ADDING ANNOTATION
 		if ( data.location_id != 0 ) {
@@ -79,5 +84,26 @@ win.tb1.addEventListener('click', function(e)
 	{
 		win.mapview.show();
 		win.scrollView.hide();
+	}
+});
+
+//
+// orientation change listener
+//
+Ti.Gesture.addEventListener('orientationchange',function(e)
+{
+	if (e.source.isLandscape() == true) {
+		
+		win.mapview.hide();
+		win.scrollView.hide();
+		win.tb1.hide();
+		win.tb1.index = 0;
+		
+	} else if (e.source.isPortrait() == true) {
+		
+		win.mapview.hide();
+		win.scrollView.show();
+		win.tb1.show();
+		
 	}
 });
