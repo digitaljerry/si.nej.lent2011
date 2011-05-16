@@ -73,7 +73,7 @@ function showEventsForDay(showDate) {
 			
 			var begin_time = Ti.UI.createLabel({
 				color:'#222',
-				font:{fontSize:18,fontWeight:'normal', fontFamily:'Arial'},
+				font:{fontSize:18,fontWeight:'bold', fontFamily:'Arial'},
 				right:10,
 				top:2,
 				height:25,
@@ -89,10 +89,10 @@ function showEventsForDay(showDate) {
 				right:10,
 				top:25,
 				height:25,
-				width:70,
+				width:43,
 				event_uid:incomingData[i].uid,
 				title:incomingData[i].title,
-				text:incomingData[i].start_date
+				text:Ti.App.DateLent.outputShortDate(Ti.App.DateLent.date2object(incomingData[i].start_date))
 			});
 			row.add(begin_date);
 			
@@ -154,13 +154,13 @@ win.tableview.addEventListener('click', function(e)
 win.prevNavButton.addEventListener('click', function()
 {
 	datum = getPrevDay(datum);
-	win.title = Ti.App.DateLent.outputDate(datum,true);
+	win.title = Ti.App.DateLent.outputNiceDate(datum);
 	showEventsForDay(Ti.App.DateLent.outputDate(datum));
 });
 win.nextNavButton.addEventListener('click', function()
 {	
 	datum = getNextDay(datum);
-	win.title = Ti.App.DateLent.outputDate(datum,true);
+	win.title = Ti.App.DateLent.outputNiceDate(datum);
 	win.tableview.data = null;
 	win.tableview.index = null;
 	showEventsForDay(Ti.App.DateLent.outputDate(datum));

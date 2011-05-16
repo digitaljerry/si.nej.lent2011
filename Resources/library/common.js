@@ -8,7 +8,7 @@ function DateLent() {
 	this.someValue;
 	this.someOtherValue;
 	
-	DateLent.prototype.outputDate = function(given_date,nice) {
+	DateLent.prototype.outputDate = function(given_date) {
 		year = given_date.getFullYear().toString();
 		month = (given_date.getMonth()+1).toString();
 		day = given_date.getDate().toString();
@@ -18,11 +18,55 @@ function DateLent() {
 		if (day.length == 1)
 			day = '0'+day;
 		
-		if (nice == true) {
-			return day+'.'+month+'. ' + Ti.App.days[given_date.getDay()];
-		} else {
-			return year+month+day;
-		}
+		return year+month+day;
+	}
+	
+	DateLent.prototype.outputNiceDate = function(given_date) {
+		year = given_date.getFullYear().toString();
+		month = (given_date.getMonth()+1).toString();
+		day = given_date.getDate().toString();
+		
+		if (month.length < 2)
+			month = '0'+month;
+		if (day.length == 1)
+			day = '0'+day;
+		
+		return day+'.'+month+'. ' + Ti.App.days[given_date.getDay()];
+	}
+	
+	DateLent.prototype.outputShortDate = function(given_date) {
+		year = given_date.getFullYear().toString();
+		month = (given_date.getMonth()+1).toString();
+		day = given_date.getDate().toString();
+		
+		if (month.length < 2)
+			month = '0'+month;
+		if (day.length == 1)
+			day = '0'+day;
+		
+		return day+'.'+month+'.';
+	}
+	
+	DateLent.prototype.date2object = function(given_date) {
+		MD_Y = given_date.substring(0,4);
+		MD_M = given_date.substring(4,6);
+		MD_M=MD_M-1;	// Jan-Dec=00-11
+		MD_D = given_date.substring(6,8);
+		MD_hour=0;
+		MD_minutes=0;
+		MD_seconds=0;
+		return new Date(MD_Y, MD_M, MD_D, MD_hour, MD_minutes, MD_seconds);
+	}
+	
+	DateLent.prototype.datetime2object = function(given_date) {
+		MD_Y = given_date.substring(0,4);
+		MD_M = given_date.substring(4,6);
+		MD_M=MD_M-1;	// Jan-Dec=00-11
+		MD_D = given_date.substring(6,8);
+		MD_hour = given_date.substring(9,11);;
+		MD_minutes = given_date.substring(13,15);;;
+		MD_seconds=0;
+		return new Date(MD_Y, MD_M, MD_D, MD_hour, MD_minutes, MD_seconds);
 	}
 	
 	DateLent.prototype.secondsToHm = function(d) {

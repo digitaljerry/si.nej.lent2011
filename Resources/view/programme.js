@@ -31,7 +31,7 @@ function view_init(win) {
 	});
 	
 	// default date to show on start
-	win.title = Ti.App.DateLent.outputDate(datum,true);
+	win.title = Ti.App.DateLent.outputNiceDate(datum);
 	showEventsForDay(Ti.App.DateLent.outputDate(datum));
 	
 	win.add(win.tableview);
