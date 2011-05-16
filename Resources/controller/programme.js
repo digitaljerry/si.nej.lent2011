@@ -19,7 +19,7 @@ function showEventsForDay(showDate) {
 	data = new Array();
 	
 	var xhr = Titanium.Network.createHTTPClient();
-	var geturl = 'http://lent10.slovenija.net/index.php?eID=tx_mnmysql2json_Table&tx_mnmysql2json[action]=getTable&tx_mnmysql2json[tableName]=tx_cal_event&tx_mnmysql2json[orderBy]=location_id&tx_mnmysql2json[fields]=uid,title,start_date,end_date,start_time,end_time,category_id,location,location_id&&tx_mnmysql2json[where]=sys_language_uid=0%20AND%20hidden=0%20AND%20deleted=0%20AND%20start_date='+showDate;
+	var geturl = 'http://lent10.slovenija.net/index.php?eID=tx_mnmysql2json_Table&tx_mnmysql2json[action]=getTable&tx_mnmysql2json[tableName]=tx_cal_event&tx_mnmysql2json[orderBy]=start_date,start_time&tx_mnmysql2json[fields]=uid,title,start_date,end_date,start_time,end_time,category_id,location,location_id&&tx_mnmysql2json[where]=sys_language_uid=0%20AND%20hidden=0%20AND%20deleted=0%20AND%20start_date='+showDate;
 	
 	xhr.setTimeout(20000);
 	xhr.open('GET', geturl, false);
@@ -37,12 +37,66 @@ function showEventsForDay(showDate) {
 		
 		var prev_location_id = -1;
 		for (var i = 0; i < incomingData.length; i++) {
-			if ( incomingData[i].location_id != prev_location_id ) {
-				data.push({title:incomingData[i].title, uid:incomingData[i].uid, hasChild:true, header:Ti.App.Stages.getStageTitle(incomingData[i].location_id)});
-				prev_location_id = incomingData[i].location_id;
-			} else {
-				data.push({title:incomingData[i].title, uid:incomingData[i].uid, hasChild:true});
-			}
+			
+			var row = Ti.UI.createTableViewRow();
+			row.selectedBackgroundColor = '#fff';
+			row.height = 50;
+			row.className = 'datarow';
+			row.clickName = 'row';
+			
+			var title = Ti.UI.createLabel({
+				color:'#576996',
+				font:{fontSize:16,fontWeight:'bold', fontFamily:'Arial'},
+				left:10,
+				top:2,
+				height:30,
+				width:'70%',
+				event_uid:incomingData[i].uid,
+				text:incomingData[i].title,
+				title:incomingData[i].title
+			});
+			row.filter = title.text;
+			row.add(title);
+			
+			var stage_desc = Ti.UI.createLabel({
+				color:'#222',
+				font:{fontSize:14,fontWeight:'normal', fontFamily:'Arial'},
+				left:10,
+				top:25,
+				height:25,
+				width:'70%',
+				event_uid:incomingData[i].uid,
+				title:incomingData[i].title,
+				text:Ti.App.Stages.getStageTitle(incomingData[i].location_id)+', '+incomingData[i].category_id
+			});
+			row.add(stage_desc);
+			
+			var begin_time = Ti.UI.createLabel({
+				color:'#222',
+				font:{fontSize:18,fontWeight:'normal', fontFamily:'Arial'},
+				right:10,
+				top:2,
+				height:25,
+				width:50,
+				event_uid:incomingData[i].uid,
+				title:incomingData[i].title,
+				text:Ti.App.DateLent.secondsToHm(incomingData[i].start_time)
+			});
+			row.add(begin_time);
+			var begin_date = Ti.UI.createLabel({
+				color:'#222',
+				font:{fontSize:14,fontWeight:'normal', fontFamily:'Arial'},
+				right:10,
+				top:25,
+				height:25,
+				width:70,
+				event_uid:incomingData[i].uid,
+				title:incomingData[i].title,
+				text:incomingData[i].start_date
+			});
+			row.add(begin_date);
+			
+			data.push(row);
 		};
 		
 		win.tableview.data = data;
@@ -62,10 +116,6 @@ function updateNavButtons() {
 	
 	var prevDate = getPrevDay(datum);
 	var nextDate = getNextDay(datum);
-	
-	/*alert('datum: ' + datum);
-	alert('prev: ' + prevDate);
-	alert('next: ' + nextDate);*/
 	
 	if ( prevDate < startDate ) {
 		win.leftNavButton = null;
@@ -91,11 +141,11 @@ win.tableview.addEventListener('click', function(e)
 {
 	var winDetail = Titanium.UI.createWindow({
 		url:'event.js',
-		title:e.rowData.title
+		title:e.source.title
 	});
 	
 	// passing the event uid
-	winDetail.event_uid = e.rowData.uid;
+	winDetail.event_uid = e.source.event_uid;
 	
 	Titanium.UI.currentTab.open(winDetail,{animated:true});
 });

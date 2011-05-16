@@ -14,10 +14,10 @@ function view_init(win) {
 	win.add(win.label1);
 	
 	// CREATE TABLE VIEW
-	
 	win.tableview = Titanium.UI.createTableView({
 		search:Titanium.UI.createSearchBar(),
-		searchHidden:true
+		searchHidden:true,
+		filterAttribute:'filter',
 	});
 	
 	// create buttons

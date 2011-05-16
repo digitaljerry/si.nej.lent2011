@@ -24,6 +24,20 @@ function DateLent() {
 			return year+month+day;
 		}
 	}
+	
+	DateLent.prototype.secondsToHm = function(d) {
+		
+		var tm=new Date(d*1000) 
+		var hours=tm.getUTCHours();
+		var minutes=tm.getUTCMinutes();
+		
+		if ( hours < 10 )
+			hours = ' ' + hours;
+		if ( minutes < 10 )
+			minutes = '0' + minutes;
+		
+		return hours+':'+minutes;
+	}
 
 }
 
