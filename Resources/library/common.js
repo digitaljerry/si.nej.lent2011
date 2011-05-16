@@ -93,7 +93,7 @@ function Stages() {
 			if ( Ti.App.stages[i].uid == uid )
 				return Ti.App.stages[i].name;
 		}
-		return 'Ostala prizorišča';
+		return -1;
 	};
 	
 	Stages.prototype.getStageLocation = function(uid) {
@@ -108,3 +108,17 @@ function Stages() {
 	};
  	
 }
+
+function Categories() {
+	
+	//*** Public methods:
+    Categories.prototype.getCategoryTitle = function(uid) {
+    	for (var i = 0; i < Ti.App.categories.length; i++) {
+			if ( Ti.App.categories[i].uid == uid )
+				return Ti.App.categories[i].title;
+		}
+		return '';
+	};
+ 	
+}
+

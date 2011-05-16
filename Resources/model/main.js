@@ -28,3 +28,28 @@ Ti.App.stages = [
 {"uid":"29","name":"Dvorana Union","street":"Dvorana Union","zip":"2000","city":"Maribor","longitude":"15.6532024","latitude":"46.536221"}
 ];
 
+// categories used in multipel views
+// data from:
+// http://lent10.slovenija.net/index.php?eID=tx_mnmysql2json_Table&tx_mnmysql2json[action]=getTable&tx_mnmysql2json[tableName]=tx_cal_category&tx_mnmysql2json[fields]=uid,title&tx_mnmysql2json[where]=deleted=0%20AND%20hidden=0%20AND%20sys_language_uid=0
+Ti.App.categories = [
+{"uid":"1","title":"Delavnice"},
+{"uid":"2","title":"Razstava"},
+{"uid":"3","title":"Koncert"},
+{"uid":"4","title":"Stand-up"},
+{"uid":"5","title":"Komedija"},
+{"uid":"6","title":"Šport"},
+{"uid":"7","title":"Ples"},
+{"uid":"8","title":"Lutkovna predstava"},
+{"uid":"9","title":"Gledališče"},
+{"uid":"10","title":"Film"},
+{"uid":"11","title":"Folklorni festival FOLKART"},
+{"uid":"12","title":"Glasbeno-plesni projekt"},
+{"uid":"13","title":"Literarni dan"},
+{"uid":"14","title":"Muzikal"},
+{"uid":"15","title":"Ulično gledališče"},
+{"uid":"16","title":"Otroška in mladinska prireditev"},
+{"uid":"17","title":"Ognjemet"},
+{"uid":"18","title":"Ostalo"},
+{"uid":"19","title":"Priporočamo"},
+{"uid":"39","title":"Razprodano"}
+];
