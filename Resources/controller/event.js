@@ -36,6 +36,9 @@ function showEvent(uid) {
 		
 		for (var i = 0; i < incomingData.length; i++) {
 			data = incomingData[i];
+			
+			data.images = getImagesArray(incomingData[i].image);
+			win.coverView.images = data.images;
 		}
 		
 		/* set data in view - start */
@@ -47,6 +50,9 @@ function showEvent(uid) {
 			stage = data.location;
 		win.label_stage.text = stage;
 		win.label_category.text = Ti.App.Categories.getCategoryTitle(data.category_id);
+		
+		// image
+		win.image.url = data.images[0].image;
 		
 		// ADDING ANNOTATION
 		if ( data.location_id != 0 ) {
@@ -66,6 +72,16 @@ function showEvent(uid) {
 		/* set data in view - end */
 	};
 	xhr.send();
+}
+
+// prepares images for coverflow view
+function getImagesArray(data) {
+	var images = data.split(',');
+	for (var c=0;c<images.length;c++) {
+		var name = image_path + images[c]; 
+		images[c]= {image:name, width:225, height:225};
+	}
+	return images;
 }
 
 //
@@ -93,17 +109,8 @@ win.tb1.addEventListener('click', function(e)
 Ti.Gesture.addEventListener('orientationchange',function(e)
 {
 	if (e.source.isLandscape() == true) {
-		
-		win.mapview.hide();
-		win.scrollView.hide();
-		win.tb1.hide();
-		win.tb1.index = 0;
-		
+		win.coverView.show();
 	} else if (e.source.isPortrait() == true) {
-		
-		win.mapview.hide();
-		win.scrollView.show();
-		win.tb1.show();
-		
+		win.coverView.hide();
 	}
 });

@@ -76,32 +76,14 @@ function view_init(win) {
 	win.add(win.tb1);
 	
 	// IMAGE
-	if (Titanium.Platform.name == 'android') 
-	{
-		// iphone moved to a single image property - android needs to do the same
-		var image = Ti.UI.createImageView({
-			url:'http://lent10.slovenija.net/typo3temp/pics/0c62b85bfc.jpg',
-			defaultImage:'../images/cloud.png',
-			top:15,
-			left:10,
-			height:140,
-			width:140
-		});
-	
-	}
-	else
-	{
-		var image = Ti.UI.createImageView({
-			image:'http://lent10.slovenija.net/typo3temp/pics/0c62b85bfc.jpg',
-			defaultImage:'../images/cloud.png',
-			top:15,
-			left:10,
-			height:140,
-			width:140
-		});
-		
-	}
-	win.add(image);
+	win.image = Ti.UI.createImageView({
+		defaultImage:'../images/cloud.png',
+		top:35,
+		left:10,
+		height:100,
+		width:140
+	});
+	win.add(win.image);
 	
 	//
 	// CREATE MAP VIEW
@@ -141,4 +123,23 @@ function view_init(win) {
 	win.scrollView.add(win.webView);
 	
 	win.add(win.scrollView);
+	
+	//
+	// CREATE COVER FLOW
+	//
+	// create coverflow view with images
+	
+	win.coverView = Titanium.UI.createCoverFlowView({
+		backgroundColor:'#000000',
+		zIndex:10,
+		borderWidth:'10'
+	});
+	win.coverView.hide();
+	
+	win.add(win.coverView);
+	
+	// decide if it is landscape or portrait and show coverview if needed
+	if (Ti.UI.orientation == 3 || Ti.UI.orientation == 4) {
+		win.coverView.show();
+	}
 }
