@@ -35,12 +35,64 @@ function showEventsForStage(location_uid) {
 		
 		var prev_start_date = 'a long time ago';
 		for (var i = 0; i < incomingData.length; i++){
+			
+			var row = Ti.UI.createTableViewRow();
+			row.selectedBackgroundColor = '#fff';
+			row.height = 50;
+			row.className = 'datarow';
+			row.clickName = 'row';
+			
+			var title = Ti.UI.createLabel({
+				color:'#576996',
+				font:{fontSize:16,fontWeight:'bold', fontFamily:'Arial'},
+				left:10,
+				top:2,
+				height:30,
+				width:'70%',
+				event_uid:incomingData[i].uid,
+				text:incomingData[i].title,
+				title:incomingData[i].title
+			});
+			row.filter = title.text;
+			row.add(title);
+			
+			var stage = Ti.App.Stages.getStageTitle(incomingData[i].location_id);
+			if ( stage == -1 )
+				stage = incomingData[i].location;
+			var desc = Ti.UI.createLabel({
+				color:'#222',
+				font:{fontSize:14,fontWeight:'normal', fontFamily:'Arial'},
+				left:10,
+				top:25,
+				height:25,
+				width:'70%',
+				event_uid:incomingData[i].uid,
+				title:incomingData[i].title,
+				text:Ti.App.Categories.getCategoryTitle(incomingData[i].category_id)
+			});
+			row.add(desc);
+			
+			var begin_time = Ti.UI.createLabel({
+				color:'#222',
+				font:{fontSize:19,fontWeight:'bold', fontFamily:'Arial'},
+				right:10,
+				top:11,
+				height:30,
+				width:50,
+				event_uid:incomingData[i].uid,
+				title:incomingData[i].title,
+				text:Ti.App.DateLent.secondsToHm(incomingData[i].start_time)
+			});
+			row.add(begin_time);
+			
 			if ( incomingData[i].start_date != prev_start_date ) {
-				data.push({title:incomingData[i].title, uid:incomingData[i].uid, hasChild:true, header:incomingData[i].start_date});
+				row.header = Ti.App.DateLent.outputNiceDate(Ti.App.DateLent.date2object(incomingData[i].start_date));
 				prev_start_date = incomingData[i].start_date;
-			} else {
-				data.push({title:incomingData[i].title, uid:incomingData[i].uid, hasChild:true});
 			}
+			
+			row.hasChild = true;
+			
+			data.push(row);
 		};
 	
 		win.tableview.data = data;
@@ -58,11 +110,11 @@ win.tableview.addEventListener('click', function(e)
 {
 	var winDetail = Titanium.UI.createWindow({
 		url:'event.js',
-		title:e.rowData.title
+		title:e.source.title
 	});
 	
 	// passing the event uid
-	winDetail.event_uid = e.rowData.uid;
+	winDetail.event_uid = e.source.event_uid;
 	
 	Titanium.UI.currentTab.open(winDetail,{animated:true});
 });

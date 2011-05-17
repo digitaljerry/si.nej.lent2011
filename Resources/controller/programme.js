@@ -76,28 +76,18 @@ function showEventsForDay(showDate) {
 			
 			var begin_time = Ti.UI.createLabel({
 				color:'#222',
-				font:{fontSize:18,fontWeight:'bold', fontFamily:'Arial'},
+				font:{fontSize:19,fontWeight:'bold', fontFamily:'Arial'},
 				right:10,
-				top:2,
-				height:25,
+				top:11,
+				height:30,
 				width:50,
 				event_uid:incomingData[i].uid,
 				title:incomingData[i].title,
 				text:Ti.App.DateLent.secondsToHm(incomingData[i].start_time)
 			});
 			row.add(begin_time);
-			var begin_date = Ti.UI.createLabel({
-				color:'#222',
-				font:{fontSize:14,fontWeight:'normal', fontFamily:'Arial'},
-				right:10,
-				top:25,
-				height:25,
-				width:43,
-				event_uid:incomingData[i].uid,
-				title:incomingData[i].title,
-				text:Ti.App.DateLent.outputShortDate(Ti.App.DateLent.date2object(incomingData[i].start_date))
-			});
-			row.add(begin_date);
+			
+			row.hasChild = true;
 			
 			data.push(row);
 		};
