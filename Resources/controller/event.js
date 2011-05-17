@@ -114,3 +114,7 @@ Ti.Gesture.addEventListener('orientationchange',function(e)
 		win.coverView.hide();
 	}
 });
+
+win.image.addEventListener('click', function(e) {
+	Ti.App.Message.showMessage('Obrni telefon !');
+});

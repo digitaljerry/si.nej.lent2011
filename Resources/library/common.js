@@ -122,3 +122,16 @@ function Categories() {
  	
 }
 
+function Message() {
+	
+	//*** Public methods:
+	Message.prototype.showMessage = function(text) {
+		messageLabel.text = text;
+		messageWin.open();
+		
+		setTimeout(function()
+		{
+			messageWin.close({opacity:0,duration:500});
+		},1000);
+	}
+}
