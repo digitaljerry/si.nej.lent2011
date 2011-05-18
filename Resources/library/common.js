@@ -89,22 +89,24 @@ function Stages() {
 	
 	//*** Public methods:
     Stages.prototype.getStageTitle = function(uid) {
-	    for (var i = 0; i < Ti.App.stages.length; i++) {
-			if ( Ti.App.stages[i].uid == uid )
-				return Ti.App.stages[i].name;
-		}
-		return -1;
+    	if ( uid == 0 )
+    		return -1;
+    	return stages[uid].name;
 	};
 	
 	Stages.prototype.getStageLocation = function(uid) {
-		var location_data;
-		for (var i = 0; i < Ti.App.stages.length; i++) {
-			if ( Ti.App.stages[i].uid == uid ) {
-				location_data = [{"longitude":Ti.App.stages[i].longitude,"latitude":Ti.App.stages[i].latitude}];
-				return location_data;
-			}
-		}
-		return null;
+		if ( uid == 0 )
+    		return -1;
+		location_data = [{"longitude":stages[uid].longitude,"latitude":stages[uid].latitude}];
+		return location_data;
+	};
+	
+	Stages.prototype.getStage = function(uid) {
+    	return stages[uid];
+	};
+	
+	Stages.prototype.getStages = function() {
+		return stages;
 	};
  	
 }
@@ -113,11 +115,7 @@ function Categories() {
 	
 	//*** Public methods:
     Categories.prototype.getCategoryTitle = function(uid) {
-    	for (var i = 0; i < Ti.App.categories.length; i++) {
-			if ( Ti.App.categories[i].uid == uid )
-				return Ti.App.categories[i].title;
-		}
-		return '';
+    	return categories[uid].title;
 	};
  	
 }

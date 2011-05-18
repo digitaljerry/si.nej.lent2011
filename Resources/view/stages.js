@@ -2,7 +2,7 @@ function view_init(win) {
 	
 	win.title = 'Prizorišča';
 	win.backgroundColor = '#fff';
-	
+		
 	win.label1 = Titanium.UI.createLabel({
 		color:'#999',
 		text:'Nalagam...',
@@ -23,13 +23,15 @@ function view_init(win) {
 		userLocation:true
 	});
 	
+	stages = Ti.App.Stages.getStages();
+	
 	// adding annotations
-	for (var i = 0; i < Ti.App.stages.length; i++) {
+	for(var i in stages) {
 		plotPoints = Titanium.Map.createAnnotation({
-        	latitude: Ti.App.stages[i].latitude,
-            longitude: Ti.App.stages[i].longitude,
-            title: Ti.App.stages[i].name,
-            location_uid: Ti.App.stages[i].uid,
+        	latitude: stages[i].latitude,
+            longitude: stages[i].longitude,
+            title: stages[i].name,
+            location_uid: stages[i].uid,
             pincolor: Titanium.Map.ANNOTATION_GREEN,
             rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE
 		});
@@ -49,8 +51,8 @@ function view_init(win) {
 	win.tableview.hide();
 	
 	var data = new Array();
-	for (var i = 0; i < Ti.App.stages.length; i++){
-		data.push({title:Ti.App.stages[i].name, uid:Ti.App.stages[i].uid, hasChild:true});
+	for(var i in stages) {
+		data.push({title:stages[i].name, uid:stages[i].uid, hasChild:true});
 	}
 	win.tableview.data = data;
 	
