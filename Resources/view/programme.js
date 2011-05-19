@@ -22,16 +22,14 @@ function view_init(win) {
 	
 	// create buttons
 	win.prevNavButton = Titanium.UI.createButton({
-		title:'',
 		style:Titanium.UI.iPhone.SystemButtonStyle.BORDERED
 	});
 	win.nextNavButton = Titanium.UI.createButton({
-		title:'',
 		style:Titanium.UI.iPhone.SystemButtonStyle.BORDERED
 	});
 	
 	// default date to show on start
-	win.title = Ti.App.DateLent.outputNiceDate(datum);
+	win.title = getTitle(datum);
 	showEventsForDay(Ti.App.DateLent.outputDate(datum));
 	
 	win.add(win.tableview);

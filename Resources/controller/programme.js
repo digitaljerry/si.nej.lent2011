@@ -125,6 +125,20 @@ function updateNavButtons() {
 	}
 }
 
+function getTitle() {
+	
+	var month = datum.getMonth() + 1;
+	var day = datum.getDate();
+	var year = datum.getFullYear();
+	
+	// it is today!
+	if ( current_day == day && current_month == month && current_year == year ) {
+		return 'Danes';
+	}
+	
+	return Ti.App.DateLent.outputNiceDate(datum);
+}
+
 //
 // Define events
 //
@@ -147,15 +161,13 @@ win.tableview.addEventListener('click', function(e)
 win.prevNavButton.addEventListener('click', function()
 {
 	datum = getPrevDay(datum);
-	win.title = Ti.App.DateLent.outputNiceDate(datum);
+	win.title = getTitle(datum);
 	showEventsForDay(Ti.App.DateLent.outputDate(datum));
 });
 win.nextNavButton.addEventListener('click', function()
 {	
 	datum = getNextDay(datum);
-	win.title = Ti.App.DateLent.outputNiceDate(datum);
-	win.tableview.data = null;
-	win.tableview.index = null;
+	win.title = getTitle(datum);
 	showEventsForDay(Ti.App.DateLent.outputDate(datum));
 });
 
