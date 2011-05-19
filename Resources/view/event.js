@@ -103,7 +103,7 @@ function view_init(win) {
 	win.add(win.mapview);
 	
 	// SCROLL VIEW
-	win.scrollView = Titanium.UI.createScrollView({
+	win.scrollview = Titanium.UI.createScrollView({
 		contentWidth:'auto',
 		contentHeight:'auto',
 		bottom:0,
@@ -120,9 +120,9 @@ function view_init(win) {
 		height:'auto',
 		width:'100%'
 	});
-	win.scrollView.add(win.webView);
+	win.scrollview.add(win.webView);
 	
-	win.add(win.scrollView);
+	win.add(win.scrollview);
 	
 	//
 	// CREATE COVER FLOW
@@ -142,4 +142,9 @@ function view_init(win) {
 	if (Ti.UI.orientation == 3 || Ti.UI.orientation == 4) {
 		win.coverView.show();
 	}
+	
+	// alert window
+	a = Titanium.UI.createAlertDialog({
+	message:'Želiš odpreti Google Maps?'
+	});
 }

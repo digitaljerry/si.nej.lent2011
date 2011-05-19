@@ -45,7 +45,7 @@ function showEvent(uid) {
 		win.label_title.text = data.title;
 		win.label_date.text = Ti.App.DateLent.outputNiceDate(Ti.App.DateLent.date2object(data.start_date));
 		win.label_time.text = Ti.App.DateLent.secondsToHm(data.start_time);
-		var stage = Ti.App.Stages.getStageTitle(data.location_id);
+		stage = Ti.App.Stages.getStageTitle(data.location_id);
 		if ( stage == -1 )
 			stage = data.location;
 		win.label_stage.text = stage;
@@ -56,16 +56,19 @@ function showEvent(uid) {
 		
 		// ADDING ANNOTATION
 		if ( data.location_id != 0 ) {
-			var stage_location = Ti.App.Stages.getStageLocation(data.location_id);
+			stage_location = Ti.App.Stages.getStageLocation(data.location_id);
 			
 			plotPoint = Titanium.Map.createAnnotation({
 		    	latitude: stage_location[0].latitude,
 		        longitude: stage_location[0].longitude,
 		        title: Ti.App.Stages.getStageTitle(data.location_id),
-		        pincolor: Titanium.Map.ANNOTATION_GREEN
+		        animate:true,
+		        pincolor: Titanium.Map.ANNOTATION_GREEN,
+		        rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE
 			});
 			
 			win.mapview.addAnnotation(plotPoint);
+			win.mapview.selectAnnotation(Ti.App.Stages.getStageTitle(data.location_id),true);
 		}
 		
 		win.webView.html = '<html><body>' + data.description + '</body></html>';
@@ -94,12 +97,12 @@ win.tb1.addEventListener('click', function(e)
 	if (e.index == 0)
 	{
 		win.mapview.hide();
-		win.scrollView.show();
+		win.scrollview.show();
 	}
 	else
 	{
 		win.mapview.show();
-		win.scrollView.hide();
+		win.scrollview.hide();
 	}
 });
 
@@ -110,11 +113,36 @@ Ti.Gesture.addEventListener('orientationchange',function(e)
 {
 	if (e.source.isLandscape() == true) {
 		win.coverView.show();
+		win.mapview.hide();
+		win.scrollview.hide();
 	} else if (e.source.isPortrait() == true) {
+		
+		if ( win.tb1.index == 0)
+			win.scrollview.show();
+		else
+			win.mapview.show();
+		
 		win.coverView.hide();
 	}
 });
 
 win.image.addEventListener('click', function(e) {
 	Ti.App.Message.showMessage('Obrni telefon !');
+});
+
+win.mapview.addEventListener('click', function(evt) {
+	// only if right button was clicked
+	if ( evt.clicksource == 'rightButton' ) {
+	
+		a.buttonNames = ['Odpri','Prekliči'];
+		a.cancel = 1;
+		a.show();
+		
+	}
+});
+
+a.addEventListener('click', function(e) {
+	if ( e.index == 0 ) {
+		Ti.Platform.openURL('http://maps.google.com/maps?daddr=Current Location&daddr='+plotPoint.latitude+','+plotPoint.longitude)+'&dirflg=w';
+	}
 });
