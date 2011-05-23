@@ -176,9 +176,14 @@ a.addEventListener('click', function(e) {
 
 
 a_add.addEventListener('click', function(e) {
+	
 	if ( e.index == 0 ) {
-		var favoritesArray = Ti.App.Properties.getList('favoritesArray');
 		var exists = false;
+		var favoritesArray = Ti.App.Properties.getList('favoritesArray');
+		
+		if ( favoritesArray == null )
+			favoritesArray = Array();		
+		
 		for (var i = 0; i < favoritesArray.length; i++) {
 			if (favoritesArray[i].uid == event_uid) {
 				Titanium.UI.createAlertDialog({message:'Predstava že obstaja med priljubljenimi!'}).show();

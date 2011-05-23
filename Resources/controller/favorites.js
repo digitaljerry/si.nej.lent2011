@@ -26,6 +26,11 @@ function refreshTable() {
 	data = new Array();
 	favoritesArray = Ti.App.Properties.getList('favoritesArray');
 	
+	if ( favoritesArray == null ) {
+		Ti.App.Message.showMessage('Zaenkrat še nimate priljubljenih predstav.');
+		return;
+	}
+	
 	var prev_start_date = 'a long time ago';
 	for (var i = 0; i < favoritesArray.length; i++) {
 		
