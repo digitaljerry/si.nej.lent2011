@@ -63,6 +63,13 @@ function view_init(win) {
 	});
 	upperView.add(win.label_category);
 	
+	// add to favorite button
+	if ( win.disableFav != true ) {
+		win.rightNavButton = Titanium.UI.createButton({
+			systemButton:Titanium.UI.iPhone.SystemButton.ADD
+		});
+	}
+	
 	// tabbed bar
 	win.tb1 = Titanium.UI.createTabbedBar({
 		labels:['Opis', 'Karta'],
@@ -145,6 +152,10 @@ function view_init(win) {
 	
 	// alert window
 	a = Titanium.UI.createAlertDialog({
-	message:'Želiš odpreti Google Maps?'
+		message:'Želiš odpreti Google Maps?'
+	});
+	
+	a_add = Titanium.UI.createAlertDialog({
+		message:'Dodam me priljubljene?'
 	});
 }
