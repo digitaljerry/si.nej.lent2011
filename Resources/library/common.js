@@ -69,6 +69,19 @@ function DateLent() {
 		return new Date(MD_Y, MD_M, MD_D, MD_hour, MD_minutes, MD_seconds);
 	}
 	
+	DateLent.prototype.dateseconds2object = function(given_date,given_seconds) {
+		MD_Y = given_date.substring(0,4);
+		MD_M = given_date.substring(4,6);
+		MD_M=MD_M-1;	// Jan-Dec=00-11
+		MD_D = given_date.substring(6,8);
+		
+		var tm=new Date(given_seconds*1000) 
+		var hours=tm.getUTCHours();
+		var minutes=tm.getUTCMinutes();
+		
+		return new Date(MD_Y, MD_M, MD_D, hours, minutes, 0);
+	}
+	
 	DateLent.prototype.secondsToHm = function(d) {
 		
 		var tm=new Date(d*1000) 

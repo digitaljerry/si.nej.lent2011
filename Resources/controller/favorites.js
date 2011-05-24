@@ -21,6 +21,20 @@ function removeEvent(event_uid) {
 // Define functions
 //
 
+function sortArray(listbox) {
+ 	var x, y, holder;
+	// The Bubble Sort method.
+	for(x = 0; x < listbox.length; x++) {
+		for(y = 0; y < (listbox.length-1); y++) {
+			if(Ti.App.DateLent.dateseconds2object(listbox[y].start_date, listbox[y].start_time) > Ti.App.DateLent.dateseconds2object(listbox[y+1].start_date, listbox[y+1].start_time)) {
+				holder = listbox[y+1];
+				listbox[y+1] = listbox[y];
+				listbox[y] = holder;
+			}
+		}
+	}
+}
+
 function refreshTable() {
 	
 	data = new Array();
@@ -30,6 +44,8 @@ function refreshTable() {
 		Ti.App.Message.showMessage('Zaenkrat še nimate priljubljenih predstav.');
 		return;
 	}
+	
+	sortArray(favoritesArray);
 	
 	var prev_start_date = 'a long time ago';
 	for (var i = 0; i < favoritesArray.length; i++) {
