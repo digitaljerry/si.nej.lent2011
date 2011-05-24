@@ -1,6 +1,7 @@
 
 // include "library" and initiating global objects
 Titanium.include ('library/common.js');
+
 Ti.App.Message = new Message();
 Ti.App.Stages = new Stages();
 Ti.App.Categories = new Categories();
