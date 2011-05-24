@@ -1,5 +1,4 @@
 Titanium.include ('../model/event.js');
-Titanium.include ('../library/cachedImageView.js');
 
 //
 // Load UI elements
@@ -70,7 +69,7 @@ function showEvent(incomingData) {
 	win.label_category.text = Ti.App.Categories.getCategoryTitle(data.category_id);
 	
 	// image
-	cachedImageView('pics', data.images[0].image, win.image);
+	win.image.url = data.images[0].image;
 	
 	// ADDING ANNOTATION
 	if ( data.location_id != 0 ) {
@@ -93,7 +92,6 @@ function showEvent(incomingData) {
 	/* set data in view - end */
 	
 	// add images to coverview
-	data.images = getCachedImagesArray(data.images);
 	win.coverView.images = data.images;
 }
 
@@ -103,13 +101,6 @@ function getImagesArray(data) {
 	for (var c=0;c<images.length;c++) {
 		var name = image_path + images[c]; 
 		images[c]= {image:name, width:225, height:225};
-	}
-	return images;
-}
-
-function getCachedImagesArray(images) {
-	for (var c=0;c<images.length;c++) {
-		cachedImageView('pics', images[c].image, images[c]);
 	}
 	return images;
 }
