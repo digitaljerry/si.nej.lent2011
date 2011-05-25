@@ -1,5 +1,5 @@
 // this sets the background color of the master UIView (when there are no windows/tab groups on it)
-Titanium.UI.setBackgroundColor('#000');
+Titanium.UI.setBackgroundColor('#f1eddd');
 
 // default possible orientations
 var appOrientationModes = [
@@ -18,7 +18,7 @@ var win1 = Titanium.UI.createWindow({
 });
 
 var win2 = Titanium.UI.createWindow({  
-    title:'Prizoriščae',
+    title:'Prizorišča',
     backgroundColor:'#fff',
 	url:'controller/stages.js',
 	orientationModes: appOrientationModes

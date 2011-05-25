@@ -39,7 +39,7 @@ function showEventsForDay(showDate) {
 		for (var i = 0; i < incomingData.length; i++) {
 			
 			var row = Ti.UI.createTableViewRow();
-			row.selectedBackgroundColor = '#fff';
+			row.selectedBackgroundColor = '#e9ddc2';
 			row.height = 50;
 			row.className = 'datarow';
 			row.clickName = 'row';

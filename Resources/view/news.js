@@ -60,7 +60,7 @@ xhr.onload = function()
 				row.url = item.getElementsByTagName("link").item(0).text;
 			//}
 		}
-		var tableview = Titanium.UI.createTableView({data:data});
+		var tableview = Titanium.UI.createTableView({data:data,backgroundColor:'transparent'});
 		Titanium.UI.currentWindow.add(tableview);
 		tableview.addEventListener('click',function(e)
 		{
