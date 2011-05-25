@@ -68,9 +68,6 @@ function showEvent(incomingData) {
 	win.label_stage.text = stage;
 	win.label_category.text = Ti.App.Categories.getCategoryTitle(data.category_id);
 	
-	// image
-	win.image.url = data.images[0].image;
-	
 	// ADDING ANNOTATION
 	if ( data.location_id != 0 ) {
 		stage_location = Ti.App.Stages.getStageLocation(data.location_id);
@@ -91,6 +88,8 @@ function showEvent(incomingData) {
 	win.webView.html = '<html><body>' + data.description + '</body></html>';
 	/* set data in view - end */
 	
+	// image
+	win.image.url = data.images[0].image;
 	// add images to coverview
 	win.coverView.images = data.images;
 }

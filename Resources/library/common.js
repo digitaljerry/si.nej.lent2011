@@ -142,7 +142,7 @@ function Message() {
 		
 		setTimeout(function()
 		{
-			messageWin.close({opacity:0,duration:500});
+			messageWin.close({opacity:0,duration:1000});
 		},1000);
 	}
 }
