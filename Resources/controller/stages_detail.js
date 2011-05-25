@@ -41,6 +41,8 @@ function showEventsForStage(location_uid) {
 			row.height = 50;
 			row.className = 'datarow';
 			row.clickName = 'row';
+			row.event_uid = incomingData[i].uid;
+			row.row_title = incomingData[i].title;
 			
 			var title = Ti.UI.createLabel({
 				color:'#576996',
@@ -49,9 +51,7 @@ function showEventsForStage(location_uid) {
 				top:2,
 				height:30,
 				width:'70%',
-				event_uid:incomingData[i].uid,
-				text:incomingData[i].title,
-				title:incomingData[i].title
+				text:incomingData[i].title
 			});
 			row.filter = title.text;
 			row.add(title);
@@ -66,8 +66,6 @@ function showEventsForStage(location_uid) {
 				top:25,
 				height:25,
 				width:'70%',
-				event_uid:incomingData[i].uid,
-				title:incomingData[i].title,
 				text:Ti.App.Categories.getCategoryTitle(incomingData[i].category_id)
 			});
 			row.add(desc);
@@ -79,8 +77,6 @@ function showEventsForStage(location_uid) {
 				top:11,
 				height:30,
 				width:50,
-				event_uid:incomingData[i].uid,
-				title:incomingData[i].title,
 				text:Ti.App.DateLent.secondsToHm(incomingData[i].start_time)
 			});
 			row.add(begin_time);
@@ -108,13 +104,16 @@ function showEventsForStage(location_uid) {
 // opening the event detail view
 win.tableview.addEventListener('click', function(e)
 {
+	if (e.rowData.event_uid == null)
+		return;
+	
 	var winDetail = Titanium.UI.createWindow({
 		url:'event.js',
-		title:e.source.title
+		title:e.rowData.row_title
 	});
 	
 	// passing the event uid
-	winDetail.event_uid = e.source.event_uid;
+	winDetail.event_uid = e.rowData.event_uid;
 	
 	Titanium.UI.currentTab.open(winDetail,{animated:true});
 });
