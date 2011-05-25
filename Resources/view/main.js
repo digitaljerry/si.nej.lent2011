@@ -27,7 +27,7 @@ var win2 = Titanium.UI.createWindow({
 var win3 = Titanium.UI.createWindow({  
     title:'Novice',
     backgroundColor:'#fff',
-	url:'controller/news.js',
+	url:'news.js',
 	orientationModes: appOrientationModes
 });
 
