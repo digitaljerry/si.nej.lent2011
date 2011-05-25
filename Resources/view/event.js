@@ -76,11 +76,11 @@ function view_init(win) {
 	});
 	upperView.add(win.label_category);
 	
-	// add to favorite button
+	win.nextNavButton = Titanium.UI.createButton({
+		systemButton:Titanium.UI.iPhone.SystemButton.ADD
+	});
 	if ( win.disableFav != true ) {
-		win.rightNavButton = Titanium.UI.createButton({
-			systemButton:Titanium.UI.iPhone.SystemButton.ADD
-		});
+		win.rightNavButton = win.nextNavButton;
 	}
 	
 	// tabbed bar

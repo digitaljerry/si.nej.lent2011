@@ -8,29 +8,12 @@ win = Titanium.UI.currentWindow;
 
 view_init(win);
 
-// shows the event with the given uid from previous view
-if ( event_uid != 0 ) {
-	if ( win.cached == true ) {
-		
-		var favoritesArray = Ti.App.Properties.getList('favoritesArray');
-		for (var i = 0; i < favoritesArray.length; i++) {
-			if (favoritesArray[i].uid ==  event_uid) {
-				showEvent([favoritesArray[i]]);
-				break;
-			}
-		}
-		
-	} else {
-		getEventData(event_uid);
-	}
-}
-
 //
 // Define functions
 //
 
 function getEventData(uid) {
-	var xhr = Titanium.Network.createHTTPClient();
+	xhr = Titanium.Network.createHTTPClient();
 	var geturl = 'http://lent10.slovenija.net/index.php?eID=tx_mnmysql2json_Table&tx_mnmysql2json[action]=getTable&tx_mnmysql2json[tableName]=tx_cal_event&tx_mnmysql2json[orderBy]=location_id&tx_mnmysql2json[fields]=uid,title,start_date,end_date,start_time,end_time,category_id,location,location_id,description,image&tx_mnmysql2json[where]=sys_language_uid=0%20AND%20hidden=0%20AND%20deleted=0%20AND%20uid='+uid;
 	
 	xhr.setTimeout(20000);
@@ -90,8 +73,6 @@ function showEvent(incomingData) {
 	
 	// image
 	win.image.url = data.images[0].image;
-	// add images to coverview
-	win.coverView.images = data.images;
 }
 
 // prepares images for coverflow view
@@ -123,11 +104,20 @@ win.tb1.addEventListener('click', function(e)
 	}
 });
 
+win.addEventListener('close', function(e)
+{
+	xhr.abort();
+});
+
 //
 // orientation change listener
 //
 Ti.Gesture.addEventListener('orientationchange',function(e)
 {
+	// add images to coverview
+	if (win.coverView.images == null)
+		win.coverView.images = data.images;
+	
 	if (e.source.isLandscape() == true) {
 		win.coverView.show();
 		win.mapview.hide();
@@ -159,7 +149,7 @@ win.mapview.addEventListener('click', function(evt) {
 });
 
 if ( win.disableFav != true ) {
-	win.rightNavButton.addEventListener('click', function(evt) {
+	win.nextNavButton.addEventListener('click', function(evt) {
 		// only if right button was clicked
 		a_add.buttonNames = ['Dodaj','Prekliči'];
 		a_add.cancel = 1;
@@ -202,3 +192,22 @@ a_add.addEventListener('click', function(e) {
 		}
 	}
 });
+
+// do something
+
+// shows the event with the given uid from previous view
+if ( event_uid != 0 ) {
+	if ( win.cached == true ) {
+		
+		var favoritesArray = Ti.App.Properties.getList('favoritesArray');
+		for (var i = 0; i < favoritesArray.length; i++) {
+			if (favoritesArray[i].uid ==  event_uid) {
+				showEvent([favoritesArray[i]]);
+				break;
+			}
+		}
+		
+	} else {
+		getEventData(event_uid);
+	}
+}
