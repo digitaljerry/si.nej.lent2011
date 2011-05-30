@@ -28,7 +28,7 @@ function fetchNews() {
 	
 	var xhr = Ti.Network.createHTTPClient();
 	//xhr.open("GET","http://v2.0.news.tmg.s3.amazonaws.com/feeds/news.xml");
-	xhr.open("GET","http://lent10.slovenija.net/index.php?id=1&type=100");
+	xhr.open("GET","http://lent10.slovenija.net/index.php?id=1&type=100",true);
 	xhr.onload = function()
 	{
 		try

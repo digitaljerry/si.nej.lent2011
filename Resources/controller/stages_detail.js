@@ -22,7 +22,7 @@ function showEventsForStage(location_uid) {
 	var geturl = 'http://lent10.slovenija.net/index.php?eID=tx_mnmysql2json_Table&tx_mnmysql2json[action]=getTable&tx_mnmysql2json[tableName]=tx_cal_event&tx_mnmysql2json[orderBy]=start_date&tx_mnmysql2json[fields]=uid,title,start_date,end_date,start_time,end_time,category_id,location,location_id&&tx_mnmysql2json[where]=sys_language_uid=0%20AND%20hidden=0%20AND%20deleted=0%20AND%20location_id='+location_uid;
 	
 	xhr.setTimeout(20000);
-	xhr.open('GET', geturl, false);
+	xhr.open('GET', geturl, true);
 	xhr.onerror = function(e)
 	{
 		Titanium.UI.createAlertDialog({title:'Error', message:e.error}).show();
