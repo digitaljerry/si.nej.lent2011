@@ -39,13 +39,6 @@ var win4 = Titanium.UI.createWindow({
 });
 
 var win5 = Titanium.UI.createWindow({  
-    title:'Nastavitve',
-    backgroundColor:'#fff',
-	url:'controller/settings.js',
-	orientationModes: appOrientationModes
-});
-
-var win6 = Titanium.UI.createWindow({  
     title:'Info',
     backgroundColor:'#fff',
 	url:'controller/info.js',
@@ -53,7 +46,9 @@ var win6 = Titanium.UI.createWindow({
 });
 
 // create tab group
-var tabGroup = Titanium.UI.createTabGroup();
+var tabGroup = Titanium.UI.createTabGroup({
+	barColor: '#004586'
+});
 
 // tabs
 var tab1 = Titanium.UI.createTab({  
@@ -81,15 +76,9 @@ var tab4 = Titanium.UI.createTab({
 });
 
 var tab5 = Titanium.UI.createTab({  
-	icon:'tab_settings.png',
-	title:'Nastavitve',
-	window:win5
-});
-
-var tab6 = Titanium.UI.createTab({  
 	icon:'tab_info.png',
 	title:'Info',
-	window:win6
+	window:win5
 });
 
 //
@@ -100,7 +89,6 @@ tabGroup.addTab(tab2);
 tabGroup.addTab(tab3);
 tabGroup.addTab(tab4);
 tabGroup.addTab(tab5);
-tabGroup.addTab(tab6);
 
 // open tab group
 tabGroup.open();
