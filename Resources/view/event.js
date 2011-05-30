@@ -97,6 +97,7 @@ function view_init(win) {
 	
 	// IMAGE
 	win.image = Ti.UI.createImageView({
+		image:'../images/default.png',
 		defaultImage:'../images/default.png',
 		top:35,
 		left:10,

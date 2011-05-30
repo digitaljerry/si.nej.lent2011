@@ -7,6 +7,11 @@ Ti.App.Stages = new Stages();
 Ti.App.Categories = new Categories();
 Ti.App.DateLent = new DateLent();
 
+// if properties have not yet been set
+if (Titanium.App.Properties.getString('showImages') == '') {
+	Titanium.App.Properties.setString('showImages', '1');
+}
+
 // array that has favorites events which are stored on the phone
 favoritesArray = Ti.App.Properties.getList('favoritesArray');
 

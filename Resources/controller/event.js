@@ -37,8 +37,11 @@ function getEventData(uid) {
 function showEvent(incomingData) {
 	
 	for (var i = 0; i < incomingData.length; i++) {
-		data = incomingData[i];		
-		data.images = getImagesArray(incomingData[i].image);
+		data = incomingData[i];
+		
+		if (Titanium.App.Properties.getString('showImages') == '1') {
+			data.images = getImagesArray(incomingData[i].image);
+		}
 	}
 	
 	/* set data in view - start */

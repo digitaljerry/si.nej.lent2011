@@ -46,9 +46,7 @@ var win5 = Titanium.UI.createWindow({
 });
 
 // create tab group
-var tabGroup = Titanium.UI.createTabGroup({
-	barColor: '#004586'
-});
+var tabGroup = Titanium.UI.createTabGroup();
 
 // tabs
 var tab1 = Titanium.UI.createTab({  
