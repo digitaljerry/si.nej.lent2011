@@ -75,7 +75,9 @@ function showEvent(incomingData) {
 	/* set data in view - end */
 	
 	// image
-	win.image.url = data.images[0].image;
+	if (Titanium.App.Properties.getString('showImages') == '1') {
+		win.image.url = data.images[0].image;
+	}
 }
 
 // prepares images for coverflow view
