@@ -45,8 +45,25 @@ var win5 = Titanium.UI.createWindow({
 	orientationModes: appOrientationModes
 });
 
+var win6 = Titanium.UI.createWindow({  
+    title:'Iskanje',
+    backgroundColor:'#fff',
+	url:'controller/search.js',
+	orientationModes: appOrientationModes
+});
+
+var win7 = Titanium.UI.createWindow({  
+    title:'Nastavitve',
+    backgroundColor:'#fff',
+	url:'controller/settings.js',
+	orientationModes: appOrientationModes
+});
+
 // create tab group
-var tabGroup = Titanium.UI.createTabGroup();
+var tabGroup = Titanium.UI.createTabGroup({
+	barColor: '#004586',
+	editButtonTitle: 'Uredi'
+});
 
 // tabs
 var tab1 = Titanium.UI.createTab({  
@@ -79,6 +96,18 @@ var tab5 = Titanium.UI.createTab({
 	window:win5
 });
 
+var tab6 = Titanium.UI.createTab({  
+	icon:'tab_search.png',
+	title:'Iskanje',
+	window:win6
+});
+
+var tab7 = Titanium.UI.createTab({  
+	icon:'tab_settings.png',
+	title:'Nastavitve',
+	window:win7
+});
+
 //
 //  add tabs
 //
@@ -87,6 +116,8 @@ tabGroup.addTab(tab2);
 tabGroup.addTab(tab3);
 tabGroup.addTab(tab4);
 tabGroup.addTab(tab5);
+tabGroup.addTab(tab6);
+tabGroup.addTab(tab7);
 
 // open tab group
 tabGroup.open();
