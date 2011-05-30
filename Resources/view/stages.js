@@ -48,8 +48,6 @@ function view_init(win) {
 	// CREATE TABLE VIEW
 	//
 	win.tableview = Titanium.UI.createTableView({
-		search:Titanium.UI.createSearchBar({opacity:0.8}),
-		searchHidden:true,
 		backgroundColor:'transparent'
 	});
 	win.tableview.hide();
