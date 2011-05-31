@@ -52,26 +52,32 @@ function showEvent(incomingData) {
 	if ( stage == -1 )
 		stage = data.location;
 	win.label_stage.text = stage;
+	
 	win.label_category.text = Ti.App.Categories.getCategoryTitle(data.category_id);
+	if ( win.label_category.text == -1 )
+		win.label_category.text = '';
 	
 	// ADDING ANNOTATION
 	if ( data.location_id != 0 ) {
 		stage_location = Ti.App.Stages.getStageLocation(data.location_id);
 		
-		plotPoint = Titanium.Map.createAnnotation({
-	    	latitude: stage_location[0].latitude,
-	        longitude: stage_location[0].longitude,
-	        title: Ti.App.Stages.getStageTitle(data.location_id),
-	        animate:true,
-	        pincolor: Titanium.Map.ANNOTATION_GREEN,
-	        rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE
-		});
-		
-		win.mapview.addAnnotation(plotPoint);
-		win.mapview.selectAnnotation(Ti.App.Stages.getStageTitle(data.location_id),true);
+		if ( stage_location != -1 ) {
+			plotPoint = Titanium.Map.createAnnotation({
+		    	latitude: stage_location[0].latitude,
+		        longitude: stage_location[0].longitude,
+		        title: Ti.App.Stages.getStageTitle(data.location_id),
+		        animate:true,
+		        pincolor: Titanium.Map.ANNOTATION_GREEN,
+		        rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE
+			});
+			
+			win.mapview.addAnnotation(plotPoint);
+			win.mapview.selectAnnotation(Ti.App.Stages.getStageTitle(data.location_id),true);
+		} 
 	}
 	
-	win.webView.html = '<html><body>' + data.description + '</body></html>';
+	if ( data.description != null )
+		win.webView.html = '<html><body>' + data.description + '</body></html>';
 	/* set data in view - end */
 	
 	// image

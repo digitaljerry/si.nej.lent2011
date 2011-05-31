@@ -56,9 +56,8 @@ function showEventsForStage(location_uid) {
 			row.filter = title.text;
 			row.add(title);
 			
-			var stage = Ti.App.Stages.getStageTitle(incomingData[i].location_id);
-			if ( stage == -1 )
-				stage = incomingData[i].location;
+			var stage = incomingData[i].location;
+			
 			var desc = Ti.UI.createLabel({
 				color:'#222',
 				font:{fontSize:14,fontWeight:'normal', fontFamily:'Arial'},
@@ -66,8 +65,16 @@ function showEventsForStage(location_uid) {
 				top:25,
 				height:25,
 				width:'70%',
-				text:Ti.App.Categories.getCategoryTitle(incomingData[i].category_id)
+				text:stage
 			});
+			
+			if ( Ti.App.Categories.getCategoryTitle(incomingData[i].category_id) != -1 ) {
+				if ( stage != '' )
+					desc.text = stage + ', ' + Ti.App.Categories.getCategoryTitle(incomingData[i].category_id);
+				else
+					desc.text = Ti.App.Categories.getCategoryTitle(incomingData[i].category_id);
+			}
+			
 			row.add(desc);
 			
 			var begin_time = Ti.UI.createLabel({

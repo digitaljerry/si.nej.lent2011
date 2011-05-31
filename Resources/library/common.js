@@ -104,12 +104,19 @@ function Stages() {
     Stages.prototype.getStageTitle = function(uid) {
     	if ( uid == 0 )
     		return -1;
-    	return stages[uid].name;
+    	
+    	if (stages[uid] != null)
+    		return stages[uid].name;
+    	else
+    		return -1;
 	};
 	
 	Stages.prototype.getStageLocation = function(uid) {
 		if ( uid == 0 )
     		return -1;
+    	if ( stages[uid] == null )
+    		return -1;
+    	
 		location_data = [{"longitude":stages[uid].longitude,"latitude":stages[uid].latitude}];
 		return location_data;
 	};
@@ -128,7 +135,10 @@ function Categories() {
 	
 	//*** Public methods:
     Categories.prototype.getCategoryTitle = function(uid) {
-    	return categories[uid].title;
+    	if ( categories[uid] != null )
+    		return categories[uid].title;
+    	else
+    		return -1;
 	};
  	
 }

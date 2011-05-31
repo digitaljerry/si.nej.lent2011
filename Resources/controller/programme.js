@@ -59,8 +59,10 @@ function showEventsForDay(showDate) {
 			row.add(title);
 			
 			var stage = Ti.App.Stages.getStageTitle(incomingData[i].location_id);
+			
 			if ( stage == -1 )
 				stage = incomingData[i].location;
+			
 			var desc = Ti.UI.createLabel({
 				color:'#222',
 				font:{fontSize:14,fontWeight:'normal', fontFamily:'Arial'},
@@ -68,8 +70,13 @@ function showEventsForDay(showDate) {
 				top:25,
 				height:25,
 				width:'70%',
-				text:stage+', '+ Ti.App.Categories.getCategoryTitle(incomingData[i].category_id)
+				text:stage
 			});
+			
+			var catTitle = Ti.App.Categories.getCategoryTitle(incomingData[i].category_id);
+			if (catTitle != -1)
+				desc.text = stage + ', ' + catTitle;
+			
 			row.add(desc);
 			
 			var begin_time = Ti.UI.createLabel({

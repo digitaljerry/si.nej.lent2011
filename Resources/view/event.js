@@ -27,38 +27,38 @@ function view_init(win) {
 	win.add(upperView);
 	
 	win.label_title = Titanium.UI.createLabel({
-		height:25,
+		height:30,
 		left:0,
 		width:'auto',
 		color:'#576996',
-		font:{fontSize:16,fontWeight:'bold', fontFamily:'Arial'},
+		font:{fontSize:15,fontWeight:'bold', fontFamily:'Arial'},
 		textAlign:'left'
 	});
 	upperView.add(win.label_title);
 	
 	win.label_date = Titanium.UI.createLabel({
-		height:25,
-		left:160,
+		height:23,
+		left:150,
 		width:'auto',
 		color:'#000000',
-		font:{fontSize:18,fontWeight:'bold'},
+		font:{fontSize:17,fontWeight:'bold'},
 		textAlign:'left'
 	});
 	upperView.add(win.label_date);
 	
 	win.label_time = Titanium.UI.createLabel({
-		height:27,
-		left:160,
+		height:24,
+		left:150,
 		width:'auto',
 		color:'#000000',
-		font:{fontSize:18,fontWeight:'bold'},
+		font:{fontSize:17,fontWeight:'bold'},
 		textAlign:'left'
 	});
 	upperView.add(win.label_time);
 	
 	win.label_stage = Titanium.UI.createLabel({
-		height:25,
-		left:160,
+		height:40,
+		left:150,
 		width:'auto',
 		color:'#000000',
 		font:{fontSize:14},
@@ -67,8 +67,8 @@ function view_init(win) {
 	upperView.add(win.label_stage);
 	
 	win.label_category = Titanium.UI.createLabel({
-		height:25,
-		left:160,
+		height:15,
+		left:150,
 		width:'auto',
 		color:'#000000',
 		font:{fontSize:14},
