@@ -68,7 +68,16 @@ function addProperits() {
 		value:true,
 		top:290
 	});
-	win.add(win.langSwitch);
+	//win.add(win.langSwitch);
+	
+	win.tb = Titanium.UI.createTabbedBar({
+		labels:['SLO', 'ENG'],
+		top:290,
+		style:Titanium.UI.iPhone.SystemButtonStyle.BAR,
+		height:30,
+		width:200
+	});
+	win.add(win.tb);
 	
 }
 
