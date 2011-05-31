@@ -41,50 +41,56 @@ function fetchNews() {
 			{
 				var item = items.item(c);
 				
-				//var thumbnails = item.getElementsByTagName("media:thumbnail");
-				//if (thumbnails && thumbnails.length > 0)
-				//{
-					//var media = thumbnails.item(0).getAttribute("link");
-					var title = item.getElementsByTagName("title").item(0).text;
-					var row = Ti.UI.createTableViewRow({height:80});
-					var label = Ti.UI.createLabel({
-						text:title,
-						left:72,
-						top:5,
-						bottom:5,
-						right:5,
-						color:'#576996',
-						font:{fontSize:16,fontWeight:'bold', fontFamily:'Arial'}
+				var title = item.getElementsByTagName("title").item(0).text;
+				var date = item.getElementsByTagName("pubDate").item(0).text;
+				var desc = item.getElementsByTagName("description").item(0).text;
+				
+				row = Ti.UI.createTableViewRow({
+					height:80,
+					selectedBackgroundColor:'#e9ddc2'
 					});
-					row.add(label);
-					/*var img;
-					if (Titanium.Platform.name == 'android') 
-					{
-						// iphone moved to a single image property - android needs to do the same
-						img = Ti.UI.createImageView({
-							url:media,
-							left:5,
-							height:60,
-							width:60
-						});
-	
-					}
-					else
-					{
-						img = Ti.UI.createImageView({
-							image:media,
-							left:5,
-							height:60,
-							width:60
-						});
-						
-					}
-					row.add(img);*/
-					data[x++] = row;
-					
-					// adding mobile=1 to get the view intended for mobile devices 
-					row.url = item.getElementsByTagName("link").item(0).text + '&mobile=1';
-				//}
+				
+				label_title = Ti.UI.createLabel({
+					color:'#576996',
+					font:{fontSize:16,fontWeight:'bold', fontFamily:'Arial'},
+					left:10,
+					top:2,
+					height:30,
+					width:'70%',
+					text:title
+				});
+				row.add(label_title);
+				
+				label_desc = Ti.UI.createLabel({
+					color:'#222',
+					font:{fontSize:14,fontWeight:'normal', fontFamily:'Arial'},
+					left:10,
+					top:30,
+					height:40,
+					width:'70%',
+					text:desc
+				});
+				row.add(label_desc);
+				
+				// we get: Wed, 11 May 2011 10:09:00 +0200
+				// we need: 11 May
+				date = date.substring(5,11);
+				var label_date = Ti.UI.createLabel({
+					color:'#222',
+					font:{fontSize:19,fontWeight:'bold', fontFamily:'Arial'},
+					right:10,
+					top:25,
+					height:30,
+					width:70,
+					text:date
+				});
+				row.add(label_date);
+				
+				// ++
+				data[x++] = row;
+				
+				// adding mobile=1 to get the view intended for mobile devices 
+				row.url = item.getElementsByTagName("link").item(0).text + '&mobile=1';
 			}
 			tableview = Titanium.UI.createTableView({data:data,backgroundColor:'transparent',selectedBackgroundColor:'#e9ddc2'});
 			Titanium.UI.currentWindow.add(tableview);
@@ -116,8 +122,8 @@ function fetchNews() {
 win.nextNavButton.addEventListener('click', function()
 {	
 	// reset
-	tableview.data = null;
-	data = new Array();
+	Titanium.UI.currentWindow.remove(tableview);
+	//data = new Array();
 	
 	fetchNews();
 	
