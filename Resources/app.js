@@ -12,6 +12,15 @@ if (Titanium.App.Properties.getString('showImages') == '') {
 	Titanium.App.Properties.setString('showImages', '1');
 }
 
+// lent 2011 constants
+Titanium.App.Properties.setString('domain', 'lent11.localhost');
+Titanium.App.Properties.setInt('lentStartYear', 2011);
+Titanium.App.Properties.setInt('lentStartMonth', 6);
+Titanium.App.Properties.setInt('lentStartDay', 24);
+Titanium.App.Properties.setInt('lentEndYear', 2011);
+Titanium.App.Properties.setInt('lentEndMonth', 7);
+Titanium.App.Properties.setInt('lentEndDay', 9);
+
 // array that has favorites events which are stored on the phone
 favoritesArray = Ti.App.Properties.getList('favoritesArray');
 

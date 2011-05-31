@@ -28,7 +28,7 @@ function fetchNews() {
 	
 	var xhr = Ti.Network.createHTTPClient();
 	//xhr.open("GET","http://v2.0.news.tmg.s3.amazonaws.com/feeds/news.xml");
-	xhr.open("GET","http://lent10.slovenija.net/index.php?id=1&type=100",true);
+	xhr.open('GET','http://' + Titanium.App.Properties.getString('domain') + '/index.php?id=home&type=100',true);
 	xhr.onload = function()
 	{
 		try
@@ -81,7 +81,9 @@ function fetchNews() {
 					}
 					row.add(img);*/
 					data[x++] = row;
-					row.url = item.getElementsByTagName("link").item(0).text;
+					
+					// adding mobile=1 to get the view intended for mobile devices 
+					row.url = item.getElementsByTagName("link").item(0).text + '&mobile=1';
 				//}
 			}
 			tableview = Titanium.UI.createTableView({data:data,backgroundColor:'transparent',selectedBackgroundColor:'#e9ddc2'});

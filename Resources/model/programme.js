@@ -1,6 +1,10 @@
 // first day of the festival
 // 05 = june, 06=july
-var datum = new Date(2010, 5, 25);
+var datum = new Date(
+				Titanium.App.Properties.getString('lentStartYear'),
+				Titanium.App.Properties.getString('lentStartMonth') - 1,
+				Titanium.App.Properties.getString('lentStartDay')
+				);
 
 var currentTime = new Date();
 var current_month = currentTime.getMonth() + 1
@@ -14,8 +18,16 @@ var current_year = currentTime.getFullYear();
 //currentTime = new Date(current_year,current_month-1,current_day);
 
 // 05 = june, 06=july
-var startDate = new Date(2010,5,25);
-var endDate = new Date(2010,6,10);
+var startDate = new Date(
+				Titanium.App.Properties.getString('lentStartYear'),
+				Titanium.App.Properties.getString('lentStartMonth') - 1,
+				Titanium.App.Properties.getString('lentStartDay')
+				);
+var endDate = new Date(
+				Titanium.App.Properties.getString('lentEndYear'),
+				Titanium.App.Properties.getString('lentEndMonth') - 1,
+				Titanium.App.Properties.getString('lentEndDay')
+				);
 
 // if the app is running on a day that the festival is actually happening
 // set the date to show today's events

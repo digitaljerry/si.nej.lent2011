@@ -14,7 +14,7 @@ view_init(win);
 
 function showInfo() {
 	
-	win.webview.url = 'http://lent10.slovenija.net/index.php?id=7&mobile=1';
+	win.webview.url = 'http://' + Titanium.App.Properties.getString('domain') + '/index.php?id=info&mobile=1';
 	
 }
 
