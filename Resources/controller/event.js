@@ -61,7 +61,7 @@ function showEvent(incomingData) {
 	if ( data.location_id != 0 ) {
 		stage_location = Ti.App.Stages.getStageLocation(data.location_id);
 		
-		if ( stage_location != -1 ) {
+		if ( stage_location != -1 && stage_location[0].longitude != '0') {
 			plotPoint = Titanium.Map.createAnnotation({
 		    	latitude: stage_location[0].latitude,
 		        longitude: stage_location[0].longitude,
@@ -73,7 +73,9 @@ function showEvent(incomingData) {
 			
 			win.mapview.addAnnotation(plotPoint);
 			win.mapview.selectAnnotation(Ti.App.Stages.getStageTitle(data.location_id),true);
-		} 
+		} else {
+			win.tb1.labels = ['Opis'];
+		}
 	}
 	
 	if ( data.description != null )
@@ -170,7 +172,19 @@ if ( win.disableFav != true ) {
 
 a.addEventListener('click', function(e) {
 	if ( e.index == 0 ) {
-		Ti.Platform.openURL('http://maps.google.com/maps?daddr=Current Location&daddr='+plotPoint.latitude+','+plotPoint.longitude)+'&dirflg=w';
+		
+		if (Ti.Geolocation.locationServicesEnabled == true) {
+        	
+        	Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_BEST;
+        	Ti.Geolocation.getCurrentPosition(function(eg) {
+				var mylat = eg.coords.latitude;
+				var mylon = eg.coords.longitude;
+				alert(mylat + ' ' + mylon);
+				Ti.Platform.openURL('http://maps.google.com/maps?daddr='+mylat+','+mylon+'&daddr='+plotPoint.latitude+','+plotPoint.longitude)+'&dirflg=w';
+			});
+		} else {
+			Ti.Platform.openURL('http://maps.google.com/maps?daddr='+mylat+','+mylon);
+		}
 	}
 });
 
