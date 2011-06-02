@@ -129,7 +129,6 @@ win.tableview.addEventListener('click', function(e)
 {
 	var winDetail = Titanium.UI.createWindow({
 		url:'event.js',
-		title:e.source.title,
 		cached:true,
 		disableFav:true
 	});

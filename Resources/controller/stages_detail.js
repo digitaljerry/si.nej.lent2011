@@ -115,8 +115,7 @@ win.tableview.addEventListener('click', function(e)
 		return;
 	
 	var winDetail = Titanium.UI.createWindow({
-		url:'event.js',
-		title:e.rowData.row_title
+		url:'event.js'
 	});
 	
 	// passing the event uid
