@@ -91,12 +91,13 @@ function fetchNews() {
 				
 				// adding mobile=1 to get the view intended for mobile devices 
 				row.url = item.getElementsByTagName("link").item(0).text + '&mobile=1';
+				row.nextTitle = title;
 			}
 			tableview = Titanium.UI.createTableView({data:data,backgroundColor:'transparent',selectedBackgroundColor:'#e9ddc2'});
 			Titanium.UI.currentWindow.add(tableview);
 			tableview.addEventListener('click',function(e)
 			{
-				var w = Ti.UI.createWindow({title:doctitle,barColor:'#004586',backgroundImage:'images/background_window.png'});
+				var w = Ti.UI.createWindow({title:e.row.nextTitle,barColor:'#004586',backgroundImage:'images/background_window.png'});
 				var wb = Ti.UI.createWebView({url:e.row.url,backgroundColor:'transparent'});
 				w.add(wb);
 				var b = Titanium.UI.createButton({
