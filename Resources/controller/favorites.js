@@ -83,8 +83,13 @@ function refreshTable() {
 			width:'70%',
 			event_uid:favoritesArray[i].uid,
 			title:favoritesArray[i].title,
-			text:stage+', '+ Ti.App.Categories.getCategoryTitle(favoritesArray[i].category_id)
+			text:stage
 		});
+		
+		var catTitle = Ti.App.Categories.getCategoryTitle(favoritesArray[i].category_id);
+		if (catTitle != -1)
+			desc.text = stage + ', ' + catTitle;
+		
 		row.add(desc);
 		
 		var begin_time = Ti.UI.createLabel({
