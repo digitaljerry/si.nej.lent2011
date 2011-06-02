@@ -13,7 +13,7 @@ if (Titanium.App.Properties.getString('showImages') == '') {
 }
 
 // lent 2011 constants
-Titanium.App.Properties.setString('domain', 'lent11.localhost');
+Titanium.App.Properties.setString('domain', 'www.festival-lent.si');
 Titanium.App.Properties.setInt('lentStartYear', 2011);
 Titanium.App.Properties.setInt('lentStartMonth', 6);
 Titanium.App.Properties.setInt('lentStartDay', 24);
