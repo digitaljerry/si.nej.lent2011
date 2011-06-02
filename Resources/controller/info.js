@@ -82,14 +82,14 @@ win.infoButton.addEventListener('click',function(e)
 	});
 	w.add(w.imageCompany);
 	
-	w.imageTitanium = Ti.UI.createImageView({
+	w.imageFramework = Ti.UI.createImageView({
 		image:'../images/logo_titanium.png',
 		bottom:160,
 		left:40,
 		height:90,
 		width:90
 	});
-	w.add(w.imageTitanium);
+	w.add(w.imageFramework);
 	
 	w.imageOS = Ti.UI.createImageView({
 		image:'../images/logo_os.png',
@@ -134,7 +134,7 @@ win.infoButton.addEventListener('click',function(e)
 		a.show();
 	});
 	
-	w.imageTitanium.addEventListener('click', function() {
+	w.imageFramework.addEventListener('click', function() {
 		var a = Titanium.UI.createAlertDialog({
 			message:'Podprto z odprtokodnim ogrodjem Appcelerator Titanium za razvoj native aplikacij na iOS in Android platformah.',
 			buttonNames: ['Obišči','Prekliči'],
