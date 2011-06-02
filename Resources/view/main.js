@@ -120,4 +120,6 @@ tabGroup.addTab(tab6);
 tabGroup.addTab(tab7);
 
 // open tab group
-tabGroup.open();
+tabGroup.open({
+	transition:Titanium.UI.iPhone.AnimationStyle.CURL_UP
+});
