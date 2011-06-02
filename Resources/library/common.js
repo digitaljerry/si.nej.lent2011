@@ -104,6 +104,10 @@ function Stages() {
     Stages.prototype.getStageTitle = function(uid) {
     	if ( uid == 0 )
     		return -1;
+    		
+    	// if uid == 30 then this is considered a location category of "other" stages
+    	if ( uid == 30 )
+    		return -1;
     	
     	if (stages[uid] != null)
     		return stages[uid].name;
