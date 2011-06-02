@@ -57,6 +57,18 @@ function showEvent(incomingData) {
 	if ( win.label_category.text == -1 )
 		win.label_category.text = '';
 	
+	// data details view
+	data.details = Array();
+	
+	// descriptions
+	if ( data.description != '' ) {
+		win.webView.html = '<html><body>' + data.description + '</body></html>';
+		win.tb1.labels = ['Opis'];
+		
+		// add show id to array
+		data.details.push('1');	
+	}
+	
 	// ADDING ANNOTATION
 	if ( data.location_id != 0 ) {
 		stage_location = Ti.App.Stages.getStageLocation(data.location_id);
@@ -73,14 +85,24 @@ function showEvent(incomingData) {
 			
 			win.mapview.addAnnotation(plotPoint);
 			win.mapview.selectAnnotation(Ti.App.Stages.getStageTitle(data.location_id),true);
-		} else {
-			win.tb1.labels = ['Opis'];
+			win.mapview.setLocation(Ti.App.location_maribor);
+			
+			if ( data.details.length == 0 )
+				win.tb1.labels = ['Karta'];
+			else
+				win.tb1.labels = ['Opis','Karta'];
+			
+			// add show id to array
+			data.details.push('2');
 		}
 	}
-	
-	if ( data.description != null )
-		win.webView.html = '<html><body>' + data.description + '</body></html>';
+	win.tb1.show();
 	/* set data in view - end */
+	
+	// show first tab that is avaible
+	showTab(data.details[0]);
+	
+	orientationChange();
 	
 	// image
 	if (Titanium.App.Properties.getString('showImages') == '1') {
@@ -92,10 +114,37 @@ function showEvent(incomingData) {
 function getImagesArray(data) {
 	var images = data.split(',');
 	for (var c=0;c<images.length;c++) {
-		var name = image_path + images[c]; 
-		images[c]= {image:name, width:225, height:225};
+		if (images[c] != '' ) {
+			var name = image_path + images[c]; 
+			images[c]= {image:name, width:225, height:225};
+		}
 	}
 	return images;
+}
+
+function showTab(s) {
+	if (s == 1)
+	{
+		win.mapview.hide();
+		win.scrollview.show();
+	}
+	else if (s == 2)
+	{
+		win.mapview.show();
+		win.scrollview.hide();
+	}
+}
+
+function orientationChange() {
+	if (Titanium.UI.orientation == Titanium.UI.LANDSCAPE_LEFT || Titanium.UI.orientation == Titanium.UI.LANDSCAPE_RIGHT) {
+		win.mapview.hide();
+		win.scrollview.hide();
+		win.tb1.hide();
+	} else if (Titanium.UI.orientation == Titanium.UI.PORTRAIT || Titanium.UI.orientation == Titanium.UI.UPSIDE_PORTRAIT) {
+		win.tb1.show();
+		// show first tab that is avaible
+		showTab(data.details[0]);
+	}
 }
 
 //
@@ -105,16 +154,8 @@ function getImagesArray(data) {
 // event to switch between description and map tab
 win.tb1.addEventListener('click', function(e)
 {
-	if (e.index == 0)
-	{
-		win.mapview.hide();
-		win.scrollview.show();
-	}
-	else
-	{
-		win.mapview.show();
-		win.scrollview.hide();
-	}
+	var show = data.details[e.index];
+	showTab(show);
 });
 
 win.addEventListener('close', function(e)
@@ -122,32 +163,38 @@ win.addEventListener('close', function(e)
 	xhr.abort();
 });
 
-//
-// orientation change listener
-//
-Ti.Gesture.addEventListener('orientationchange',function(e)
-{
-	// add images to coverview
-	if (win.coverView.images == null)
-		win.coverView.images = data.images;
-	
-	if (e.source.isLandscape() == true) {
-		win.coverView.show();
-		win.mapview.hide();
-		win.scrollview.hide();
-	} else if (e.source.isPortrait() == true) {
-		
-		if ( win.tb1.index == 0)
-			win.scrollview.show();
-		else
-			win.mapview.show();
-		
-		win.coverView.hide();
-	}
-});
-
+var scaledImage = false;
 win.image.addEventListener('click', function(e) {
-	Ti.App.Message.showMessage('Obrni telefon !');
+	
+	if (win.image.url == undefined)
+		return;
+	
+	var t = Titanium.UI.create2DMatrix();
+
+	if (!scaledImage)
+	{
+		t = t.scale(2.0);
+		center1 = win.image.center;
+		
+		win.tb1.hide();
+		win.scrollview.hide();
+		win.mapview.hide();
+		
+		win.image.animate({transform:t,center:win.center,zIndex:1000,duration:500});
+		scaledImage = true;
+	}
+	else
+	{
+		win.image.animate({transform:t,center:center1,zIndex:1,duration:500});
+		setTimeout(function()
+        {
+        	if (Titanium.UI.orientation == Titanium.UI.PORTRAIT || Titanium.UI.orientation == Titanium.UI.UPSIDE_PORTRAIT) {
+        		win.tb1.show();
+        		showTab(data.details[0]);
+        	}
+        },400);
+		scaledImage = false;
+	}
 });
 
 win.mapview.addEventListener('click', function(evt) {
@@ -216,6 +263,13 @@ a_add.addEventListener('click', function(e) {
 			Ti.App.fireEvent('refreshFavorites');
 		}
 	}
+});
+
+//
+// orientation change listener
+//
+Ti.Gesture.addEventListener('orientationchange',function(e) {
+	orientationChange();
 });
 
 // do something

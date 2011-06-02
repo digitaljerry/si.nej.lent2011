@@ -83,18 +83,6 @@ function view_init(win) {
 		win.rightNavButton = win.nextNavButton;
 	}
 	
-	// tabbed bar
-	win.tb1 = Titanium.UI.createTabbedBar({
-		labels:['Opis', 'Karta'],
-		top:'42%',
-		style:Titanium.UI.iPhone.SystemButtonStyle.BAR,
-		height:25,
-		width:200,
-		zIndex:2,
-		index:0
-	});
-	win.add(win.tb1);
-	
 	// IMAGE
 	win.image = Ti.UI.createImageView({
 		image:'../images/default.png',
@@ -133,6 +121,19 @@ function view_init(win) {
 		showVerticalScrollIndicator:true
 	});
 	
+	// tabbed bar
+	win.tb1 = Titanium.UI.createTabbedBar({
+		labels:[],
+		top:'42%',
+		style:Titanium.UI.iPhone.SystemButtonStyle.BAR,
+		height:25,
+		width:200,
+		zIndex:99,
+		index:0
+	});
+	win.tb1.hide();
+	win.add(win.tb1);
+	
 	//
 	// CREATE WEBVIEW
 	//
@@ -145,25 +146,6 @@ function view_init(win) {
 	win.scrollview.add(win.webView);
 	
 	win.add(win.scrollview);
-	
-	//
-	// CREATE COVER FLOW
-	//
-	// create coverflow view with images
-	
-	win.coverView = Titanium.UI.createCoverFlowView({
-		backgroundColor:'#000000',
-		zIndex:10,
-		borderWidth:'10'
-	});
-	win.coverView.hide();
-	
-	win.add(win.coverView);
-	
-	// decide if it is landscape or portrait and show coverview if needed
-	if (Ti.UI.orientation == 3 || Ti.UI.orientation == 4) {
-		win.coverView.show();
-	}
 	
 	// alert window
 	a = Titanium.UI.createAlertDialog({
