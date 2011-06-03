@@ -12,10 +12,10 @@ var current_day = currentTime.getDate();
 var current_year = currentTime.getFullYear();
 
 // simulate a day for testig purpose
-//current_month = 7;
-//current_day = 10;
-//current_year = 2010;
-//currentTime = new Date(current_year,current_month-1,current_day);
+current_month = 6;
+current_day = 28;
+current_year = 2011;
+currentTime = new Date(current_year,current_month-1,current_day);
 
 // 05 = june, 06=july
 var startDate = new Date(

@@ -127,7 +127,7 @@ win.tableview.addEventListener('click', function(e)
 win.search.addEventListener('return', function (e)
 {
 	if(e.value.length < 3) {
-		alert('Vpiši vsaj 3 znake.');
+		Titanium.UI.createAlertDialog({message:'Vpiši vsaj 3 znake.'}).show();
 	} else {
 		searchEvents(e.value);
 		win.search.blur();

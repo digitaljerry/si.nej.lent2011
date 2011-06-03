@@ -226,7 +226,6 @@ a.addEventListener('click', function(e) {
         	Ti.Geolocation.getCurrentPosition(function(eg) {
 				var mylat = eg.coords.latitude;
 				var mylon = eg.coords.longitude;
-				alert(mylat + ' ' + mylon);
 				Ti.Platform.openURL('http://maps.google.com/maps?daddr='+mylat+','+mylon+'&daddr='+plotPoint.latitude+','+plotPoint.longitude)+'&dirflg=w';
 			});
 		} else {
