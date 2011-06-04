@@ -14,6 +14,8 @@ view_init(win);
 // shows events for certain stage in the tableview of current win
 function searchEvents(query) {
 	
+	Ti.App.ActivityIndicator.start();
+	
 	// reset
 	win.tableview.data = null;
 	data = new Array();
@@ -27,6 +29,7 @@ function searchEvents(query) {
 	{
 		Titanium.UI.createAlertDialog({title:'Error', message:e.error}).show();
 		Titanium.API.info('IN ERROR' + e.error);
+		Ti.App.ActivityIndicator.stop();
 	};
 	
 	xhr.onload = function(){
@@ -99,6 +102,8 @@ function searchEvents(query) {
 		};
 	
 		win.tableview.data = data;
+		
+		Ti.App.ActivityIndicator.stop();
 	};
 	xhr.send();
 }

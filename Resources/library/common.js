@@ -160,3 +160,14 @@ function Message() {
 		},1000);
 	}
 }
+
+function ActivityIndicator() {
+	
+	//*** Public methods
+	ActivityIndicator.prototype.start = function() {
+		actIndWin.open();
+	}
+	ActivityIndicator.prototype.stop = function() {
+		actIndWin.close();
+	}	
+}

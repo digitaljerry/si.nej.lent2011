@@ -3,6 +3,7 @@
 Titanium.include ('library/common.js');
 
 Ti.App.Message = new Message();
+Ti.App.ActivityIndicator = new ActivityIndicator();
 Ti.App.Stages = new Stages();
 Ti.App.Categories = new Categories();
 Ti.App.DateLent = new DateLent();
@@ -27,6 +28,7 @@ favoritesArray = Ti.App.Properties.getList('favoritesArray');
 // include main controller
 Titanium.include ('controller/main.js');
 
+// MESSAGE WIN
 
 var messageWin = Titanium.UI.createWindow({
 	height:30,
@@ -66,3 +68,46 @@ var messageLabel = Titanium.UI.createLabel({
 });
 messageWin.add(messageView);
 messageWin.add(messageLabel);
+
+// ACTIVITY INDICATOR
+
+var actIndWin = Titanium.UI.createWindow({
+	height:30,
+	width:210,
+	bottom:70,
+	borderRadius:10,
+	touchEnabled:false,
+
+	orientationModes : [
+	Titanium.UI.PORTRAIT,
+	Titanium.UI.UPSIDE_PORTRAIT,
+	Titanium.UI.LANDSCAPE_LEFT,
+	Titanium.UI.LANDSCAPE_RIGHT,
+	]
+});
+
+var actIndView = Titanium.UI.createView({
+	id:'actindview',
+	height:30,
+	width:210,
+	borderRadius:10,
+	backgroundColor:'#000',
+	opacity:0.7,
+	touchEnabled:false
+});
+
+var actInd = Titanium.UI.createActivityIndicator({
+	bottom:0, 
+	height:30,
+	width:210,
+	style:Titanium.UI.iPhone.ActivityIndicatorStyle.PLAIN,
+	font:{fontFamily:'Helvetica Neue', fontSize:15,fontWeight:'bold'},
+	color:'white',
+	message:'Nalagam...'
+});
+actInd.show();
+actIndView.add(actInd);
+actIndWin.add(actIndView); 
+
+
+

@@ -14,6 +14,8 @@ view_init(win);
 
 function showEventsForDay(showDate) {
 	
+	Ti.App.ActivityIndicator.start();
+	
 	// reset
 	win.tableview.data = null;
 	data = new Array();

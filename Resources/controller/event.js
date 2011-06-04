@@ -13,6 +13,9 @@ view_init(win);
 //
 
 function getEventData(uid) {
+	
+	Ti.App.ActivityIndicator.start();
+	
 	xhr = Titanium.Network.createHTTPClient();
 	var geturl = 'http://' + Titanium.App.Properties.getString('domain') + '/index.php?eID=tx_mnmysql2json_Table&tx_mnmysql2json[action]=getTable&tx_mnmysql2json[tableName]=tx_cal_event&tx_mnmysql2json[orderBy]=location_id&tx_mnmysql2json[fields]=uid,title,start_date,end_date,start_time,end_time,category_id,location,location_id,description,image&tx_mnmysql2json[where]=sys_language_uid=0%20AND%20hidden=0%20AND%20deleted=0%20AND%20uid='+uid;
 	
@@ -23,6 +26,7 @@ function getEventData(uid) {
 		Titanium.UI.createAlertDialog({title:'Error', message:e.error}).show();
 		Titanium.API.info('IN ERROR' + e.error);
 		alert('error');
+		Ti.App.ActivityIndicator.stop();
 	};
 	
 	xhr.onload = function(){
@@ -30,6 +34,8 @@ function getEventData(uid) {
 		incomingData = JSON.parse(this.responseText);
 		
 		showEvent(incomingData);
+		
+		Ti.App.ActivityIndicator.stop();
 	};
 	xhr.send();
 }
