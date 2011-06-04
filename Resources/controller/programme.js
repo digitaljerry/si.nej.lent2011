@@ -119,17 +119,15 @@ function updateNavButtons() {
 	var nextDate = getNextDay(datum);
 	
 	if ( prevDate < startDate ) {
-		win.leftNavButton = null;
+		win.imagePrev.hide();
 	} else {
-		win.leftNavButton = win.prevNavButton;
-		win.prevNavButton.title = Ti.App.days[prevDate.getDay()];
+		win.imagePrev.show();
 	}
 		
 	if ( nextDate > endDate ) {
-		win.rightNavButton = null;
+		win.imageNext.hide();
 	} else {
-		win.rightNavButton = win.nextNavButton;
-		win.nextNavButton.title = Ti.App.days[nextDate.getDay()];
+		win.imageNext.show();
 	}
 }
 
