@@ -16,3 +16,18 @@ Titanium is Copyright (c) 2009-2010 by Appcelerator, Inc. All Rights Reserved.
 Titanium is licensed under the Apache Public License (Version 2). Please
 see the LICENSE file for the full license.
 
+
+
+Bugs:
+
+- when no data connection it throws and error (should show some more user firendly message)
+- click on Search icon not working on the programme view
+- landscape not working on all windows
+- webviews (news and info) are not shown on the whole width of screen
+
+Todo:
+
+- english language!
+- some lorem ipsum labels
+- prepare web service on the lent site that gives the fields and url of image for event that's not too big
+ 
