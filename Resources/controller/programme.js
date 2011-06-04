@@ -185,6 +185,7 @@ win.searchNavButton.addEventListener('click', function(e)
 
 win.labelDate.addEventListener('click', function(e)
 {
+	pickerDate = datum;
 	win.tableview.hide();
 	win.pickerBackground.show();
 	win.picker.value = datum;

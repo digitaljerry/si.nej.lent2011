@@ -30,7 +30,7 @@ function view_init(win) {
 	win.imagePrev = Ti.UI.createImageView({
 		image:'../images/arrow_left.png',
 		top:0,
-		left:10,
+		left:15,
 		height:50,
 		width:22
 	});
@@ -50,7 +50,7 @@ function view_init(win) {
 	win.imageNext = Ti.UI.createImageView({
 		image:'../images/arrow_right.png',
 		top:0,
-		right:10,
+		right:15,
 		height:50,
 		width:22
 	});
