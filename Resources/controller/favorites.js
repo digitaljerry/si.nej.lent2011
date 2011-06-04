@@ -154,7 +154,6 @@ win.cancel.addEventListener('click', function()
 	win.tableview.editing = false;
 });
 
-
 win.tableview.addEventListener('delete',function(e)
 {
 	removeEvent(e.source.event_uid);
