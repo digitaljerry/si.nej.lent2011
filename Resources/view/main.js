@@ -11,7 +11,7 @@ var appOrientationModes = [
 
 // root windows
 var win1 = Titanium.UI.createWindow({  
-    title:'Program',
+    titleImage:'images/logo_lent_navbar.png',
     backgroundColor:'#fff',
 	url:'controller/programme.js',
 	orientationModes: appOrientationModes

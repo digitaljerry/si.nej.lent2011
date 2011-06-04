@@ -55,6 +55,48 @@ function view_init(win) {
 		width:22
 	});
 	win.add(win.imageNext);
+	
+	// picker
+	
+	win.pickerBackground = Ti.UI.createView({
+		backgroundColor:'#000000',
+		width:'100%',
+		height:'100%',
+		top:0,
+		name:"picker bg"
+	});
+	win.pickerBackground.hide();
+	win.add(win.pickerBackground);
+
+	var minDate = new Date();
+	minDate.setFullYear(Titanium.App.Properties.getInt('lentStartYear'));
+	minDate.setMonth(Titanium.App.Properties.getInt('lentStartMonth')-1);
+	minDate.setDate(Titanium.App.Properties.getInt('lentStartDay'));
+	
+	var maxDate = new Date();
+	maxDate.setFullYear(Titanium.App.Properties.getInt('lentEndYear'));
+	maxDate.setMonth(Titanium.App.Properties.getInt('lentEndMonth')-1);
+	maxDate.setDate(Titanium.App.Properties.getInt('lentEndDay'));
+	
+	win.picker = Ti.UI.createPicker({
+		type:Ti.UI.PICKER_TYPE_DATE,
+		minDate:minDate,
+		maxDate:maxDate,
+		value:datum,
+		zIndex:1000
+	});
+	win.picker.hide();
+	win.add(win.picker);
+	
+	win.b = Ti.UI.createButton({
+		title:'Izberi',
+		width:'80%',
+		height:30,
+		bottom:30
+	});
+	win.b.hide();
+	win.add(win.b);
+	
 	// CREATE TABLE VIEW
 	win.tableview = Titanium.UI.createTableView({
 		backgroundColor:'transparent',
@@ -62,7 +104,10 @@ function view_init(win) {
 	});
 	
 	// create buttons
+	win.searchNavButton = Titanium.UI.createButton({
+		systemButton:Titanium.UI.iPhone.SystemButton.SEARCH
 	});
+	win.rightNavButton = win.searchNavButton;
 	
 	// default date to show on start
 	win.labelDate.text = getTitle(datum);

@@ -166,16 +166,52 @@ win.tableview.addEventListener('click', function(e)
 });
 
 // events for buttons
-win.prevNavButton.addEventListener('click', function()
+win.imagePrev.addEventListener('click', function()
 {
 	datum = getPrevDay(datum);
-	win.title = getTitle(datum);
+	win.labelDate.text = getTitle(datum);
 	showEventsForDay(Ti.App.DateLent.outputDate(datum));
 });
-win.nextNavButton.addEventListener('click', function()
+win.imageNext.addEventListener('click', function()
 {	
 	datum = getNextDay(datum);
-	win.title = getTitle(datum);
+	win.labelDate.text = getTitle(datum);
 	showEventsForDay(Ti.App.DateLent.outputDate(datum));
 });
+win.searchNavButton.addEventListener('click', function(e)
+{
+	alert('kekec');
+});
+
+win.labelDate.addEventListener('click', function(e)
+{
+	win.tableview.hide();
+	win.pickerBackground.show();
+	win.picker.value = datum;
+	win.picker.show();
+	win.b.show();
+});
+win.b.addEventListener('click', function(e)
+{
+	datum = pickerDate;
+	win.labelDate.text = getTitle(datum);
+	showEventsForDay(Ti.App.DateLent.outputDate(datum));
+	
+	win.picker.hide();
+	win.b.hide();
+	win.pickerBackground.hide();
+	win.tableview.show();
+});
+
+win.picker.addEventListener('change',function(e)
+{
+	pickerDate = e.value;
+});
+
+win.labelDate.addEventListener('click', function(e)
+{
+	Ti.App.Modal.show();
+});
+
+
 
