@@ -149,7 +149,7 @@ function orientationChange() {
 	} else if (Titanium.UI.orientation == Titanium.UI.PORTRAIT || Titanium.UI.orientation == Titanium.UI.UPSIDE_PORTRAIT) {
 		win.tb1.show();
 		// show first tab that is avaible
-		showTab(data.details[0]);
+		showTab(data.details[win.tb1.index]);
 	}
 }
 
@@ -196,7 +196,7 @@ win.image.addEventListener('click', function(e) {
         {
         	if (Titanium.UI.orientation == Titanium.UI.PORTRAIT || Titanium.UI.orientation == Titanium.UI.UPSIDE_PORTRAIT) {
         		win.tb1.show();
-        		showTab(data.details[0]);
+        		showTab(data.details[win.tb1.index]);
         	}
         },400);
 		scaledImage = false;
