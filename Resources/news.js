@@ -26,11 +26,24 @@ var data = [];
 
 function fetchNews() {
 	
+	if (Titanium.Network.online == false) {
+		// fire connectivty problem event
+		Ti.App.fireEvent('connectivityProblem');
+		return;
+	}
+	
 	Ti.App.ActivityIndicator.start();
 	
 	var xhr = Ti.Network.createHTTPClient();
 	//xhr.open("GET","http://v2.0.news.tmg.s3.amazonaws.com/feeds/news.xml");
 	xhr.open('GET','http://' + Titanium.App.Properties.getString('domain') + '/index.php?id=home&type=100',true);
+	
+	xhr.onerror = function(e)
+	{
+		// fire connectivty problem event
+		Ti.App.fireEvent('connectivityProblem', {error:e});
+	};
+	
 	xhr.onload = function()
 	{
 		try
@@ -124,14 +137,18 @@ function fetchNews() {
 	xhr.send();
 }
 
+function isSet( variable ) {
+	return( typeof( variable ) != 'undefined' );
+}
+
 win.nextNavButton.addEventListener('click', function()
 {	
 	// reset
-	Titanium.UI.currentWindow.remove(tableview);
-	//data = new Array();
+	if (typeof tableview !== 'undefined') {
+		Titanium.UI.currentWindow.remove(tableview);
+	}
 	
 	fetchNews();
-	
 });
 
 fetchNews();

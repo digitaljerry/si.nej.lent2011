@@ -14,6 +14,12 @@ view_init(win);
 
 function getEventData(uid) {
 	
+	if (Titanium.Network.online == false) {
+		// fire connectivty problem event
+		Ti.App.fireEvent('connectivityProblem');
+		return;
+	}
+	
 	Ti.App.ActivityIndicator.start();
 	
 	xhr = Titanium.Network.createHTTPClient();
@@ -23,10 +29,8 @@ function getEventData(uid) {
 	xhr.open('GET', geturl, true);
 	xhr.onerror = function(e)
 	{
-		Titanium.UI.createAlertDialog({title:'Error', message:e.error}).show();
-		Titanium.API.info('IN ERROR' + e.error);
-		alert('error');
-		Ti.App.ActivityIndicator.stop();
+		// fire connectivty problem event
+		Ti.App.fireEvent('connectivityProblem', {error:e});
 	};
 	
 	xhr.onload = function(){

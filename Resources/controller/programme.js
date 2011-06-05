@@ -14,6 +14,12 @@ view_init(win);
 
 function showEventsForDay(showDate) {
 	
+	if (Titanium.Network.online == false) {
+		// fire connectivty problem event
+		Ti.App.fireEvent('connectivityProblem');
+		return;
+	}
+	
 	Ti.App.ActivityIndicator.start();
 	
 	// reset
@@ -27,9 +33,8 @@ function showEventsForDay(showDate) {
 	xhr.open('GET', geturl, true);
 	xhr.onerror = function(e)
 	{
-		Titanium.UI.createAlertDialog({title:'Error', message:e.error}).show();
-		Titanium.API.info('IN ERROR' + e.error);
-		Ti.App.ActivityIndicator.stop();
+		// fire connectivty problem event
+		Ti.App.fireEvent('connectivityProblem', {myData:e.error});
 	};
 	
 	xhr.onload = function(){
