@@ -229,18 +229,7 @@ if ( win.disableFav != true ) {
 
 a.addEventListener('click', function(e) {
 	if ( e.index == 0 ) {
-		
-		if (Ti.Geolocation.locationServicesEnabled == true) {
-        	
-        	Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_BEST;
-        	Ti.Geolocation.getCurrentPosition(function(eg) {
-				var mylat = eg.coords.latitude;
-				var mylon = eg.coords.longitude;
-				Ti.Platform.openURL('http://maps.google.com/maps?daddr='+mylat+','+mylon+'&daddr='+plotPoint.latitude+','+plotPoint.longitude)+'&dirflg=w';
-			});
-		} else {
-			Ti.Platform.openURL('http://maps.google.com/maps?daddr='+mylat+','+mylon);
-		}
+		Ti.Platform.openURL('http://maps.google.com/maps?q='+plotPoint.latitude+','+plotPoint.longitude);
 	}
 });
 
