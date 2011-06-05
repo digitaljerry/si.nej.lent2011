@@ -165,9 +165,13 @@ function ActivityIndicator() {
 	
 	//*** Public methods
 	ActivityIndicator.prototype.start = function() {
-		actIndWin.open();
+		if (typeof actIndWin !== 'undefined') {
+			actIndWin.open();
+		}
 	}
 	ActivityIndicator.prototype.stop = function() {
-		actIndWin.close();
+		if (typeof actIndWin !== 'undefined') {
+			actIndWin.close();
+		}
 	}	
 }

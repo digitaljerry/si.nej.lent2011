@@ -1,3 +1,11 @@
+
+// determine the language
+if (!Titanium.App.Properties.getString('locale')) {
+	Titanium.App.Properties.setString('locale','sl');
+}
+Titanium.include ('lang/'+Titanium.App.Properties.getString('locale')+'.js');
+
+
 Titanium.include ('model/main.js');
 Titanium.include ('view/main.js');
  
@@ -34,4 +42,8 @@ Titanium.App.addEventListener('connectivityProblem', function(eventData) {
 		Titanium.UI.createAlertDialog({title:'Napaka', message:'Napaka pri vzpostavitvi povezave!\nProsim poizkusti ponovno pozneje.'}).show();
 	}
 
+});
+
+Titanium.App.addEventListener('restartApp', function(eventData) {
+	Titanium.include ('controller/main.js');
 });

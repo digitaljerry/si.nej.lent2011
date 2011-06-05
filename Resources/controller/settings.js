@@ -77,6 +77,10 @@ function addProperits() {
 		height:30,
 		width:200
 	});
+	if (Titanium.App.Properties.getString('locale') == 'sl')
+		win.tb.index = 0;
+	else
+		win.tb.index = 1;
 	win.add(win.tb);
 	
 }
@@ -93,6 +97,21 @@ win.imageSwitch.addEventListener('change',function(e)
 		Titanium.App.Properties.setString('showImages', '1');
 	} else {
 		Titanium.App.Properties.setString('showImages', '0');
+	}
+});
+
+win.tb.addEventListener('click', function(e)
+{
+	var prevLang = Titanium.App.Properties.getString('locale');
+	if (e.index == '0') {
+		Titanium.App.Properties.setString('locale', 'sl');
+	} else {
+		Titanium.App.Properties.setString('locale', 'en');
+	}
+	
+	// restart needed
+	if ( Titanium.App.Properties.getString != prevLang ) {
+		Ti.App.fireEvent('restartApp', {});
 	}
 });
 
