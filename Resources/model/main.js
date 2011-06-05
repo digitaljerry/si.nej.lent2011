@@ -1,7 +1,7 @@
 // geo location of festival
 Ti.App.location_maribor = {latitude:46.55964925,longitude:15.646033,latitudeDelta:0.007, longitudeDelta:0.007};
 
-Ti.App.days = ["Nedelja","Ponedeljek","Torek","Sreda","Četrtek","Petek","Sobota","Nedelja"];
+Ti.App.days = lang['days'];
 
 // stages used in multiple views
 // data from:

@@ -9,6 +9,7 @@ lang['win_settings'] = 'Settings';
 
 // general
 lang['festival_lent'] = 'Festival Lent 2011';
+lang['days'] = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
 lang['open'] = 'Open';
 lang['close'] = 'Close';
 lang['edit'] = 'Edit';
