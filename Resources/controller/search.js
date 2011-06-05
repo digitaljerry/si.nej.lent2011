@@ -7,6 +7,10 @@ Titanium.include ('../view/search.js');
 var win = Titanium.UI.currentWindow;
 view_init(win);
 
+// sometimes the color is reseted when clicing the back button
+// this is a quick fix for that
+win.search.backgroundColor = '#1D327B';
+
 //
 // Define functions
 //
@@ -40,9 +44,10 @@ function searchEvents(query) {
 	xhr.onload = function(){
 		incomingData = null;
 		incomingData = JSON.parse(this.responseText);
+		var i = 0;
 		
 		var prev_start_date = 'a long time ago';
-		for (var i = 0; i < incomingData.length; i++){
+		for (i = 0; i < incomingData.length; i++){
 			
 			var row = Ti.UI.createTableViewRow();
 			row.selectedBackgroundColor = '#e9ddc2';
@@ -107,6 +112,11 @@ function searchEvents(query) {
 		};
 	
 		win.tableview.data = data;
+		
+		// if there's no results
+		if (i == 0) {
+			Titanium.UI.createAlertDialog({message:'Ni zadetkov!'}).show();
+		}
 		
 		Ti.App.ActivityIndicator.stop();
 	};

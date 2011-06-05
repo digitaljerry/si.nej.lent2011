@@ -185,7 +185,11 @@ win.imageNext.addEventListener('click', function()
 });
 win.searchNavButton.addEventListener('click', function(e)
 {
-	alert('kekec');
+	var winSearch = Titanium.UI.createWindow({
+		url:'search.js',
+		title:'Iskanje'
+	});
+	Titanium.UI.currentTab.open(winSearch,{animated:true});
 });
 
 win.labelDate.addEventListener('click', function(e)

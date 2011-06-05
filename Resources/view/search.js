@@ -21,9 +21,9 @@ function view_init(win) {
 	//
 	
 	win.search = Titanium.UI.createSearchBar({
-		backgroundColor:'#77808C',
+		backgroundColor:'#1D327B',
 		showCancel:true,
-		height:43,
+		height:50,
 		top:0
 	});
 	win.add(win.search);
