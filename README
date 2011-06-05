@@ -24,10 +24,12 @@ Bugs:
 - click on Search icon not working on the programme view
 - landscape not working on all windows
 - webviews (news and info) are not shown on the whole width of screen
+- when going to google maps not the right user location is sent
 
 Todo:
 
 - english language!
 - some lorem ipsum labels
 - prepare web service on the lent site that gives the fields and url of image for event that's not too big
+- update the array for stages and categories
  
