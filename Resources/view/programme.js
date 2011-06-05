@@ -34,6 +34,7 @@ function view_init(win) {
 		height:50,
 		width:22
 	});
+	win.imagePrev.hide();
 	win.add(win.imagePrev);
 	
 	win.labelDate = Titanium.UI.createLabel({
@@ -54,6 +55,7 @@ function view_init(win) {
 		height:50,
 		width:22
 	});
+	win.imageNext.hide();
 	win.add(win.imageNext);
 	
 	// picker
