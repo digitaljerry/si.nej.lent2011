@@ -20,8 +20,6 @@ see the LICENSE file for the full license.
 
 Bugs:
 
-- landscape not working on all windows
-- webviews (news and info) are not shown on the whole width of screen
 - order of tabs not persisted
 
 Todo:

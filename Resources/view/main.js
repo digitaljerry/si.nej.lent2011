@@ -4,9 +4,7 @@ Titanium.UI.setBackgroundColor('#f1eddd');
 // default possible orientations
 var appOrientationModes = [
     Titanium.UI.PORTRAIT,
-    Titanium.UI.UPSIDE_PORTRAIT,
-    Titanium.UI.LANDSCAPE_LEFT,
-    Titanium.UI.LANDSCAPE_RIGHT
+    Titanium.UI.UPSIDE_PORTRAIT
 ];
 
 // root windows
@@ -46,13 +44,6 @@ var win5 = Titanium.UI.createWindow({
 });
 
 var win6 = Titanium.UI.createWindow({  
-    title:'Iskanje',
-    backgroundColor:'#fff',
-	url:'controller/search.js',
-	orientationModes: appOrientationModes
-});
-
-var win7 = Titanium.UI.createWindow({  
     title:'Nastavitve',
     backgroundColor:'#fff',
 	url:'controller/settings.js',
@@ -97,27 +88,20 @@ var tab5 = Titanium.UI.createTab({
 });
 
 var tab6 = Titanium.UI.createTab({  
-	icon:'tab_search.png',
-	title:'Iskanje',
-	window:win6
-});
-
-var tab7 = Titanium.UI.createTab({  
 	icon:'tab_settings.png',
 	title:'Nastavitve',
-	window:win7
+	window:win6
 });
 
 //
 //  add tabs
 //
-tabGroup.addTab(tab1);  
+tabGroup.addTab(tab1);
 tabGroup.addTab(tab2);
 tabGroup.addTab(tab3);
 tabGroup.addTab(tab4);
 tabGroup.addTab(tab5);
 tabGroup.addTab(tab6);
-tabGroup.addTab(tab7);
 
 // open tab group
 tabGroup.open({
