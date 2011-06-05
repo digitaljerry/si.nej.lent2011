@@ -64,7 +64,7 @@ function view_init(win) {
 	// NAVBAR
 	// 
 	win.buttonSwitch = Titanium.UI.createButton({
-		title:'Seznam'
+		title:lang['stages_list']
 	});
 	win.setRightNavButton(win.buttonSwitch);
 }

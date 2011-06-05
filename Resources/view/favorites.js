@@ -30,11 +30,11 @@ function view_init(win) {
 	
 	// create buttons
 	win.edit = Titanium.UI.createButton({
-		title:'Uredi'
+		title:lang['edit']
 	});
 	
 	win.cancel = Titanium.UI.createButton({
-		title:'Konec',
+		title:lang['done'],
 		style:Titanium.UI.iPhone.SystemButtonStyle.DONE
 	});
 	

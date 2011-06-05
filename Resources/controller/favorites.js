@@ -1,3 +1,4 @@
+Titanium.include ('../lang/'+Titanium.App.Properties.getString('locale')+'.js');
 Titanium.include ('../model/favorites.js');
 
 //

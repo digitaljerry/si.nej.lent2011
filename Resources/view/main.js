@@ -8,7 +8,8 @@ var appOrientationModes = [
 ];
 
 // root windows
-var win1 = Titanium.UI.createWindow({  
+var win1 = Titanium.UI.createWindow({
+	title:lang['win_programme'],
     titleImage:'images/logo_lent_navbar.png',
     backgroundColor:'#fff',
 	url:'controller/programme.js',
@@ -53,7 +54,7 @@ var win6 = Titanium.UI.createWindow({
 // create tab group
 var tabGroup = Titanium.UI.createTabGroup({
 	barColor: '#004586',
-	editButtonTitle: 'Uredi'
+	editButtonTitle: lang['edit']
 });
 
 // tabs

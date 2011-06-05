@@ -1,3 +1,4 @@
+Titanium.include ('../lang/'+Titanium.App.Properties.getString('locale')+'.js');
 Titanium.include ('../model/event.js');
 
 //
@@ -73,7 +74,7 @@ function showEvent(incomingData) {
 	// descriptions
 	if ( data.description != '' ) {
 		win.webView.html = '<html><body>' + data.description + '</body></html>';
-		win.tb1.labels = ['Opis'];
+		win.tb1.labels = [lang['programme_description']];
 		
 		// add show id to array
 		data.details.push('1');	
@@ -98,9 +99,9 @@ function showEvent(incomingData) {
 			win.mapview.setLocation(Ti.App.location_maribor);
 			
 			if ( data.details.length == 0 )
-				win.tb1.labels = ['Karta'];
+				win.tb1.labels = [lang['programme_map']];
 			else
-				win.tb1.labels = ['Opis','Karta'];
+				win.tb1.labels = [lang['programme_description'],lang['programme_map']];
 			
 			// add show id to array
 			data.details.push('2');
@@ -211,7 +212,7 @@ win.mapview.addEventListener('click', function(evt) {
 	// only if right button was clicked
 	if ( evt.clicksource == 'rightButton' ) {
 	
-		a.buttonNames = ['Odpri','Prekliči'];
+		a.buttonNames = [lang['open'],lang['cancel']];
 		a.cancel = 1;
 		a.show();
 		
@@ -221,7 +222,7 @@ win.mapview.addEventListener('click', function(evt) {
 if ( win.disableFav != true ) {
 	win.nextNavButton.addEventListener('click', function(evt) {
 		// only if right button was clicked
-		a_add.buttonNames = ['Dodaj','Prekliči'];
+		a_add.buttonNames = [lang['add'],lang['cancel']];
 		a_add.cancel = 1;
 		a_add.show();
 	});
@@ -245,7 +246,7 @@ a_add.addEventListener('click', function(e) {
 		
 		for (var i = 0; i < favoritesArray.length; i++) {
 			if (favoritesArray[i].uid == event_uid) {
-				Titanium.UI.createAlertDialog({message:'Predstava že obstaja med priljubljenimi!'}).show();
+				Titanium.UI.createAlertDialog({message:lang['programme_favorites_already_exists']}).show();
 				
 				exists = true;
 			}
@@ -255,7 +256,7 @@ a_add.addEventListener('click', function(e) {
 		if ( exists == false ) {
 			favoritesArray.push(data);
 			Ti.App.Properties.setList('favoritesArray',favoritesArray);
-			Ti.App.Message.showMessage('Dodano med priljubljene.');
+			Ti.App.Message.showMessage(lang['programme_favorites_added']);
 			
 			// fireing refreshing of favorites
 			Ti.App.fireEvent('refreshFavorites');

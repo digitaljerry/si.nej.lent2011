@@ -1,3 +1,4 @@
+Titanium.include ('../lang/'+Titanium.App.Properties.getString('locale')+'.js');
 Titanium.include ('../model/info.js');
 
 //
@@ -46,9 +47,9 @@ win.infoButton.addEventListener('click',function(e)
 		left:110,
 		width:'auto',
 		color:'#576996',
-		font:{fontSize:22,fontWeight:'bold', fontFamily:'Arial'},
+		font:{fontSize:20,fontWeight:'bold', fontFamily:'Arial'},
 		textAlign:'left',
-		text:'Festival Lent 2011'
+		text:lang['festival_lent']
 	});
 	w.add(w.label_title);
 	
@@ -59,7 +60,7 @@ win.infoButton.addEventListener('click',function(e)
 		width:'auto',
 		font:{fontSize:16,fontFamily:'Arial'},
 		textAlign:'left',
-		text:'jernej.zorec@agenda.si'
+		text:lang['info_author']
 	});
 	w.add(w.label_author);
 	
@@ -70,7 +71,7 @@ win.infoButton.addEventListener('click',function(e)
 		width:'auto',
 		font:{fontSize:14,fontFamily:'Arial'},
 		textAlign:'left',
-		text:'Vivamus posuere, ligula et pellentesque vehicula, ante lorem tincidunt lorem, vitae suscipit velit.'
+		text:lang['info_description']
 	});
 	w.add(w.label_desc);
 	
@@ -101,7 +102,7 @@ win.infoButton.addEventListener('click',function(e)
 	w.add(w.imageOS);
 	
 	var b = Ti.UI.createButton({
-		title:'Zapri',
+		title:lang['close'],
 		width:'80%',
 		height:30,
 		bottom:30
@@ -118,8 +119,8 @@ win.infoButton.addEventListener('click',function(e)
 	
 	w.imageCompany.addEventListener('click', function() {
 		var a = Titanium.UI.createAlertDialog({
-			message:'V sodelovanju z podjetjem Agenda Open Systems, ki že vrsto let sodeluje pri razvoju spletnega portala Festivala Lent.',
-			buttonNames: ['Obišči','Prekliči'],
+			message:lang['info_agenda'],
+			buttonNames: [lang['visit'],lang['cancel']],
 			cancel:1
 		});
 		a.show();
@@ -128,7 +129,7 @@ win.infoButton.addEventListener('click',function(e)
 	w.label_author.addEventListener('click', function() {
 		var a = Titanium.UI.createAlertDialog({
 			message:'Vas zanimajo podrobnosti?',
-			buttonNames: ['Email','Prekliči'],
+			buttonNames: [lang['email'],lang['cancel']],
 			cancel:1
 		});
 		a.show();
@@ -136,8 +137,8 @@ win.infoButton.addEventListener('click',function(e)
 	
 	w.imageFramework.addEventListener('click', function() {
 		var a = Titanium.UI.createAlertDialog({
-			message:'Podprto z odprtokodnim ogrodjem Appcelerator Titanium za razvoj native aplikacij na iOS in Android platformah.',
-			buttonNames: ['Obišči','Prekliči'],
+			message:lang['info_titanium'],
+			buttonNames: [lang['visit'],lang['cancel']],
 			cancel:1
 		});
 		a.show();
@@ -145,8 +146,8 @@ win.infoButton.addEventListener('click',function(e)
 	
 	w.imageOS.addEventListener('click', function() {
 		var a = Titanium.UI.createAlertDialog({
-			message:'Si razvijalec in te zanima razvoj mobilnih aplikacij?\n\nCelotna koda dosegljiva na http://github.com/nej/si.nej.lent2011',
-			buttonNames: ['Forkaj','Prekliči'],
+			message:lang['info_opensource'],
+			buttonNames: [lang['fork'],lang['cancel']],
 			cancel:1
 		});
 		a.show();

@@ -1,3 +1,4 @@
+Titanium.include ('lang/'+Titanium.App.Properties.getString('locale')+'.js');
 
 // styling
 var win = Titanium.UI.currentWindow;
@@ -116,7 +117,7 @@ function fetchNews() {
 				var wb = Ti.UI.createWebView({url:e.row.url,backgroundColor:'transparent'});
 				w.add(wb);
 				var b = Titanium.UI.createButton({
-					title:'Zapri',
+					title:lang['news_close'],
 					style:Titanium.UI.iPhone.SystemButtonStyle.PLAIN
 				});
 				w.setLeftNavButton(b);

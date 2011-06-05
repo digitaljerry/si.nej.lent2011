@@ -1,3 +1,4 @@
+Titanium.include ('../lang/'+Titanium.App.Properties.getString('locale')+'.js');
 Titanium.include ('../model/stages.js');
 
 //
@@ -15,12 +16,12 @@ view_init(win);
 // map/table switching
 win.buttonSwitch.addEventListener('click', function(e)
 {
-	if ( win.buttonSwitch.title == 'Seznam' ) {
-		win.buttonSwitch.title = 'Karta';
+	if ( win.buttonSwitch.title == lang['stages_list'] ) {
+		win.buttonSwitch.title = lang['stages_map'];
 		win.tableview.show();
 		win.mapview.hide();
 	} else {
-		win.buttonSwitch.title = 'Seznam';
+		win.buttonSwitch.title = lang['stages_list'];
 		win.mapview.show();
 		win.tableview.hide();
 	}

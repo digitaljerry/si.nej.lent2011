@@ -2,6 +2,11 @@
 // include "library" and initiating global objects
 Titanium.include ('library/common.js');
 
+// determine the language
+if (!Titanium.App.Properties.getString('locale')) {
+	Titanium.App.Properties.setString('locale','sl');
+}
+
 Ti.App.Message = new Message();
 Ti.App.ActivityIndicator = new ActivityIndicator();
 Ti.App.Stages = new Stages();
@@ -102,12 +107,24 @@ var actInd = Titanium.UI.createActivityIndicator({
 	width:210,
 	style:Titanium.UI.iPhone.ActivityIndicatorStyle.PLAIN,
 	font:{fontFamily:'Helvetica Neue', fontSize:15,fontWeight:'bold'},
-	color:'white',
-	message:'Nalagam...'
+	color:'white'
 });
+if ( Titanium.App.Properties.getString('locale') == 'sl' )
+	actInd.message = 'Nalagam...';
+else
+	actInd.message = 'Loading...';
+
 actInd.show();
 actIndView.add(actInd);
 actIndWin.add(actIndView); 
 
+//
+// GLOBAL EVENT LISTENER
+//
 
-
+Titanium.App.addEventListener('changeLoadingLabel', function() {
+	if ( Titanium.App.Properties.getString('locale') == 'sl' )
+		actInd.message = 'Nalagam...';
+	else
+		actInd.message = 'Loading...';
+});

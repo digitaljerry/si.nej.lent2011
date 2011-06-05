@@ -1,3 +1,4 @@
+Titanium.include ('../lang/'+Titanium.App.Properties.getString('locale')+'.js');
 Titanium.include ('../model/settings.js');
 
 //
@@ -17,7 +18,7 @@ function addProperits() {
 	// image
 	
 	win.l1 = Titanium.UI.createLabel({
-		text:'Prikazuj slike',
+		text:lang['search_show_images'],
 		width:200,
 		height:35,
 		top:20,
@@ -27,7 +28,7 @@ function addProperits() {
 	win.add(win.l1);
 	
 	win.l2 = Titanium.UI.createLabel({
-		text:'Če vam zadeva deluje počasi, izklopi prikazovanje slik in bo delala ko šus!',
+		text:lang['search_image_switch'],
 		width:300,
 		height:100,
 		top:45,
@@ -45,7 +46,7 @@ function addProperits() {
 	// language
 	
 	win.l3 = Titanium.UI.createLabel({
-		text:'Jezik',
+		text:lang['search_language'],
 		width:200,
 		height:35,
 		top:210,
@@ -55,7 +56,7 @@ function addProperits() {
 	win.add(win.l3);
 	
 	win.l4 = Titanium.UI.createLabel({
-		text:'Izberi jezik, ki ga razumeš!',
+		text:lang['search_language_selection'],
 		width:300,
 		height:30,
 		top:245,
@@ -71,7 +72,7 @@ function addProperits() {
 	//win.add(win.langSwitch);
 	
 	win.tb = Titanium.UI.createTabbedBar({
-		labels:['SLO', 'ENG'],
+		labels:['SI', 'EN'],
 		top:290,
 		style:Titanium.UI.iPhone.SystemButtonStyle.BAR,
 		height:30,
@@ -111,6 +112,8 @@ win.tb.addEventListener('click', function(e)
 	
 	// restart needed
 	if ( Titanium.App.Properties.getString != prevLang ) {
+		
+		Ti.App.fireEvent('changeLoadingLabel');
 		Ti.App.fireEvent('restartApp', {});
 	}
 });

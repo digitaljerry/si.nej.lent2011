@@ -1,3 +1,4 @@
+Titanium.include ('../lang/'+Titanium.App.Properties.getString('locale')+'.js');
 Titanium.include ('../model/programme.js');
 
 //
@@ -144,7 +145,7 @@ function getTitle() {
 	
 	// it is today!
 	if ( current_day == day && current_month == month && current_year == year ) {
-		return 'Danes';
+		return lang['today'];
 	}
 	
 	return Ti.App.DateLent.outputNiceDate(datum);
@@ -187,7 +188,7 @@ win.searchNavButton.addEventListener('click', function(e)
 {
 	var winSearch = Titanium.UI.createWindow({
 		url:'search.js',
-		title:'Iskanje'
+		title:lang['search']
 	});
 	Titanium.UI.currentTab.open(winSearch,{animated:true});
 });

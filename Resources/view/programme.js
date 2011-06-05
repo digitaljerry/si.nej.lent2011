@@ -43,7 +43,7 @@ function view_init(win) {
 		color:'#D3D5D6',
 		font:{fontSize:19,fontWeight:'bold'},
 		textAlign:'center',
-		text:'Danes'
+		text:lang['today']
 	});
 	win.add(win.labelDate);
 	
@@ -89,7 +89,7 @@ function view_init(win) {
 	win.add(win.picker);
 	
 	win.b = Ti.UI.createButton({
-		title:'Izberi',
+		title:lang['choose'],
 		width:'80%',
 		height:30,
 		bottom:30

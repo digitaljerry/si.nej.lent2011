@@ -149,10 +149,10 @@ function view_init(win) {
 	
 	// alert window
 	a = Titanium.UI.createAlertDialog({
-		message:'Želiš odpreti Google Maps?'
+		message:lang['programme_open_gmaps']
 	});
 	
 	a_add = Titanium.UI.createAlertDialog({
-		message:'Dodam me priljubljene?'
+		message:lang['programme_add_to_favorites']
 	});
 }

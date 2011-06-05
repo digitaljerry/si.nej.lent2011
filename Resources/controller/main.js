@@ -1,11 +1,4 @@
-
-// determine the language
-if (!Titanium.App.Properties.getString('locale')) {
-	Titanium.App.Properties.setString('locale','sl');
-}
 Titanium.include ('lang/'+Titanium.App.Properties.getString('locale')+'.js');
-
-
 Titanium.include ('model/main.js');
 Titanium.include ('view/main.js');
  
@@ -37,9 +30,9 @@ Titanium.App.addEventListener('connectivityProblem', function(eventData) {
 	Ti.App.ActivityIndicator.stop();
 	
 	if (Titanium.Network.online == false) {
-		Titanium.UI.createAlertDialog({title:'Napaka', message:'Aplikacije potrebuje internetno povezavo!', buttonNames:['Zapri']}).show();
+		Titanium.UI.createAlertDialog({title:lang['error'], message:lang['main_connection'], buttonNames:lang['close']}).show();
 	} else {
-		Titanium.UI.createAlertDialog({title:'Napaka', message:'Napaka pri vzpostavitvi povezave!\nProsim poizkusti ponovno pozneje.'}).show();
+		Titanium.UI.createAlertDialog({title:lang['error'], message:lang['main_data_error']}).show();
 	}
 
 });

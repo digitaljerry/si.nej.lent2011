@@ -1,3 +1,4 @@
+Titanium.include ('../lang/'+Titanium.App.Properties.getString('locale')+'.js');
 Titanium.include ('../model/search.js');
 
 //
@@ -115,7 +116,7 @@ function searchEvents(query) {
 		
 		// if there's no results
 		if (i == 0) {
-			Titanium.UI.createAlertDialog({message:'Ni zadetkov!'}).show();
+			Titanium.UI.createAlertDialog({message:lang['no_results']}).show();
 		}
 		
 		Ti.App.ActivityIndicator.stop();
