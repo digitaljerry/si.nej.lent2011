@@ -112,8 +112,6 @@ win.tb.addEventListener('click', function(e)
 	
 	// restart needed
 	if ( Titanium.App.Properties.getString != prevLang ) {
-		
-		Ti.App.fireEvent('changeLoadingLabel');
 		Ti.App.fireEvent('restartApp', {});
 	}
 });

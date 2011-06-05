@@ -24,6 +24,7 @@ lang['search'] = 'Iskanje';
 lang['no_results'] = 'Ni zadetkov!';
 lang['choose'] = 'Izberi';
 lang['back'] = 'Nazaj';
+lang['loading'] = 'Nalagam...';
 
 // main
 lang['main_connection'] = 'Aplikacije potrebuje internetno povezavo!';
