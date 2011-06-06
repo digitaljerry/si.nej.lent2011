@@ -56,7 +56,7 @@ win.infoButton.addEventListener('click',function(e)
 	w.label_author = Titanium.UI.createLabel({
 		top:70,
 		height:30,
-		left:120,
+		left:110,
 		width:'auto',
 		font:{fontSize:16,fontFamily:'Arial'},
 		textAlign:'left',
@@ -128,7 +128,7 @@ win.infoButton.addEventListener('click',function(e)
 	
 	w.label_author.addEventListener('click', function() {
 		var a = Titanium.UI.createAlertDialog({
-			message:'Vas zanimajo podrobnosti?',
+			message:lang['info_details'],
 			buttonNames: [lang['email'],lang['cancel']],
 			cancel:1
 		});
@@ -160,4 +160,13 @@ win.infoButton.addEventListener('click',function(e)
 		modalStyle:Ti.UI.iPhone.MODAL_TRANSITION_STYLE_COVER_VERTICAL,
 		navBarHidden:true}
 	);
+	
+	a.addEventListener('click', function(e) {
+		alert('222');
+		if ( e.index == 0 ) {
+			//Ti.Platform.openURL('http://maps.google.com/maps?q='+plotPoint.latitude+','+plotPoint.longitude);
+			alert('123');
+		}
+	});
+
 });
