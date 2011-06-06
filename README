@@ -1,9 +1,7 @@
 Welcome to your Appcelerator Titanium Mobile Project
 
-This is a blank project.  Start by editing your application's app.js to 
-make your first mobile project using Titanium.
-
-
+Lent 2011 is an application for the Festival Lent, www.festival-lent.si,
+which takes place from 24th June to 9th Jully 2011.
 
 ----------------------------------
 Stuff our legal folk make us say:
@@ -24,4 +22,3 @@ Bugs:
 Todo:
 - add about view
 - check all network calls!
-- write README and add LICENSE
