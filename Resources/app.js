@@ -15,7 +15,7 @@ Ti.App.Categories = new Categories();
 Ti.App.DateLent = new DateLent();
 
 // if properties have not yet been set
-if (Titanium.App.Properties.getString('showImages') == '') {
+if (Titanium.App.Properties.getString('showImages') == null) {
 	Titanium.App.Properties.setString('showImages', '1');
 }
 
