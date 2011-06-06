@@ -53,13 +53,13 @@ lang['news_close'] = 'Close';
 
 // info
 lang['info_author'] = 'info@agenda.si';
-lang['info_description'] = 'Vivamus posuere, ligula et pellentesque vehicula, ante lorem tincidunt lorem, vitae suscipit velit.';
-lang['info_agenda'] = 'V sodelovanju z podjetjem Agenda Open Systems, ki že vrsto let sodeluje pri razvoju spletnega portala Festivala Lent.';
-lang['info_titanium'] = 'Podprto z odprtokodnim ogrodjem Appcelerator Titanium za razvoj native aplikacij na iOS in Android platformah.';
-lang['info_opensource'] = 'Si razvijalec in te zanima razvoj mobilnih aplikacij?\n\nCelotna koda dosegljiva na http://github.com/nej/si.nej.lent2011';
+lang['info_description'] = '';
+lang['info_agenda'] = 'Official mobile application was developed by Agenda Open Systems, development sponsor for Festival Lent.';
+lang['info_titanium'] = 'Powered by open source framework Appcelerator Titanium, a valuable tool for development of iOS and Android-based applications.';
+lang['info_opensource'] = 'Are you a developer, interested in the project\'s source code?\n\nAvailable on http://github.com/nej/si.nej.lent2011';
 
 // settings
 lang['search_show_images'] = 'Show images';
-lang['search_image_switch'] = 'Če vam zadeva deluje počasi, izklopi prikazovanje slik in bo delala ko šus!';
+lang['search_image_switch'] = 'You can disable images for faster page loading.';
 lang['search_language'] = 'Language';
 lang['search_language_selection'] = 'Choose your language / izberi jezik:';
