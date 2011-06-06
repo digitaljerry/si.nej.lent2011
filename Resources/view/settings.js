@@ -17,5 +17,4 @@ function view_init(win) {
 	});
 	win.add(view2);
 	
-	
 }

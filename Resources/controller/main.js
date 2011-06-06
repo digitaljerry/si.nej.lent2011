@@ -4,7 +4,65 @@ Titanium.include ('view/main.js');
 
 // set string for current language in app.js context
 Ti.App.fireEvent('changeLoadingLabel',{loading:lang['loading']});
- 
+
+//
+// FUNCTIONS
+//
+
+function getStages() {
+	xhr = Titanium.Network.createHTTPClient();
+	//var geturl = 'http://' + Titanium.App.Properties.getString('domain') + '/index.php?id=ag_lent_webservice&ag_lent_webservice[lang]='+lang['name']+'&ag_lent_webservice[action]=getStages
+	var geturl = 'http://' + Titanium.App.Properties.getString('domain') + '/index.php?eID=ag_lent_webservice&ag_lent_webservice[lang]='+lang['name']+'&ag_lent_webservice[action]=getStages';
+	
+	xhr.setTimeout(20000);
+	xhr.open('GET', geturl, true);
+	xhr.onerror = function(e)
+	{
+		// fire connectivty problem event
+		Ti.App.fireEvent('connectivityProblem', {error:e});
+	};
+	
+	xhr.onload = function(){
+		incomingData = null;
+		incomingData = JSON.parse(this.responseText);
+		
+		for (var i=0; i < incomingData.length; i++) {
+			stages[incomingData[i].uid] = incomingData[i];
+		};
+		
+		Ti.App.ActivityIndicator.stop();
+	};
+	xhr.send();
+}
+getStages();
+
+function getCategories() {
+	xhr = Titanium.Network.createHTTPClient();
+	//var geturl = 'http://' + Titanium.App.Properties.getString('domain') + '/index.php?id=ag_lent_webservice&ag_lent_webservice[lang]='+lang['name']+'&ag_lent_webservice[action]=getStages
+	var geturl = 'http://' + Titanium.App.Properties.getString('domain') + '/index.php?eID=ag_lent_webservice&ag_lent_webservice[lang]='+lang['name']+'&ag_lent_webservice[action]=getCategories';
+	
+	xhr.setTimeout(20000);
+	xhr.open('GET', geturl, true);
+	xhr.onerror = function(e)
+	{
+		// fire connectivty problem event
+		Ti.App.fireEvent('connectivityProblem', {error:e});
+	};
+	
+	xhr.onload = function(){
+		incomingData = null;
+		incomingData = JSON.parse(this.responseText);
+		
+		for (var i=0; i < incomingData.length; i++) {
+			categories[incomingData[i].uid] = incomingData[i];
+		};
+		
+		Ti.App.ActivityIndicator.stop();
+	};
+	xhr.send();
+}
+getCategories();
+
 //
 // TAB EVENTS
 //
