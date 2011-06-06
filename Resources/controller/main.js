@@ -89,7 +89,7 @@ Titanium.App.addEventListener('connectivityProblem', function(eventData) {
 	Ti.App.ActivityIndicator.stop();
 	
 	if (Titanium.Network.online == false) {
-		Titanium.UI.createAlertDialog({title:lang['error'], message:lang['main_connection'], buttonNames:lang['close']}).show();
+		Titanium.UI.createAlertDialog({title:lang['error'], message:lang['main_connection']}).show();
 	} else {
 		Titanium.UI.createAlertDialog({title:lang['error'], message:lang['main_data_error']}).show();
 	}
@@ -102,4 +102,3 @@ Titanium.App.addEventListener('restartApp', function(eventData) {
 
 getStages();
 getCategories();
-
