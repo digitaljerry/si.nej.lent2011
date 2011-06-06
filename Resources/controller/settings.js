@@ -23,7 +23,7 @@ function addProperits() {
 		height:35,
 		top:20,
 		textAlign:'center',
-		font:{fontSize:28},
+		font:{fontSize:26},
 	});
 	win.add(win.l1);
 	
@@ -51,7 +51,7 @@ function addProperits() {
 		height:35,
 		top:210,
 		textAlign:'center',
-		font:{fontSize:28},
+		font:{fontSize:26},
 	});
 	win.add(win.l3);
 	
