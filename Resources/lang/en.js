@@ -31,8 +31,8 @@ lang['back'] = 'Back';
 lang['loading'] = 'Loading...';
 
 // main
-lang['main_connection'] = 'Aplikacije potrebuje internetno povezavo!';
-lang['main_data_error'] = 'Napaka pri vzpostavitvi povezave!\nProsim poizkusti ponovno pozneje.';
+lang['main_connection'] = 'This application needs internet access to function properly!';
+lang['main_data_error'] = 'Error occured while trying to connect!\nPlease try again.';
 
 // programme
 lang['programme_description'] = 'Description';
