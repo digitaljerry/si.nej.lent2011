@@ -1,5 +1,8 @@
 lang = Array();
 
+lang['name'] = 'sl';
+lang['id'] = '0';
+
 lang['win_programme'] = 'Program';
 lang['win_stages'] = 'Prizorišče';
 lang['win_news'] = 'Novice';

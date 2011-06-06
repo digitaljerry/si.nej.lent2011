@@ -24,7 +24,9 @@ function getEventData(uid) {
 	Ti.App.ActivityIndicator.start();
 	
 	xhr = Titanium.Network.createHTTPClient();
-	var geturl = 'http://' + Titanium.App.Properties.getString('domain') + '/index.php?eID=tx_mnmysql2json_Table&tx_mnmysql2json[action]=getTable&tx_mnmysql2json[tableName]=tx_cal_event&tx_mnmysql2json[orderBy]=location_id&tx_mnmysql2json[fields]=uid,title,start_date,end_date,start_time,end_time,category_id,location,location_id,description,image&tx_mnmysql2json[where]=sys_language_uid=0%20AND%20hidden=0%20AND%20deleted=0%20AND%20uid='+uid;
+	//var geturl = 'http://' + Titanium.App.Properties.getString('domain') + '/index.php?eID=tx_mnmysql2json_Table&tx_mnmysql2json[action]=getTable&tx_mnmysql2json[tableName]=tx_cal_event&tx_mnmysql2json[orderBy]=location_id&tx_mnmysql2json[fields]=uid,title,start_date,end_date,start_time,end_time,category_id,location,location_id,description,image&tx_mnmysql2json[where]=sys_language_uid=0%20AND%20hidden=0%20AND%20deleted=0%20AND%20uid='+uid;
+	//var geturl = 'http://' + Titanium.App.Properties.getString('domain') + '/index.php?id=ag_lent_webservice&ag_lent_webservice[lang]='+lang['name']+'&ag_lent_webservice[action]=getEvent&ag_lent_webservice[id]='+uid;
+	var geturl = 'http://' + Titanium.App.Properties.getString('domain') + '/index.php?eID=ag_lent_webservice&ag_lent_webservice[lang]='+lang['name']+'&ag_lent_webservice[action]=getEvent&ag_lent_webservice[id]='+uid;
 	
 	xhr.setTimeout(20000);
 	xhr.open('GET', geturl, true);

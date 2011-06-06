@@ -1,5 +1,8 @@
 lang = Array();
 
+lang['name'] = 'en';
+lang['id'] = '1';
+
 lang['win_programme'] = 'Programme';
 lang['win_stages'] = 'Stages';
 lang['win_news'] = 'News';

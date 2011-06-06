@@ -36,8 +36,7 @@ function fetchNews() {
 	Ti.App.ActivityIndicator.start();
 	
 	var xhr = Ti.Network.createHTTPClient();
-	//xhr.open("GET","http://v2.0.news.tmg.s3.amazonaws.com/feeds/news.xml");
-	xhr.open('GET','http://' + Titanium.App.Properties.getString('domain') + '/index.php?id=home&type=100',true);
+	xhr.open('GET','http://' + Titanium.App.Properties.getString('domain') + '/index.php?id=home&type=100&L='+lang['id'],true);
 	
 	xhr.onerror = function(e)
 	{
