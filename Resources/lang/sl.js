@@ -60,6 +60,6 @@ lang['info_opensource'] = 'Si razvijalec in te zanima razvoj mobilnih aplikacij?
 
 // settings
 lang['search_show_images'] = 'Prikazuj slike';
-lang['search_image_switch'] = 'Za hitrejše nalaganje aplikacije lahko izklopite prikaz slik.';
-lang['search_language'] = 'Jezik';
+lang['search_image_switch'] = 'Za hitrejše nalaganje lahko izklopite prikaz slik.';
+lang['search_language'] = 'Language / Jezik';
 lang['search_language_selection'] = 'Choose your language / izberi jezik:';

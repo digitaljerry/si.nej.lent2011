@@ -60,6 +60,6 @@ lang['info_opensource'] = 'Are you a developer, interested in the project\'s sou
 
 // settings
 lang['search_show_images'] = 'Show images';
-lang['search_image_switch'] = 'You can disable images for faster page loading.';
-lang['search_language'] = 'Language';
+lang['search_image_switch'] = 'You can disable images for faster loading.';
+lang['search_language'] = 'Language / Jezik';
 lang['search_language_selection'] = 'Choose your language / izberi jezik:';
