@@ -19,5 +19,10 @@ see the LICENSE file for the full license.
 
 
 Bugs:
+- show images default on off
+- links on info page not working
 
 Todo:
+- add about view
+- check all network calls!
+- write README and add LICENSE
