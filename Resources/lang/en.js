@@ -57,6 +57,7 @@ lang['info_description'] = '';
 lang['info_agenda'] = 'Official mobile application was developed by Agenda Open Systems, development sponsor for Festival Lent.';
 lang['info_titanium'] = 'Powered by open source framework Appcelerator Titanium, a valuable tool for development of iOS and Android-based applications.';
 lang['info_opensource'] = 'Are you a developer, interested in the project\'s source code?\n\nAvailable on http://github.com/nej/si.nej.lent2011';
+lang['info_details'] = 'Do you need details?';
 
 // settings
 lang['search_show_images'] = 'Show images';
