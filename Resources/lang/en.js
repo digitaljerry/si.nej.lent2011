@@ -9,6 +9,7 @@ lang['win_news'] = 'News';
 lang['win_favorites'] = 'Favorites';
 lang['win_info'] = 'Info';
 lang['win_settings'] = 'Settings';
+lang['win_about'] = 'About';
 
 // general
 lang['festival_lent'] = 'Festival Lent 2011';
@@ -64,3 +65,9 @@ lang['search_show_images'] = 'Show images';
 lang['search_image_switch'] = 'You can disable images for faster loading.';
 lang['search_language'] = 'Language / Jezik';
 lang['search_language_selection'] = 'Choose your language / izberi jezik:';
+
+// about
+lang['about_subject'] = 'Mobile apps';
+lang['about_email_not_available'] = 'Email not available';
+lang['about_sent'] = 'Message was sent.';
+lang['about_not_sent'] = 'Message was not sent.';

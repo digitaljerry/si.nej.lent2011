@@ -51,10 +51,17 @@ var win6 = Titanium.UI.createWindow({
 	orientationModes: appOrientationModes
 });
 
+var win7 = Titanium.UI.createWindow({  
+    title:lang['win_about'],
+    backgroundColor:'#fff',
+	url:'controller/about.js',
+	orientationModes: appOrientationModes
+});
+
 // create tab group
 var tabGroup = Titanium.UI.createTabGroup({
 	barColor: '#004586',
-	editButtonTitle: lang['edit']
+	allowUserCustomization: false
 });
 
 // tabs
@@ -94,6 +101,12 @@ var tab6 = Titanium.UI.createTab({
 	window:win6
 });
 
+var tab7 = Titanium.UI.createTab({  
+	icon:'tab_about.png',
+	title:lang['win_about'],
+	window:win7
+});
+
 //
 //  add tabs
 //
@@ -103,6 +116,7 @@ tabGroup.addTab(tab3);
 tabGroup.addTab(tab4);
 tabGroup.addTab(tab5);
 tabGroup.addTab(tab6);
+tabGroup.addTab(tab7);
 
 // open tab group
 tabGroup.open({

@@ -17,11 +17,6 @@ function view_init(win) {
 	});
 	win.add(view2);
 	
-	win.infoButton = Titanium.UI.createButton({
-		systemButton:Titanium.UI.iPhone.SystemButton.INFO_LIGHT
-	});
-	win.rightNavButton = win.infoButton;
-	
 	win.webview = Ti.UI.createWebView({height:'100%',width:'100%'});
 	win.add(win.webview);
 }

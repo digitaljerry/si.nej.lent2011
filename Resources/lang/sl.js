@@ -9,6 +9,7 @@ lang['win_news'] = 'Novice';
 lang['win_favorites'] = 'Priljubljene';
 lang['win_info'] = 'Info';
 lang['win_settings'] = 'Nastavitve';
+lang['win_about'] = 'Avtorji';
 
 // general
 lang['festival_lent'] = 'Festival Lent 2011';
@@ -64,3 +65,9 @@ lang['search_show_images'] = 'Prikazuj slike';
 lang['search_image_switch'] = 'Za hitrejše nalaganje lahko izklopite prikaz slik.';
 lang['search_language'] = 'Language / Jezik';
 lang['search_language_selection'] = 'Choose your language / izberi jezik:';
+
+// about
+lang['about_subject'] = 'Mobilne aplikacije';
+lang['about_email_not_available'] = 'Pošiljanje emaila ni mogoče.';
+lang['about_sent'] = 'Email poslan.';
+lang['about_not_sent'] = 'Napaka pri pošiljanju emaila.';
