@@ -20,9 +20,9 @@ function view_init(win) {
 	win.imageApp = Ti.UI.createImageView({
 		image:'../images/logo_lent2011.png',
 		top:30,
-		left:15,
-		height:80,
-		width:80
+		left:25,
+		height:72,
+		width:72
 	});
 	win.add(win.imageApp);
 	
@@ -41,7 +41,7 @@ function view_init(win) {
 	win.label_author = Titanium.UI.createLabel({
 		top:70,
 		height:30,
-		left:110,
+		left:140,
 		width:'auto',
 		font:{fontSize:16,fontFamily:'Arial'},
 		textAlign:'left',
@@ -80,8 +80,8 @@ function view_init(win) {
 	
 	win.imageCompany = Ti.UI.createImageView({
 		image:'../images/logo_agenda.png',
-		bottom:40,
-		height:48,
+		bottom:30,
+		height:60,
 		width:250
 	});
 	win.add(win.imageCompany);
