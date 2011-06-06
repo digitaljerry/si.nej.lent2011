@@ -10,9 +10,9 @@
 <id>si.nej.lent2011</id>
 <name>Lent 2011</name>
 <version>1.0</version>
-<publisher>jernejz</publisher>
+<publisher>Jernej Zorec</publisher>
 <url>http://nej.si</url>
-<description>Uradna mobilna aplikacija Festivala Lent 2011.</description>
+<description>Lent 2011 application that accompanies the Festival Lent, the biggest multicultural open-air festival in southeast Europe!</description>
 <copyright>2011 by Jernej Zorec</copyright>
 <icon>lent2011.png</icon>
     <persistent-wifi>false</persistent-wifi>
