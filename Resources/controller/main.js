@@ -34,7 +34,6 @@ function getStages() {
 	};
 	xhr.send();
 }
-getStages();
 
 function getCategories() {
 	xhr = Titanium.Network.createHTTPClient();
@@ -61,7 +60,6 @@ function getCategories() {
 	};
 	xhr.send();
 }
-getCategories();
 
 //
 // TAB EVENTS
@@ -101,3 +99,7 @@ Titanium.App.addEventListener('connectivityProblem', function(eventData) {
 Titanium.App.addEventListener('restartApp', function(eventData) {
 	Titanium.include ('controller/main.js');
 });
+
+getStages();
+getCategories();
+
