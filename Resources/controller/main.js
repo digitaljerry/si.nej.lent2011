@@ -11,7 +11,6 @@ Ti.App.fireEvent('changeLoadingLabel',{loading:lang['loading']});
 
 function getStages() {
 	xhr = Titanium.Network.createHTTPClient();
-	//var geturl = 'http://' + Titanium.App.Properties.getString('domain') + '/index.php?id=ag_lent_webservice&ag_lent_webservice[lang]='+lang['name']+'&ag_lent_webservice[action]=getStages
 	var geturl = 'http://' + Titanium.App.Properties.getString('domain') + '/index.php?eID=ag_lent_webservice&ag_lent_webservice[lang]='+lang['name']+'&ag_lent_webservice[action]=getStages';
 	
 	xhr.setTimeout(20000);
@@ -37,7 +36,6 @@ function getStages() {
 
 function getCategories() {
 	xhr = Titanium.Network.createHTTPClient();
-	//var geturl = 'http://' + Titanium.App.Properties.getString('domain') + '/index.php?id=ag_lent_webservice&ag_lent_webservice[lang]='+lang['name']+'&ag_lent_webservice[action]=getStages
 	var geturl = 'http://' + Titanium.App.Properties.getString('domain') + '/index.php?eID=ag_lent_webservice&ag_lent_webservice[lang]='+lang['name']+'&ag_lent_webservice[action]=getCategories';
 	
 	xhr.setTimeout(20000);
