@@ -1,4 +1,11 @@
 
+// determine include path that is different on iOS and Android
+if (Titanium.Platform.name == 'iPhone OS') {
+	Titanium.App.Properties.setString('include', '../');
+} else {
+	Titanium.App.Properties.setString('include', '/');
+}
+
 // include "library" and initiating global objects
 Titanium.include ('library/common.js');
 

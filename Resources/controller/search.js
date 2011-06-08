@@ -1,10 +1,10 @@
-Titanium.include ('../lang/'+Titanium.App.Properties.getString('locale')+'.js');
-Titanium.include ('../model/search.js');
+Titanium.include (Titanium.App.Properties.getString('include')+'lang/'+Titanium.App.Properties.getString('locale')+'.js');
+Titanium.include (Titanium.App.Properties.getString('include')+'model/search.js');
 
 //
 // Load UI elements
 //
-Titanium.include ('../view/search.js');
+Titanium.include (Titanium.App.Properties.getString('include')+'view/search.js');
 var win = Titanium.UI.currentWindow;
 view_init(win);
 

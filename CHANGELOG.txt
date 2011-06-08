@@ -1,3 +1,1 @@
-2011-06-06 Jernej Zorec <jernej.zorec@agenda.si>
-
-	* Release of version 1.0
+Place your change log text here.  This file will be incorporated with your app at package time.
