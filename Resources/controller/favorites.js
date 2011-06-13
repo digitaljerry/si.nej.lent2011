@@ -1,11 +1,11 @@
-Titanium.include (Titanium.App.Properties.getString('include')+'lang/'+Titanium.App.Properties.getString('locale')+'.js');
-Titanium.include (Titanium.App.Properties.getString('include')+'model/favorites.js');
+Titanium.include ('../lang/'+Titanium.App.Properties.getString('locale')+'.js');
+Titanium.include ('../model/favorites.js');
 
 //
 // Load UI elements
 //
 
-Titanium.include (Titanium.App.Properties.getString('include')+'view/favorites.js');
+Titanium.include ('../view/favorites.js');
 var win = Titanium.UI.currentWindow;
 view_init(win);
 
