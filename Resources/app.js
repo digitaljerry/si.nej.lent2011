@@ -3,7 +3,7 @@
 if (Titanium.Platform.name == 'iPhone OS') {
 	Titanium.App.Properties.setString('include', '../');
 } else {
-	Titanium.App.Properties.setString('include', '/');
+	Titanium.App.Properties.setString('include', '../');
 }
 
 // include "library" and initiating global objects

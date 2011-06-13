@@ -1,6 +1,6 @@
-Titanium.include ('lang/'+Titanium.App.Properties.getString('locale')+'.js');
-Titanium.include ('model/main.js');
-Titanium.include ('view/main.js');
+Titanium.include ('/lang/'+Titanium.App.Properties.getString('locale')+'.js');
+Titanium.include ('/model/main.js');
+Titanium.include ('/view/main.js');
 
 // set string for current language in app.js context
 Ti.App.fireEvent('changeLoadingLabel',{loading:lang['loading']});
