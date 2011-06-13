@@ -74,7 +74,12 @@ function showEvent(incomingData) {
 	// descriptions
 	if ( data.description != '' ) {
 		win.webView.html = '<html><body>' + data.description + '</body></html>';
-		win.tb1.labels = [lang['programme_description']];
+		
+		if (Titanium.Platform.name == 'iPhone OS') {
+			win.tb1.labels = [lang['programme_description']];
+		} else {
+			// TODO
+		}
 		
 		// add show id to array
 		data.details.push('1');	
@@ -98,16 +103,24 @@ function showEvent(incomingData) {
 			win.mapview.selectAnnotation(Ti.App.Stages.getStageTitle(data.location_id),true);
 			win.mapview.setLocation(Ti.App.location_maribor);
 			
-			if ( data.details.length == 0 )
-				win.tb1.labels = [lang['programme_map']];
-			else
-				win.tb1.labels = [lang['programme_description'],lang['programme_map']];
+			if (Titanium.Platform.name == 'iPhone OS') {
+				if ( data.details.length == 0 )
+					win.tb1.labels = [lang['programme_map']];
+				else
+					win.tb1.labels = [lang['programme_description'],lang['programme_map']];
+			} else {
+				// TODO
+			}
 			
 			// add show id to array
 			data.details.push('2');
 		}
 	}
-	win.tb1.show();
+	if (Titanium.Platform.name == 'iPhone OS') {
+		win.tb1.show();
+	} else {
+		// TODO
+	}
 	/* set data in view - end */
 	
 	// show first tab that is avaible
@@ -150,11 +163,19 @@ function orientationChange() {
 	if (Titanium.UI.orientation == Titanium.UI.LANDSCAPE_LEFT || Titanium.UI.orientation == Titanium.UI.LANDSCAPE_RIGHT) {
 		win.mapview.hide();
 		win.scrollview.hide();
-		win.tb1.hide();
+		if (Titanium.Platform.name == 'iPhone OS') {
+			win.tb1.hide();
+		} else {
+			// TODO
+		}
 	} else if (Titanium.UI.orientation == Titanium.UI.PORTRAIT || Titanium.UI.orientation == Titanium.UI.UPSIDE_PORTRAIT) {
-		win.tb1.show();
-		// show first tab that is avaible
-		showTab(data.details[win.tb1.index]);
+		if (Titanium.Platform.name == 'iPhone OS') {
+			win.tb1.show();
+			// show first tab that is avaible
+			showTab(data.details[win.tb1.index]);
+		} else {
+			// TODO
+		}
 	}
 }
 
@@ -163,16 +184,20 @@ function orientationChange() {
 //
 
 // event to switch between description and map tab
-win.tb1.addEventListener('click', function(e)
-{
-	var show = data.details[e.index];
-	showTab(show);
-});
-
-win.addEventListener('close', function(e)
-{
-	xhr.abort();
-});
+if (Titanium.Platform.name == 'iPhone OS') {
+	win.tb1.addEventListener('click', function(e)
+	{
+		var show = data.details[e.index];
+		showTab(show);
+	});
+	
+	win.addEventListener('close', function(e)
+	{
+		xhr.abort();
+	});
+} else {
+	// TODO
+}
 
 var scaledImage = false;
 win.image.addEventListener('click', function(e) {
@@ -187,7 +212,11 @@ win.image.addEventListener('click', function(e) {
 		t = t.scale(2.0);
 		center1 = win.image.center;
 		
-		win.tb1.hide();
+		if (Titanium.Platform.name == 'iPhone OS') {
+			win.tb1.hide();
+		} else {
+			// TODO
+		}
 		win.scrollview.hide();
 		win.mapview.hide();
 		
@@ -200,8 +229,12 @@ win.image.addEventListener('click', function(e) {
 		setTimeout(function()
         {
         	if (Titanium.UI.orientation == Titanium.UI.PORTRAIT || Titanium.UI.orientation == Titanium.UI.UPSIDE_PORTRAIT) {
-        		win.tb1.show();
-        		showTab(data.details[win.tb1.index]);
+        		if (Titanium.Platform.name == 'iPhone OS') {
+        			win.tb1.show();
+        			showTab(data.details[win.tb1.index]);
+        		} else {
+        			// TODO
+        		}
         	}
         },400);
 		scaledImage = false;

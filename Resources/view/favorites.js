@@ -38,7 +38,11 @@ function view_init(win) {
 		style:Titanium.UI.iPhone.SystemButtonStyle.DONE
 	});
 	
-	win.setRightNavButton(win.edit);
+	if (Titanium.Platform.name == 'iPhone OS') {
+		win.setRightNavButton(win.edit);
+	} else {
+		// TODO
+	}
 	
 	win.add(win.tableview);
 }

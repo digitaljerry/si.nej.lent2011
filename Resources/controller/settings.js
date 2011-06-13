@@ -71,18 +71,22 @@ function addProperits() {
 	});
 	//win.add(win.langSwitch);
 	
-	win.tb = Titanium.UI.createTabbedBar({
-		labels:['SI', 'EN'],
-		top:290,
-		style:Titanium.UI.iPhone.SystemButtonStyle.BAR,
-		height:30,
-		width:200
-	});
-	if (Titanium.App.Properties.getString('locale') == 'sl')
-		win.tb.index = 0;
-	else
-		win.tb.index = 1;
-	win.add(win.tb);
+	if (Titanium.Platform.name == 'iPhone OS') {
+		win.tb = Titanium.UI.createTabbedBar({
+			labels:['SI', 'EN'],
+			top:290,
+			style:Titanium.UI.iPhone.SystemButtonStyle.BAR,
+			height:30,
+			width:200
+		});
+		if (Titanium.App.Properties.getString('locale') == 'sl')
+			win.tb.index = 0;
+		else
+			win.tb.index = 1;
+		win.add(win.tb);
+	} else {
+		// TODO
+	}
 	
 }
 
@@ -101,18 +105,22 @@ win.imageSwitch.addEventListener('change',function(e)
 	}
 });
 
-win.tb.addEventListener('click', function(e)
-{
-	var prevLang = Titanium.App.Properties.getString('locale');
-	if (e.index == '0') {
-		Titanium.App.Properties.setString('locale', 'sl');
-	} else {
-		Titanium.App.Properties.setString('locale', 'en');
-	}
-	
-	// restart needed
-	if ( Titanium.App.Properties.getString != prevLang ) {
-		Ti.App.fireEvent('restartApp', {});
-	}
-});
+if (Titanium.Platform.name == 'iPhone OS') {
+	win.tb.addEventListener('click', function(e)
+	{
+		var prevLang = Titanium.App.Properties.getString('locale');
+		if (e.index == '0') {
+			Titanium.App.Properties.setString('locale', 'sl');
+		} else {
+			Titanium.App.Properties.setString('locale', 'en');
+		}
+		
+		// restart needed
+		if ( Titanium.App.Properties.getString != prevLang ) {
+			Ti.App.fireEvent('restartApp', {});
+		}
+	});
+} else {
+	// TODO
+}
 

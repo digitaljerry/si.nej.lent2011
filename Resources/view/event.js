@@ -122,17 +122,21 @@ function view_init(win) {
 	});
 	
 	// tabbed bar
-	win.tb1 = Titanium.UI.createTabbedBar({
-		labels:[],
-		top:'42%',
-		style:Titanium.UI.iPhone.SystemButtonStyle.BAR,
-		height:25,
-		width:200,
-		zIndex:99,
-		index:0
-	});
-	win.tb1.hide();
-	win.add(win.tb1);
+	if (Titanium.Platform.name == 'iPhone OS') {
+		win.tb1 = Titanium.UI.createTabbedBar({
+			labels:[],
+			top:'42%',
+			style:Titanium.UI.iPhone.SystemButtonStyle.BAR,
+			height:25,
+			width:200,
+			zIndex:99,
+			index:0
+		});
+		win.tb1.hide();
+		win.add(win.tb1);
+	} else {
+		// TODO
+	}
 	
 	//
 	// CREATE WEBVIEW

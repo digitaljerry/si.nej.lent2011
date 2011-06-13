@@ -143,7 +143,11 @@ win.tableview.addEventListener('click', function(e)
 // events for buttons
 win.edit.addEventListener('click', function()
 {
-	win.setRightNavButton(win.cancel);
+	if (Titanium.Platform.name == 'iPhone OS') {
+		win.setRightNavButton(win.cancel);
+	} else {
+		// TODO
+	}
 	win.tableview.editing = true;
 });
 
@@ -151,7 +155,11 @@ win.cancel.addEventListener('click', function()
 {
 	Ti.App.Properties.setList('favoritesArray',favoritesArray);
 	
-	win.setRightNavButton(win.edit);
+	if (Titanium.Platform.name == 'iPhone OS') {
+		win.setRightNavButton(win.edit);
+	} else {
+		// TODO
+	}
 	win.tableview.editing = false;
 });
 

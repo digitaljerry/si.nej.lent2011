@@ -66,5 +66,9 @@ function view_init(win) {
 	win.buttonSwitch = Titanium.UI.createButton({
 		title:lang['stages_list']
 	});
-	win.setRightNavButton(win.buttonSwitch);
+	if (Titanium.Platform.name == 'iPhone OS') {
+		win.setRightNavButton(win.buttonSwitch);
+	} else {
+		// TODO
+	}
 }
