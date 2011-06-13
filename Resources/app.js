@@ -92,16 +92,21 @@ var actIndWin = Titanium.UI.createWindow({
 	]
 });
 
-var actIndView = Titanium.UI.createView({
-	id:'actindview',
-	height:30,
-	width:210,
-	borderRadius:10,
-	backgroundColor:'#000',
-	opacity:0.7,
-	touchEnabled:false
-});
-
+if (Titanium.Platform.name == 'iPhone OS') {
+	var actIndView = Titanium.UI.createView({
+		id:'actindview',
+		height:30,
+		width:210,
+		borderRadius:10,
+		backgroundColor:'#000',
+		opacity:0.7,
+		touchEnabled:false
+	});
+} else {
+	var actIndView = Titanium.UI.createView({
+		id:'actindview'
+	});
+}
 var actInd = Titanium.UI.createActivityIndicator({
 	bottom:0, 
 	height:30,
