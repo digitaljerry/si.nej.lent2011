@@ -42,7 +42,7 @@ function refreshTable() {
 	favoritesArray = Ti.App.Properties.getList('favoritesArray');
 	
 	if ( favoritesArray == null ) {
-		Ti.App.Message.showMessage('Zaenkrat še nimate priljubljenih predstav.');
+		Ti.App.Message.showMessage(lang['favorites_no_events']);
 		return;
 	}
 	

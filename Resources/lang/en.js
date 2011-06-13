@@ -51,6 +51,7 @@ lang['stages_map'] = 'Map';
 lang['news_close'] = 'Close';
 
 // favorites
+lang['favorites_no_events'] = 'You don\' have any favorite events.';
 
 // info
 lang['info_author'] = 'info@agenda.si';

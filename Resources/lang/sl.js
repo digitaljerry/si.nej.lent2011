@@ -51,6 +51,7 @@ lang['stages_map'] = 'Zemljevid';
 lang['news_close'] = 'Zapri';
 
 // favorites
+lang['favorites_no_events'] = 'Zaenkrat še nimate priljubljenih predstav.';
 
 // info
 lang['info_author'] = 'info@agenda.si';
