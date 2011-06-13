@@ -119,7 +119,6 @@ var actInd = Titanium.UI.createActivityIndicator({
 	message: lang['loading']
 });
 
-actInd.show();
 actIndView.add(actInd);
 actIndWin.add(actIndView); 
 
