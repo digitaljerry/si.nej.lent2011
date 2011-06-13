@@ -219,10 +219,4 @@ win.picker.addEventListener('change',function(e)
 	pickerDate = e.value;
 });
 
-win.labelDate.addEventListener('click', function(e)
-{
-	Ti.App.Modal.show();
-});
-
-
 
