@@ -70,7 +70,7 @@ function view_init(win) {
 	win.add(win.imageFramework);
 	
 	win.imageOS = Ti.UI.createImageView({
-		image:'../images/logo_os.png',
+		image:'../images/logo_OS.png',
 		bottom:100,
 		right:40,
 		height:110,
