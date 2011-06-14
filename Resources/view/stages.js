@@ -69,6 +69,21 @@ function view_init(win) {
 	if (Titanium.Platform.name == 'iPhone OS') {
 		win.setRightNavButton(win.buttonSwitch);
 	} else {
-		// TODO
+		
+		activity = Ti.Android.currentActivity;
+		activity.onCreateOptionsMenu = function(e) {
+		    var menu = e.menu;
+		    var menuItem_list = menu.add({ title: lang['stages_list'] });
+		    menuItem_list.addEventListener("click", function(e) {
+		        win.tableview.show();
+				win.mapview.hide();
+		    });
+		    var menuItem_map = menu.add({ title: lang['stages_map'] });
+		    menuItem_map.addEventListener("click", function(e) {
+				win.mapview.show();
+				win.tableview.hide();
+		    });
+		};
+		
 	}
 }
