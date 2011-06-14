@@ -85,7 +85,18 @@ function addProperits() {
 			win.tb.index = 1;
 		win.add(win.tb);
 	} else {
-		// TODO
+		win.button_sl = Titanium.UI.createButton({
+			title: 'SI',
+			top:290,
+			left:100
+		});
+		win.button_en = Titanium.UI.createButton({
+			title: 'EN',
+			top:290,
+			right:100
+		});
+		win.add(win.button_sl);
+		win.add(win.button_en);
 	}
 	
 }
@@ -121,6 +132,20 @@ if (Titanium.Platform.name == 'iPhone OS') {
 		}
 	});
 } else {
-	// TODO
+	win.button_en.addEventListener('click', function(e)
+	{
+		if ( Titanium.App.Properties.getString != 'en' ) {
+			Titanium.App.Properties.setString('locale', 'en');
+			Ti.App.fireEvent('restartApp', {});
+		}
+	});
+	
+	win.button_sl.addEventListener('click', function(e)
+	{
+		if ( Titanium.App.Properties.getString != 'sl' ) {
+			Titanium.App.Properties.setString('locale', 'sl');
+			Ti.App.fireEvent('restartApp', {});
+		}
+	});
 }
 
