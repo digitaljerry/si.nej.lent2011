@@ -18,7 +18,8 @@ function email() {
 	if (!win.emailDialog.isSupported()) {
 		Ti.UI.createAlertDialog({
 			title:lang['error'],
-			message:lang['about_email_not_available']
+			message:lang['about_email_not_available'],
+			buttonNames:[lang['close']]
 		}).show();
 		return;
 	}
@@ -32,12 +33,12 @@ function email() {
 	        if (Ti.Platform.osname != 'android') {
 	            // android doesn't give us useful result codes.
 	            // it anyway shows a toast.
-	            Titanium.UI.createAlertDialog({message:lang['about_sent']});
+	            Titanium.UI.createAlertDialog({message:lang['about_sent'],buttonNames:[lang['close']]});
 	        }
 	    }
 	    else
 	    {
-	    	Titanium.UI.createAlertDialog({message:lang['about_not_sent']});
+	    	Titanium.UI.createAlertDialog({message:lang['about_not_sent'],buttonNames:[lang['close']]});
 	    }
 	});
 	win.emailDialog.open();

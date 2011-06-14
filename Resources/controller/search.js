@@ -116,7 +116,7 @@ function searchEvents(query) {
 		
 		// if there's no results
 		if (i == 0) {
-			Titanium.UI.createAlertDialog({message:lang['no_results']}).show();
+			Titanium.UI.createAlertDialog({message:lang['no_results'],buttonNames:[lang['close']]}).show();
 		}
 		
 		Ti.App.ActivityIndicator.stop();
@@ -148,7 +148,7 @@ win.tableview.addEventListener('click', function(e)
 win.search.addEventListener('return', function (e)
 {
 	if(e.value.length < 3) {
-		Titanium.UI.createAlertDialog({message:'Vpiši vsaj 3 znake.'}).show();
+		Titanium.UI.createAlertDialog({message:'Vpiši vsaj 3 znake.',buttonNames:[lang['close']]}).show();
 	} else {
 		searchEvents(e.value);
 		win.search.blur();

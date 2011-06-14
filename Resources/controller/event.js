@@ -279,7 +279,7 @@ a_add.addEventListener('click', function(e) {
 		
 		for (var i = 0; i < favoritesArray.length; i++) {
 			if (favoritesArray[i].uid == event_uid) {
-				Titanium.UI.createAlertDialog({message:lang['programme_favorites_already_exists']}).show();
+				Titanium.UI.createAlertDialog({message:lang['programme_favorites_already_exists'],buttonNames:[lang['close']]}).show();
 				
 				exists = true;
 			}
