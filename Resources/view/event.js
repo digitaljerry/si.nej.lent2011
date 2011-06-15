@@ -135,21 +135,51 @@ function view_init(win) {
 		win.tb1.hide();
 		win.add(win.tb1);
 	} else {
-		// TODO
+		activity = Ti.Android.currentActivity;
+		activity.onCreateOptionsMenu = function(e) {
+		    var menu = e.menu;
+		    var menuItem_description = menu.add({ title: lang['programme_description'] });
+		    menuItem_description.addEventListener("click", function(e) {
+		        showTab(1);
+		    });
+		    var menuItem_map = menu.add({ title: lang['programme_map'] });
+		    menuItem_map.addEventListener("click", function(e) {
+				showTab(2);
+		    });
+		    var menuItem_favorites = menu.add({ title: lang['programme_favorites'] });
+		    menuItem_favorites.addEventListener("click", function(e) {
+				
+				a_add.buttonNames = [lang['add'],lang['cancel']];
+				a_add.cancel = 1;
+				a_add.show();
+				
+		    });
+		};
 	}
 	
 	//
 	// CREATE WEBVIEW
 	//
-	win.webView = Ti.UI.createWebView({
-		top:40,
-		height:'auto',
-		width:'100%',
-		backgroundColor:'transparent'
-	});
-	win.scrollview.add(win.webView);
-	
-	win.add(win.scrollview);
+	if (Titanium.Platform.name == 'iPhone OS') {
+		win.webView = Ti.UI.createWebView({
+			top:40,
+			height:'auto',
+			width:'100%',
+			backgroundColor:'transparent'
+		});
+		
+		win.scrollview.add(win.webView);
+		win.add(win.scrollview);
+	} else {
+		win.webView = Ti.UI.createWebView({
+			bottom:0,
+			height:'60%',
+			width:'100%',
+			backgroundColor:'transparent'
+		});
+		
+		win.add(win.webView);
+	}
 	
 	// alert window
 	a = Titanium.UI.createAlertDialog({
