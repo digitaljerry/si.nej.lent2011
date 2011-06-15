@@ -42,6 +42,7 @@ lang['programme_favorites_already_exists'] = 'Show already exists in favorites!'
 lang['programme_favorites_added'] = 'Added to favorites.';
 lang['programme_open_gmaps'] = 'Open Google Maps?';
 lang['programme_add_to_favorites'] = 'Add to favorites?';
+lang['programme_favorites'] = 'Favorites';
 
 // stages
 lang['stages_list'] = 'List';

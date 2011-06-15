@@ -41,7 +41,8 @@ lang['programme_map'] = 'Zemljevid';
 lang['programme_favorites_already_exists'] = 'Predstava že obstaja med priljubljenimi!';
 lang['programme_favorites_added'] = 'Dodano med priljubljene.';
 lang['programme_open_gmaps'] = 'Želiš odpreti Google Maps?';
-lang['programme_add_to_favorites'] = 'Dodaj me priljubljene?';
+lang['programme_add_to_favorites'] = 'Dodaj med priljubljene?';
+lang['programme_favorites'] = 'Priljubljene';
 
 // stages
 lang['stages_list'] = 'Seznam';
