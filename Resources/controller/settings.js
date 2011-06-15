@@ -25,6 +25,13 @@ function addProperits() {
 		textAlign:'center',
 		font:{fontSize:26},
 	});
+	
+	if (Titanium.Platform.name != 'iPhone OS') {
+		if (Titanium.Platform.displayCaps.dpi <= 120) {
+			win.l1.font.fontSize = 22;
+			win.l1.top = win.l1.top*Titanium.App.Properties.getDouble('lowResDelimiter');
+		}
+	}
 	win.add(win.l1);
 	
 	win.l2 = Titanium.UI.createLabel({
@@ -41,6 +48,12 @@ function addProperits() {
 		value:showImages,
 		top:140
 	});
+	if (Titanium.Platform.name != 'iPhone OS') {
+		if (Titanium.Platform.displayCaps.dpi <= 120) {
+			win.l2.top = win.l2.top*Titanium.App.Properties.getDouble('lowResDelimiter');
+			win.imageSwitch.top = win.imageSwitch.top*Titanium.App.Properties.getDouble('lowResDelimiter');
+		}
+	}
 	win.add(win.imageSwitch);
 	
 	// language
@@ -53,6 +66,12 @@ function addProperits() {
 		textAlign:'center',
 		font:{fontSize:26},
 	});
+	if (Titanium.Platform.name != 'iPhone OS') {
+		if (Titanium.Platform.displayCaps.dpi <= 120) {
+			win.l3.font.fontSize = 22;
+			win.l3.top = win.l3.top*Titanium.App.Properties.getDouble('lowResDelimiter');
+		}
+	}
 	win.add(win.l3);
 	
 	win.l4 = Titanium.UI.createLabel({
@@ -69,6 +88,11 @@ function addProperits() {
 		value:true,
 		top:290
 	});
+	if (Titanium.Platform.name != 'iPhone OS') {
+		if (Titanium.Platform.displayCaps.dpi <= 120) {
+			win.langSwitch.top = win.langSwitch.top*Titanium.App.Properties.getDouble('lowResDelimiter');
+		}
+	}
 	//win.add(win.langSwitch);
 	
 	if (Titanium.Platform.name == 'iPhone OS') {
@@ -95,6 +119,12 @@ function addProperits() {
 			top:290,
 			right:100
 		});
+		
+		if (Titanium.Platform.displayCaps.dpi <= 120) {
+			win.button_sl.top = win.button_sl.top*Titanium.App.Properties.getDouble('lowResDelimiter');
+			win.button_en.top = win.button_en.top*Titanium.App.Properties.getDouble('lowResDelimiter');
+		}
+		
 		win.add(win.button_sl);
 		win.add(win.button_en);
 	}

@@ -2,6 +2,9 @@
 // include "library" and initiating global objects
 Titanium.include ('library/common.js');
 
+// define low res delimiter
+Titanium.App.Properties.setDouble('lowResDelimiter', 0.6);
+
 // determine the language
 if (!Titanium.App.Properties.getString('locale')) {
 	Titanium.App.Properties.setString('locale','sl');
