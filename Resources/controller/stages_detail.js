@@ -48,6 +48,9 @@ function showEventsForStage(location_uid) {
 			var row = Ti.UI.createTableViewRow();
 			row.selectedBackgroundColor = '#e9ddc2';
 			row.height = 50;
+			if (Titanium.Platform.name != 'iPhone OS') {
+				row.height = 80;
+			}
 			row.className = 'datarow';
 			row.clickName = 'row';
 			row.event_uid = incomingData[i].uid;
@@ -62,6 +65,9 @@ function showEventsForStage(location_uid) {
 				width:'70%',
 				text:incomingData[i].title
 			});
+			if (Titanium.Platform.name != 'iPhone OS') {
+				title.height = 40;
+			}
 			row.filter = title.text;
 			row.add(title);
 			
@@ -76,6 +82,10 @@ function showEventsForStage(location_uid) {
 				width:'70%',
 				text:stage
 			});
+			if (Titanium.Platform.name != 'iPhone OS') {
+				desc.top = 40;
+				desc.height = 35;
+			}
 			
 			if ( Ti.App.Categories.getCategoryTitle(incomingData[i].category_id) != -1 ) {
 				if ( stage != '' )
@@ -95,6 +105,10 @@ function showEventsForStage(location_uid) {
 				width:50,
 				text:Ti.App.DateLent.secondsToHm(incomingData[i].start_time)
 			});
+			if (Titanium.Platform.name != 'iPhone OS') {
+				begin_time.right = 22;
+				begin_time.top = 25;
+			}
 			row.add(begin_time);
 			
 			if ( incomingData[i].start_date != prev_start_date ) {
