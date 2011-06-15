@@ -219,4 +219,25 @@ win.picker.addEventListener('change',function(e)
 	pickerDate = e.value;
 });
 
+if (Titanium.Platform.name != 'iPhone OS') {
+	
+	activity = Ti.Android.currentActivity;
+	activity.onCreateOptionsMenu = function(e) {
+	    var menu = e.menu;
+	    var menuItem_search = menu.add({ title: lang['search'] });
+	    menuItem_search.addEventListener("click", function(e) {
+	        var winSearch = Titanium.UI.createWindow({
+				url:'search.js',
+				title:lang['search']
+			});
+			Titanium.UI.currentTab.open(winSearch,{animated:true});
+	    });
+	    var menuItem_exit = menu.add({ title: lang['exit'] });
+	    menuItem_exit.addEventListener("click", function(e) {
+	    	Ti.App.fireEvent('exitApp');
+	    });
+	};
+	
+}
+
 

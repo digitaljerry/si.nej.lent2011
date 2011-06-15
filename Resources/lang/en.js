@@ -30,6 +30,7 @@ lang['no_results'] = 'No results!';
 lang['choose'] = 'Choose';
 lang['back'] = 'Back';
 lang['loading'] = 'Loading...';
+lang['exit'] = 'Exit';
 
 // main
 lang['main_connection'] = 'This application needs internet access to function properly!';

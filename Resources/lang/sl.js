@@ -30,6 +30,7 @@ lang['no_results'] = 'Ni zadetkov!';
 lang['choose'] = 'Izberi';
 lang['back'] = 'Nazaj';
 lang['loading'] = 'Nalagam...';
+lang['exit'] = 'Izhod';
 
 // main
 lang['main_connection'] = 'Aplikacije za delovanje potrebuje internetno povezavo!';

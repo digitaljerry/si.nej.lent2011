@@ -127,3 +127,10 @@ actIndWin.add(actIndView);
 Titanium.App.addEventListener('changeLoadingLabel', function(e) {
 	actInd.message = e.loading;
 });
+
+if (Titanium.Platform.name != 'iPhone OS') {
+	Titanium.App.addEventListener('exitApp', function(eventData) {
+		// not working :(
+		Titanium.App.exit();
+	});
+}
