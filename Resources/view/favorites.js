@@ -24,6 +24,9 @@ function view_init(win) {
 		editable:true,
 		backgroundColor:'transparent'
 	});
+	if (Titanium.Platform.name != 'iPhone OS') {
+		win.tableview.separatorColor = 'black';
+	}
 	
 	// adding rows
 	refreshTable();

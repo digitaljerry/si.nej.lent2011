@@ -53,6 +53,9 @@ function refreshTable() {
 		
 		var row = Ti.UI.createTableViewRow();
 		row.selectedBackgroundColor = '#e9ddc2';
+		row.backgroundSelectedColor = '#e9ddc2';
+		row.focusable = true;
+		
 		row.height = 50;
 		if (Titanium.Platform.name != 'iPhone OS') {
 			row.height = 80;

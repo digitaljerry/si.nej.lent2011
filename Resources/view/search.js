@@ -32,6 +32,9 @@ function view_init(win) {
 		top:43,
 		backgroundColor:'transparent'
 	});
+	if (Titanium.Platform.name != 'iPhone OS') {
+		win.tableview.separatorColor = 'black';
+	}
 		
 	win.add(win.tableview);
 	win.search.focus();

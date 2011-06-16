@@ -62,7 +62,8 @@ function fetchNews() {
 				
 				row = Ti.UI.createTableViewRow({
 					height:80,
-					selectedBackgroundColor:'#e9ddc2'
+					selectedBackgroundColor:'#e9ddc2',
+					backgroundSelectedColor:'#e9ddc2'
 					});
 				
 				label_title = Ti.UI.createLabel({
@@ -109,6 +110,9 @@ function fetchNews() {
 				row.nextTitle = title;
 			}
 			tableview = Titanium.UI.createTableView({data:data,backgroundColor:'transparent',selectedBackgroundColor:'#e9ddc2'});
+			if (Titanium.Platform.name != 'iPhone OS') {
+				win.tableview.separatorColor = 'black';
+			}
 			Titanium.UI.currentWindow.add(tableview);
 			tableview.addEventListener('click',function(e)
 			{

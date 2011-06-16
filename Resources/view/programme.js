@@ -104,6 +104,9 @@ function view_init(win) {
 		backgroundColor:'transparent',
 		top:50
 	});
+	if (Titanium.Platform.name != 'iPhone OS') {
+		win.tableview.separatorColor = 'black';
+	}
 	
 	// create buttons
 	win.searchNavButton = Titanium.UI.createButton({

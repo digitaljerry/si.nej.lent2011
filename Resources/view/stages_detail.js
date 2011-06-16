@@ -23,6 +23,9 @@ function view_init(win) {
 	win.tableview = Titanium.UI.createTableView({
 		backgroundColor:'transparent'
 	});
+	if (Titanium.Platform.name != 'iPhone OS') {
+		win.tableview.separatorColor = 'black';
+	}
 		
 	var data = new Array();
 	// default date to show on start
