@@ -30,6 +30,10 @@
 		</orientations>
 	</iphone>
 	<android xmlns:android="http://schemas.android.com/apk/res/android">
+		<tool-api-level>8</tool-api-level>
+		<manifest android:installLocation="auto">
+			<uses-sdk android:minSdkVersion="7" />
+		</manifest>
 	</android>
 	<modules>
 	</modules>
