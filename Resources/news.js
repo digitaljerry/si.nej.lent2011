@@ -112,7 +112,7 @@ function fetchNews() {
 			Titanium.UI.currentWindow.add(tableview);
 			tableview.addEventListener('click',function(e)
 			{
-				var w = Ti.UI.createWindow({title:e.row.nextTitle,barColor:'#004586',backgroundImage:'images/background_window.png'});
+				var w = Ti.UI.createWindow({title:e.row.nextTitle,barColor:'#004586',backgroundImage:'images/background_window.png',exitOnClose: true});
 				var wb = Ti.UI.createWebView({url:e.row.url,backgroundColor:'transparent'});
 				w.add(wb);
 				var b = Titanium.UI.createButton({

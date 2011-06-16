@@ -99,19 +99,23 @@ function view_init(win) {
 	//
 	// CREATE MAP VIEW
 	//
-	win.mapview = Titanium.Map.createView({
-		mapType: Titanium.Map.STANDARD_TYPE,
-		region: Ti.App.location_maribor,
-		animate:true,
-		regionFit:true,
-		userLocation:true,
-		bottom:0,
-		height:'60%',
-		zIndex:1
-	});
-	win.mapview.hide();
 	
-	win.add(win.mapview);
+	// only for iPhone because app crashes when on android and second map
+	if (Titanium.Platform.name == 'iPhone OS') {
+		win.mapview = Titanium.Map.createView({
+			mapType: Titanium.Map.STANDARD_TYPE,
+			region: Ti.App.location_maribor,
+			animate:true,
+			regionFit:true,
+			userLocation:true,
+			bottom:0,
+			height:'60%',
+			zIndex:1
+		});
+		win.mapview.hide();
+	
+		win.add(win.mapview);
+	}
 	
 	// SCROLL VIEW
 	win.scrollview = Titanium.UI.createScrollView({
@@ -144,10 +148,10 @@ function view_init(win) {
 		    menuItem_description.addEventListener("click", function(e) {
 		        showTab(1);
 		    });
-		    var menuItem_map = menu.add({ title: lang['programme_map'] });
+		    /*var menuItem_map = menu.add({ title: lang['programme_map'] });
 		    menuItem_map.addEventListener("click", function(e) {
 				showTab(2);
-		    });
+		    });*/
 		    var menuItem_favorites = menu.add({ title: lang['programme_favorites'] });
 		    menuItem_favorites.addEventListener("click", function(e) {
 				

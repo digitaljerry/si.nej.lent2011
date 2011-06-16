@@ -87,46 +87,45 @@ function showEvent(incomingData) {
 	}
 	
 	// ADDING ANNOTATION
-	if ( data.location_id != 0 ) {
-		stage_location = Ti.App.Stages.getStageLocation(data.location_id);
-		
-		if ( stage_location != -1 && stage_location[0].longitude != '0') {
-			plotPoint = Titanium.Map.createAnnotation({
-		    	latitude: stage_location[0].latitude,
-		        longitude: stage_location[0].longitude,
-		        title: Ti.App.Stages.getStageTitle(data.location_id),
-		        animate:true,
-		        pincolor: Titanium.Map.ANNOTATION_GREEN,
-		        rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE
-			});
-			
-			win.mapview.addAnnotation(plotPoint);
-			win.mapview.selectAnnotation(Ti.App.Stages.getStageTitle(data.location_id),true);
-			win.mapview.setLocation(Ti.App.location_maribor);
-			
-			if (Titanium.Platform.name == 'iPhone OS') {
-				if ( data.details.length == 0 )
-					win.tb1.labels = [lang['programme_map']];
-				else
-					win.tb1.labels = [lang['programme_description'],lang['programme_map']];
-			} else {
-				// TODO
-				// dodaj map v spodnji menu
-			}
-			
-			// add show id to array
-			data.details.push('2');
-		}
-	}
 	if (Titanium.Platform.name == 'iPhone OS') {
+		if ( data.location_id != 0 ) {
+			stage_location = Ti.App.Stages.getStageLocation(data.location_id);
+			
+			if ( stage_location != -1 && stage_location[0].longitude != '0') {
+				plotPoint = Titanium.Map.createAnnotation({
+			    	latitude: stage_location[0].latitude,
+			        longitude: stage_location[0].longitude,
+			        title: Ti.App.Stages.getStageTitle(data.location_id),
+			        animate:true,
+			        pincolor: Titanium.Map.ANNOTATION_GREEN,
+			        rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE
+				});
+				
+				win.mapview.addAnnotation(plotPoint);
+				win.mapview.selectAnnotation(Ti.App.Stages.getStageTitle(data.location_id),true);
+				win.mapview.setLocation(Ti.App.location_maribor);
+				
+				if (Titanium.Platform.name == 'iPhone OS') {
+					if ( data.details.length == 0 )
+						win.tb1.labels = [lang['programme_map']];
+					else
+						win.tb1.labels = [lang['programme_description'],lang['programme_map']];
+				} else {
+					// TODO
+					// dodaj map v spodnji menu
+				}
+				
+				// add show id to array
+				data.details.push('2');
+			}
+		}
+	
 		win.tb1.show();
 	}
 	/* set data in view - end */
 	
 	// show first tab that is avaible
 	showTab(data.details[0]);
-	
-	orientationChange();
 	
 	// image
 	if (Titanium.App.Properties.getString('showImages') == '1') {
@@ -149,29 +148,17 @@ function getImagesArray(data) {
 function showTab(s) {
 	if (s == 1)
 	{
-		win.mapview.hide();
+		if (Titanium.Platform.name == 'iPhone OS')
+			win.mapview.hide();
+		
 		win.scrollview.show();
 	}
 	else if (s == 2)
 	{
-		win.mapview.show();
+		if (Titanium.Platform.name == 'iPhone OS')
+			win.mapview.show();
+		
 		win.scrollview.hide();
-	}
-}
-
-function orientationChange() {
-	if (Titanium.UI.orientation == Titanium.UI.LANDSCAPE_LEFT || Titanium.UI.orientation == Titanium.UI.LANDSCAPE_RIGHT) {
-		win.mapview.hide();
-		win.scrollview.hide();
-		if (Titanium.Platform.name == 'iPhone OS') {
-			win.tb1.hide();
-		}
-	} else if (Titanium.UI.orientation == Titanium.UI.PORTRAIT || Titanium.UI.orientation == Titanium.UI.UPSIDE_PORTRAIT) {
-		if (Titanium.Platform.name == 'iPhone OS') {
-			win.tb1.show();
-			// show first tab that is avaible
-			showTab(data.details[win.tb1.index]);
-		}
 	}
 }
 
@@ -222,34 +209,38 @@ if (Titanium.Platform.name == 'iPhone OS') {
 			win.image.animate({transform:t,center:center1,zIndex:1,duration:500});
 			setTimeout(function()
 	        {
-	        	if (Titanium.UI.orientation == Titanium.UI.PORTRAIT || Titanium.UI.orientation == Titanium.UI.UPSIDE_PORTRAIT) {
+	        	//if (Titanium.UI.orientation == Titanium.UI.PORTRAIT || Titanium.UI.orientation == Titanium.UI.UPSIDE_PORTRAIT) {
 	        		win.tb1.show();
 	        		showTab(data.details[win.tb1.index]);
-	        	}
+	        	//}
 	        },400);
 			scaledImage = false;
 		}
 	});
 }
 
-win.mapview.addEventListener('click', function(evt) {
-	// only if right button was clicked
-	if ( evt.clicksource == 'rightButton' ) {
-	
-		a.buttonNames = [lang['open'],lang['cancel']];
-		a.cancel = 1;
-		a.show();
+if (Titanium.Platform.name == 'iPhone OS') {
+	win.mapview.addEventListener('click', function(evt) {
+		// only if right button was clicked
+		if ( evt.clicksource == 'rightButton' ) {
 		
-	}
-});
+			a.buttonNames = [lang['open'],lang['cancel']];
+			a.cancel = 1;
+			a.show();
+			
+		}
+	});
+}
 
 if ( win.disableFav != true ) {
-	win.nextNavButton.addEventListener('click', function(evt) {
-		// only if right button was clicked
-		a_add.buttonNames = [lang['add'],lang['cancel']];
-		a_add.cancel = 1;
-		a_add.show();
-	});
+	if (Titanium.Platform.name == 'iPhone OS') {
+		win.nextNavButton.addEventListener('click', function(evt) {
+			// only if right button was clicked
+			a_add.buttonNames = [lang['add'],lang['cancel']];
+			a_add.cancel = 1;
+			a_add.show();
+		});
+	}
 }
 
 a.addEventListener('click', function(e) {
@@ -287,15 +278,6 @@ a_add.addEventListener('click', function(e) {
 		}
 	}
 });
-
-//
-// orientation change listener
-//
-Ti.Gesture.addEventListener('orientationchange',function(e) {
-	orientationChange();
-});
-
-// do something
 
 // shows the event with the given uid from previous view
 if ( event_uid != 0 ) {
