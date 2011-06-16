@@ -17,11 +17,23 @@ var view2 = Ti.UI.createView({
 });
 win.add(view2);
 
-win.nextNavButton = Titanium.UI.createButton({
-	systemButton:Titanium.UI.iPhone.SystemButton.REFRESH
-});
-win.rightNavButton = win.nextNavButton;
-
+if (Titanium.Platform.name == 'iPhone OS') {
+	win.nextNavButton = Titanium.UI.createButton({
+		systemButton:Titanium.UI.iPhone.SystemButton.REFRESH
+	});
+	win.rightNavButton = win.nextNavButton;
+} else {
+	
+	activity = Ti.Android.currentActivity;
+	activity.onCreateOptionsMenu = function(e) {
+	    var menu = e.menu;
+	    var menuItem_refresh = menu.add({ title: lang['news_refresh'] });
+	    menuItem_refresh.addEventListener("click", function(e) {
+	       refreshNews(); 
+	    });
+	};
+	
+}
 // create table view data object
 var data = [];
 
@@ -75,6 +87,9 @@ function fetchNews() {
 					width:'70%',
 					text:title
 				});
+				if (Titanium.Platform.name != 'iPhone OS') {
+					label_title.height = 40;
+				}
 				row.add(label_title);
 				
 				label_desc = Ti.UI.createLabel({
@@ -86,6 +101,10 @@ function fetchNews() {
 					width:'70%',
 					text:desc
 				});
+				if (Titanium.Platform.name != 'iPhone OS') {
+					label_desc.top = 50;
+					label_desc.height = 30;
+				}
 				row.add(label_desc);
 				
 				// we get: Wed, 11 May 2011 10:09:00 +0200
@@ -109,7 +128,7 @@ function fetchNews() {
 				row.url = item.getElementsByTagName("link").item(0).text + '&mobile=1';
 				row.nextTitle = title;
 			}
-			tableview = Titanium.UI.createTableView({data:data,backgroundColor:'transparent',selectedBackgroundColor:'#e9ddc2'});
+			tableview = Titanium.UI.createTableView({data:data,backgroundColor:'transparent',selectedBackgroundColor:'#e9ddc2',backgroundSelectedColor:'#e9ddc2'});
 			if (Titanium.Platform.name != 'iPhone OS') {
 				win.tableview.separatorColor = 'black';
 			}
@@ -145,14 +164,20 @@ function isSet( variable ) {
 	return( typeof( variable ) != 'undefined' );
 }
 
-win.nextNavButton.addEventListener('click', function()
-{	
+if (Titanium.Platform.name == 'iPhone OS') {
+	win.nextNavButton.addEventListener('click', function()
+	{	
+		refreshNews();
+	});
+}
+
+function refreshNews() {
 	// reset
 	if (typeof tableview !== 'undefined') {
 		Titanium.UI.currentWindow.remove(tableview);
 	}
 	
 	fetchNews();
-});
+}
 
 fetchNews();
