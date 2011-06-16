@@ -250,10 +250,6 @@ if (Titanium.Platform.name != 'iPhone OS') {
 			});
 			Titanium.UI.currentTab.open(winSearch,{animated:true});
 	    });
-	    var menuItem_exit = menu.add({ title: lang['exit'] });
-	    menuItem_exit.addEventListener("click", function(e) {
-	    	Ti.App.fireEvent('exitApp');
-	    });
 	};
 	
 }
