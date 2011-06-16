@@ -25,9 +25,7 @@ function view_init(win) {
 		width:72
 	});
 	if (Titanium.Platform.name != 'iPhone OS') {
-		if (Titanium.Platform.displayCaps.dpi <= 120) {
-			win.imageApp.hide();
-		}
+		win.imageApp.hide();
 	}
 	win.add(win.imageApp);
 	
@@ -41,9 +39,12 @@ function view_init(win) {
 		text:lang['festival_lent']
 	});
 	if (Titanium.Platform.name != 'iPhone OS') {
-		if (Titanium.Platform.displayCaps.dpi <= 120) {
+		if (Titanium.Platform.displayCaps.density == 'low') {
 			win.label_title.height = win.label_title.height*Titanium.App.Properties.getDouble('lowResDelimiter')+5;
 			win.label_title.font.fontSize = 18;
+			win.label_title.top = 25;
+		} else if (Titanium.Platform.displayCaps.density == 'high') {
+			win.label_title.font.fontSize = 24;
 			win.label_title.top = 25;
 		}
 	} else {
@@ -60,10 +61,12 @@ function view_init(win) {
 		text:lang['info_author']
 	});
 	if (Titanium.Platform.name != 'iPhone OS') {
-		if (Titanium.Platform.displayCaps.dpi <= 120) {
+		if (Titanium.Platform.displayCaps.density == 'low') {
 			win.label_author.height = win.label_author.height*Titanium.App.Properties.getDouble('lowResDelimiter')+3;
 			win.label_author.font.fontSize = 14;
 			win.label_author.top = 50;
+		} else if (Titanium.Platform.displayCaps.density == 'high') {
+			win.label_author.font.fontSize = 20;
 		}
 	} else {
 		win.label_author.left = 140;
@@ -80,7 +83,7 @@ function view_init(win) {
 		text:lang['info_description']
 	});
 	if (Titanium.Platform.name != 'iPhone OS') {
-		if (Titanium.Platform.displayCaps.dpi <= 120) {
+		if (Titanium.Platform.displayCaps.density == 'low') {
 			win.label_desc.height = win.label_desc.height*Titanium.App.Properties.getDouble('lowResDelimiter');
 			win.label_desc.font.fontSize = 12;
 		}
@@ -95,7 +98,7 @@ function view_init(win) {
 		width:90
 	});
 	if (Titanium.Platform.name != 'iPhone OS') {
-		if (Titanium.Platform.displayCaps.dpi <= 120) {
+		if (Titanium.Platform.displayCaps.density == 'low') {
 			win.imageFramework.height = win.imageFramework.height*Titanium.App.Properties.getDouble('lowResDelimiter');
 			win.imageFramework.width = win.imageFramework.width*Titanium.App.Properties.getDouble('lowResDelimiter');
 		}
@@ -110,7 +113,7 @@ function view_init(win) {
 		width:110
 	});
 	if (Titanium.Platform.name != 'iPhone OS') {
-		if (Titanium.Platform.displayCaps.dpi <= 120) {
+		if (Titanium.Platform.displayCaps.density == 'low') {
 			win.imageOS.height = win.imageOS.height*Titanium.App.Properties.getDouble('lowResDelimiter');
 			win.imageOS.width = win.imageOS.width*Titanium.App.Properties.getDouble('lowResDelimiter');
 		}
@@ -124,7 +127,7 @@ function view_init(win) {
 		width:250
 	});
 	if (Titanium.Platform.name != 'iPhone OS') {
-		if (Titanium.Platform.displayCaps.dpi <= 120) {
+		if (Titanium.Platform.displayCaps.density == 'low') {
 			win.imageCompany.height = win.imageCompany.height*Titanium.App.Properties.getDouble('lowResDelimiter');
 			win.imageCompany.width = win.imageCompany.width*Titanium.App.Properties.getDouble('lowResDelimiter');
 		}
