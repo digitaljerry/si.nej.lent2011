@@ -241,6 +241,18 @@ if ( win.disableFav != true ) {
 			a_add.show();
 		});
 	}
+} else {
+	activity = Ti.Android.currentActivity;
+	activity.onCreateOptionsMenu = function(e) {
+	    var menu = e.menu;
+	    var menuItem_refresh = menu.add({ title: lang['programme_favorites'] });
+	    menuItem_refresh.addEventListener("click", function(e) {
+	    	// only if right button was clicked
+	    	a_remove.buttonNames = [lang['remove'],lang['cancel']];
+			a_remove.cancel = 1;
+			a_remove.show();
+	    });
+	};
 }
 
 a.addEventListener('click', function(e) {
@@ -276,6 +288,15 @@ a_add.addEventListener('click', function(e) {
 			// fireing refreshing of favorites
 			Ti.App.fireEvent('refreshFavorites');
 		}
+	}
+});
+
+a_remove.addEventListener('click', function(e) {
+	
+	if ( e.index == 0 ) {
+		Ti.App.fireEvent('removeFavoriteEvent', {
+			id:event_uid
+		});
 	}
 });
 

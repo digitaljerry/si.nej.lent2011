@@ -195,4 +195,8 @@ function view_init(win) {
 	a_add = Titanium.UI.createAlertDialog({
 		message:lang['programme_add_to_favorites']
 	});
+	
+	a_remove = Titanium.UI.createAlertDialog({
+		message:lang['programme_remove_from_favorites']
+	});
 }

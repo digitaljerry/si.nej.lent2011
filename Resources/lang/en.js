@@ -51,6 +51,7 @@ lang['stages_map'] = 'Map';
 
 // news
 lang['news_close'] = 'Close';
+lang['news_refresh'] = 'Refresh';
 
 // favorites
 lang['favorites_no_events'] = 'You don\' have any favorite events.';

@@ -19,6 +19,7 @@ lang['close'] = 'Zapri';
 lang['edit'] = 'Uredi';
 lang['done'] = 'Konec';
 lang['add']	= 'Dodaj';
+lang['remove']	= 'Odstrani';
 lang['cancel'] = 'Prekliči';
 lang['visit'] = 'Obišči';
 lang['fork'] = 'Forkaj';
@@ -43,6 +44,7 @@ lang['programme_favorites_already_exists'] = 'Predstava že obstaja med priljubl
 lang['programme_favorites_added'] = 'Dodano med priljubljene.';
 lang['programme_open_gmaps'] = 'Želiš odpreti Google Maps?';
 lang['programme_add_to_favorites'] = 'Dodaj med priljubljene?';
+lang['programme_remove_from_favorites'] = 'Odstranim iz priljubljenih?';
 lang['programme_favorites'] = 'Priljubljene';
 
 // stages
@@ -51,6 +53,7 @@ lang['stages_map'] = 'Zemljevid';
 
 // news
 lang['news_close'] = 'Zapri';
+lang['news_refresh'] = 'Osveži';
 
 // favorites
 lang['favorites_no_events'] = 'Zaenkrat še nimate priljubljenih predstav.';

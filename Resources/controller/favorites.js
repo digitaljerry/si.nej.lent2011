@@ -190,3 +190,9 @@ win.tableview.addEventListener('delete',function(e)
 Titanium.App.addEventListener('refreshFavorites', function(eventData) {
   refreshTable();
 });
+
+Titanium.App.addEventListener('removeFavoriteEvent', function(eventData) {
+  removeEvent(eventData.id);
+  Ti.App.Properties.setList('favoritesArray',favoritesArray);
+  refreshTable();
+});
