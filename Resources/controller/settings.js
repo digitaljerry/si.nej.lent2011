@@ -123,6 +123,8 @@ function addProperits() {
 		if (Titanium.Platform.displayCaps.density == 'low') {
 			win.button_sl.top = win.button_sl.top*Titanium.App.Properties.getDouble('lowResDelimiter');
 			win.button_en.top = win.button_en.top*Titanium.App.Properties.getDouble('lowResDelimiter');
+			win.button_sl.left = 75;
+			win.button_en.right = 75;
 		}
 		
 		win.add(win.button_sl);
