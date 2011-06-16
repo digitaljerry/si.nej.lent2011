@@ -76,11 +76,13 @@ function view_init(win) {
 	});
 	upperView.add(win.label_category);
 	
-	win.nextNavButton = Titanium.UI.createButton({
-		systemButton:Titanium.UI.iPhone.SystemButton.ADD
-	});
-	if ( win.disableFav != true ) {
-		win.rightNavButton = win.nextNavButton;
+	if (Titanium.Platform.name == 'iPhone OS') {
+		win.nextNavButton = Titanium.UI.createButton({
+			systemButton:Titanium.UI.iPhone.SystemButton.ADD
+		});
+		if ( win.disableFav != true ) {
+			win.rightNavButton = win.nextNavButton;
+		}
 	}
 	
 	// IMAGE
