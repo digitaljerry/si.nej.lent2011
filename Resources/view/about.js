@@ -24,10 +24,9 @@ function view_init(win) {
 		height:72,
 		width:72
 	});
-	if (Titanium.Platform.name != 'iPhone OS') {
-		win.imageApp.hide();
+	if (Titanium.Platform.name == 'iPhone OS') {
+		win.add(win.imageApp);
 	}
-	win.add(win.imageApp);
 	
 	win.label_title = Titanium.UI.createLabel({
 		top:40,
