@@ -13,11 +13,18 @@ if (!Titanium.App.Properties.getString('locale')) {
 }
 Titanium.include ('lang/'+Titanium.App.Properties.getString('locale')+'.js');
 
-Ti.App.Message = new Message();
-Ti.App.ActivityIndicator = new ActivityIndicator();
-Ti.App.Stages = new Stages();
-Ti.App.Categories = new Categories();
-Ti.App.DateLent = new DateLent();
+myMessage = new Message();
+myActivityIndicator = new ActivityIndicator();
+myStages = new Stages();
+myCategories = new Categories();
+myDateLent = new DateLent();
+
+var myServices = {};
+myServices.message = myMessage;
+myServices.activityIndicator = myActivityIndicator;
+myServices.stages = myStages;
+myServices.categories = myCategories;
+myServices.dateLent = myDateLent;
 
 // if properties have not yet been set
 if (Titanium.App.Properties.getString('showImages') == null) {

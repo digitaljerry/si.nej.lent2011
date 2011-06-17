@@ -21,7 +21,7 @@ function showEventsForStage(location_uid) {
 		return;
 	}
 	
-	Ti.App.ActivityIndicator.start();
+	win.services.activityIndicator.start();
 	
 	// reset
 	win.tableview.data = null;
@@ -88,11 +88,11 @@ function showEventsForStage(location_uid) {
 				desc.height = 35;
 			}
 			
-			if ( Ti.App.Categories.getCategoryTitle(incomingData[i].category_id) != -1 ) {
+			if ( win.services.categories.getCategoryTitle(incomingData[i].category_id) != -1 ) {
 				if ( stage != '' )
-					desc.text = stage + ', ' + Ti.App.Categories.getCategoryTitle(incomingData[i].category_id);
+					desc.text = stage + ', ' + win.services.categories.getCategoryTitle(incomingData[i].category_id);
 				else
-					desc.text = Ti.App.Categories.getCategoryTitle(incomingData[i].category_id);
+					desc.text = win.services.categories.getCategoryTitle(incomingData[i].category_id);
 			}
 			
 			row.add(desc);
@@ -104,7 +104,7 @@ function showEventsForStage(location_uid) {
 				top:11,
 				height:30,
 				width:50,
-				text:Ti.App.DateLent.secondsToHm(incomingData[i].start_time)
+				text:win.services.dateLent.secondsToHm(incomingData[i].start_time)
 			});
 			if (Titanium.Platform.name != 'iPhone OS') {
 				begin_time.right = 22;
@@ -113,7 +113,7 @@ function showEventsForStage(location_uid) {
 			row.add(begin_time);
 			
 			if ( incomingData[i].start_date != prev_start_date ) {
-				row.header = Ti.App.DateLent.outputNiceDate(Ti.App.DateLent.date2object(incomingData[i].start_date));
+				row.header = win.services.dateLent.outputNiceDate(win.services.dateLent.date2object(incomingData[i].start_date));
 				prev_start_date = incomingData[i].start_date;
 			}
 			
@@ -124,7 +124,7 @@ function showEventsForStage(location_uid) {
 	
 		win.tableview.data = data;
 		
-		Ti.App.ActivityIndicator.stop();
+		win.services.activityIndicator.stop();
 	};
 	xhr.send();
 }
@@ -141,7 +141,8 @@ win.tableview.addEventListener('click', function(e)
 		return;
 	
 	var winDetail = Titanium.UI.createWindow({
-		url:'event.js'
+		url:'event.js',
+		services: win.services
 	});
 	
 	// passing the event uid

@@ -31,7 +31,7 @@ function DateLent() {
 		if (day.length == 1)
 			day = '0'+day;
 		
-		return day+'.'+month+'. ' + Ti.App.days[given_date.getDay()];
+		return day+'.'+month+'. ' + lang['days'][given_date.getDay()];
 	}
 	
 	DateLent.prototype.outputShortDate = function(given_date) {

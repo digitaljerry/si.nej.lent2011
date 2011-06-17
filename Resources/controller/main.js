@@ -29,7 +29,7 @@ function getStages() {
 			stages[incomingData[i].uid] = incomingData[i];
 		};
 		
-		Ti.App.ActivityIndicator.stop();
+		myActivityIndicator.stop();
 	};
 	xhr.send();
 }
@@ -54,7 +54,7 @@ function getCategories() {
 			categories[incomingData[i].uid] = incomingData[i];
 		};
 		
-		Ti.App.ActivityIndicator.stop();
+		myActivityIndicator.stop();
 	};
 	xhr.send();
 }
@@ -84,7 +84,7 @@ tabGroup.addEventListener('close', function(e)
 Titanium.App.addEventListener('connectivityProblem', function(eventData) {
 	
 	// stop the connectivity indicator
-	Ti.App.ActivityIndicator.stop();
+	myActivityIndicator.stop();
 	
 	if (Titanium.Network.online == false) {
 		Titanium.UI.createAlertDialog({title:lang['error'], message:lang['main_connection'], buttonNames:[lang['close']]}).show();

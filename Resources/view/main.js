@@ -13,7 +13,8 @@ var win1 = Titanium.UI.createWindow({
     titleImage:'images/logo_lent_navbar.png',
     backgroundColor:'#fff',
 	url:'controller/programme.js',
-	orientationModes: appOrientationModes
+	orientationModes: appOrientationModes,
+	services: myServices
 });
 
 var win2 = Titanium.UI.createWindow({  
@@ -21,7 +22,8 @@ var win2 = Titanium.UI.createWindow({
     backgroundColor:'#fff',
 	url:'controller/stages.js',
 	orientationModes: appOrientationModes,
-	exitOnClose:true
+	exitOnClose:true,
+	services: myServices
 });
 
 var win3 = Titanium.UI.createWindow({  
@@ -29,7 +31,8 @@ var win3 = Titanium.UI.createWindow({
     backgroundColor:'#fff',
 	url:'news.js',
 	orientationModes: appOrientationModes,
-	exitOnClose:true
+	exitOnClose:true,
+	services: myServices
 });
 
 var win4 = Titanium.UI.createWindow({  
@@ -37,7 +40,8 @@ var win4 = Titanium.UI.createWindow({
     backgroundColor:'#fff',
 	url:'controller/favorites.js',
 	orientationModes: appOrientationModes,
-	exitOnClose:true
+	exitOnClose:true,
+	services: myServices
 });
 
 var win5 = Titanium.UI.createWindow({  
@@ -45,7 +49,8 @@ var win5 = Titanium.UI.createWindow({
     backgroundColor:'#fff',
 	url:'controller/info.js',
 	orientationModes: appOrientationModes,
-	exitOnClose:true
+	exitOnClose:true,
+	services: myServices
 });
 
 var win6 = Titanium.UI.createWindow({  
@@ -53,7 +58,8 @@ var win6 = Titanium.UI.createWindow({
     backgroundColor:'#fff',
 	url:'controller/settings.js',
 	orientationModes: appOrientationModes,
-	exitOnClose:true
+	exitOnClose:true,
+	services: myServices
 });
 
 var win7 = Titanium.UI.createWindow({  
@@ -61,7 +67,8 @@ var win7 = Titanium.UI.createWindow({
     backgroundColor:'#fff',
 	url:'controller/about.js',
 	orientationModes: appOrientationModes,
-	exitOnClose:true
+	exitOnClose:true,
+	services: myServices
 });
 
 // create tab group

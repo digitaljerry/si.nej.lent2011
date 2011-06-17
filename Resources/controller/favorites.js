@@ -27,7 +27,7 @@ function sortArray(listbox) {
 	// The Bubble Sort method.
 	for(x = 0; x < listbox.length; x++) {
 		for(y = 0; y < (listbox.length-1); y++) {
-			if(Ti.App.DateLent.dateseconds2object(listbox[y].start_date, listbox[y].start_time) > Ti.App.DateLent.dateseconds2object(listbox[y+1].start_date, listbox[y+1].start_time)) {
+			if(win.services.dateLent.dateseconds2object(listbox[y].start_date, listbox[y].start_time) > win.services.dateLent.dateseconds2object(listbox[y+1].start_date, listbox[y+1].start_time)) {
 				holder = listbox[y+1];
 				listbox[y+1] = listbox[y];
 				listbox[y] = holder;
@@ -42,7 +42,7 @@ function refreshTable() {
 	favoritesArray = Ti.App.Properties.getList('favoritesArray');
 	
 	if ( favoritesArray == null ) {
-		Ti.App.Message.showMessage(lang['favorites_no_events']);
+		win.services.message.showMessage(lang['favorites_no_events']);
 		return;
 	}
 	
@@ -81,7 +81,7 @@ function refreshTable() {
 		row.filter = title.text;
 		row.add(title);
 		
-		var stage = Ti.App.Stages.getStageTitle(favoritesArray[i].location_id);
+		var stage = win.services.stages.getStageTitle(favoritesArray[i].location_id);
 		if ( stage == -1 )
 			stage = favoritesArray[i].location;
 		var desc = Ti.UI.createLabel({
@@ -100,7 +100,7 @@ function refreshTable() {
 			desc.height = 35;
 		}
 		
-		var catTitle = Ti.App.Categories.getCategoryTitle(favoritesArray[i].category_id);
+		var catTitle = win.services.categories.getCategoryTitle(favoritesArray[i].category_id);
 		if (catTitle != -1)
 			desc.text = stage + ', ' + catTitle;
 		
@@ -115,7 +115,7 @@ function refreshTable() {
 			width:50,
 			event_uid:favoritesArray[i].uid,
 			title:favoritesArray[i].title,
-			text:Ti.App.DateLent.secondsToHm(favoritesArray[i].start_time)
+			text:win.services.dateLent.secondsToHm(favoritesArray[i].start_time)
 		});
 		if (Titanium.Platform.name != 'iPhone OS') {
 			begin_time.right = 22;
@@ -124,7 +124,7 @@ function refreshTable() {
 		row.add(begin_time);
 		
 		if ( favoritesArray[i].start_date != prev_start_date ) {
-			row.header = Ti.App.DateLent.outputNiceDate(Ti.App.DateLent.date2object(favoritesArray[i].start_date));
+			row.header = win.services.dateLent.outputNiceDate(win.services.dateLent.date2object(favoritesArray[i].start_date));
 			prev_start_date = favoritesArray[i].start_date;
 		}
 		
@@ -148,7 +148,8 @@ win.tableview.addEventListener('click', function(e)
 	var winDetail = Titanium.UI.createWindow({
 		url:'event.js',
 		cached:true,
-		disableFav:true
+		disableFav:true,
+		services: win.services
 	});
 	
 	// passing the event uid

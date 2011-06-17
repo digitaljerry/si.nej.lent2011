@@ -45,7 +45,7 @@ function fetchNews() {
 		return;
 	}
 	
-	Ti.App.ActivityIndicator.start();
+	win.services.activityIndicator.start();
 	
 	var xhr = Ti.Network.createHTTPClient();
 	xhr.open('GET','http://' + Titanium.App.Properties.getString('domain') + '/index.php?id=home&type=100&L='+lang['id'],true);
@@ -158,7 +158,7 @@ function fetchNews() {
 			alert(E);
 		}
 		
-		Ti.App.ActivityIndicator.stop();
+		win.services.activityIndicator.stop();
 	};
 	xhr.send();
 }

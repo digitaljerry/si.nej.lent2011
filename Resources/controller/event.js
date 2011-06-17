@@ -21,7 +21,7 @@ function getEventData(uid) {
 		return;
 	}
 	
-	Ti.App.ActivityIndicator.start();
+	win.services.activityIndicator.start();
 	
 	xhr = Titanium.Network.createHTTPClient();
 	var geturl = 'http://' + Titanium.App.Properties.getString('domain') + '/index.php?eID=ag_lent_webservice&ag_lent_webservice[lang]='+lang['name']+'&ag_lent_webservice[action]=getEvent&ag_lent_webservice[id]='+uid;
@@ -40,7 +40,7 @@ function getEventData(uid) {
 		
 		showEvent(incomingData);
 		
-		Ti.App.ActivityIndicator.stop();
+		win.services.activityIndicator.stop();
 	};
 	xhr.send();
 }
@@ -57,14 +57,14 @@ function showEvent(incomingData) {
 	
 	/* set data in view - start */
 	win.label_title.text = data.title;
-	win.label_date.text = Ti.App.DateLent.outputNiceDate(Ti.App.DateLent.date2object(data.start_date));
-	win.label_time.text = Ti.App.DateLent.secondsToHm(data.start_time);
-	stage = Ti.App.Stages.getStageTitle(data.location_id);
+	win.label_date.text = win.services.dateLent.outputNiceDate(win.services.dateLent.date2object(data.start_date));
+	win.label_time.text = win.services.dateLent.secondsToHm(data.start_time);
+	stage = win.services.stages.getStageTitle(data.location_id);
 	if ( stage == -1 )
 		stage = data.location;
 	win.label_stage.text = stage;
 	
-	win.label_category.text = Ti.App.Categories.getCategoryTitle(data.category_id);
+	win.label_category.text = win.services.categories.getCategoryTitle(data.category_id);
 	if ( win.label_category.text == -1 )
 		win.label_category.text = '';
 	
@@ -89,20 +89,20 @@ function showEvent(incomingData) {
 	// ADDING ANNOTATION
 	if (Titanium.Platform.name == 'iPhone OS') {
 		if ( data.location_id != 0 ) {
-			stage_location = Ti.App.Stages.getStageLocation(data.location_id);
+			stage_location = win.services.stages.getStageLocation(data.location_id);
 			
 			if ( stage_location != -1 && stage_location[0].longitude != '0') {
 				plotPoint = Titanium.Map.createAnnotation({
 			    	latitude: stage_location[0].latitude,
 			        longitude: stage_location[0].longitude,
-			        title: Ti.App.Stages.getStageTitle(data.location_id),
+			        title: win.services.stages.getStageTitle(data.location_id),
 			        animate:true,
 			        pincolor: Titanium.Map.ANNOTATION_GREEN,
 			        rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE
 				});
 				
 				win.mapview.addAnnotation(plotPoint);
-				win.mapview.selectAnnotation(Ti.App.Stages.getStageTitle(data.location_id),true);
+				win.mapview.selectAnnotation(win.services.stages.getStageTitle(data.location_id),true);
 				win.mapview.setLocation(Ti.App.location_maribor);
 				
 				if (Titanium.Platform.name == 'iPhone OS') {
@@ -283,7 +283,7 @@ a_add.addEventListener('click', function(e) {
 		if ( exists == false ) {
 			favoritesArray.push(data);
 			Ti.App.Properties.setList('favoritesArray',favoritesArray);
-			Ti.App.Message.showMessage(lang['programme_favorites_added']);
+			win.services.message.showMessage(lang['programme_favorites_added']);
 			
 			// fireing refreshing of favorites
 			Ti.App.fireEvent('refreshFavorites');

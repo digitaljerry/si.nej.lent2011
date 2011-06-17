@@ -26,7 +26,7 @@ function view_init(win) {
 		userLocation:true
 	});
 	
-	stages = Ti.App.Stages.getStages();
+	stages = win.services.stages.getStages();
 	
 	// adding annotations
 	for(var i in stages) {

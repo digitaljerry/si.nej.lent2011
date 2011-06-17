@@ -35,7 +35,8 @@ win.mapview.addEventListener('click',function(evt)
 		var winDetail = Titanium.UI.createWindow({
 			url:'stages_detail.js',
 			title:evt.title,
-			location_uid:evt.annotation.location_uid
+			location_uid:evt.annotation.location_uid,
+			services: win.services
 		});
 		
 		Titanium.UI.currentTab.open(winDetail,{animated:true});
@@ -48,7 +49,8 @@ win.tableview.addEventListener('click', function(e)
 	var winDetail = Titanium.UI.createWindow({
 		url:'stages_detail.js',
 		title:e.rowData.title,
-		location_uid:e.rowData.uid
+		location_uid:e.rowData.uid,
+		services: win.services
 	});
 	
 	Titanium.UI.currentTab.open(winDetail,{animated:true});

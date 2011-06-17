@@ -21,7 +21,7 @@ function showEventsForDay(showDate) {
 		return;
 	}
 	
-	Ti.App.ActivityIndicator.start();
+	win.services.activityIndicator.start();
 	
 	// reset
 	win.tableview.data = null;
@@ -76,7 +76,7 @@ function showEventsForDay(showDate) {
 			row.filter = title.text;
 			row.add(title);
 			
-			var stage = Ti.App.Stages.getStageTitle(incomingData[i].location_id);
+			var stage = win.services.stages.getStageTitle(incomingData[i].location_id);
 			
 			if ( stage == -1 )
 				stage = incomingData[i].location;
@@ -95,7 +95,7 @@ function showEventsForDay(showDate) {
 				desc.height = 35;
 			}
 			
-			var catTitle = Ti.App.Categories.getCategoryTitle(incomingData[i].category_id);
+			var catTitle = win.services.categories.getCategoryTitle(incomingData[i].category_id);
 			if (catTitle != -1)
 				desc.text = stage + ', ' + catTitle;
 			
@@ -108,7 +108,7 @@ function showEventsForDay(showDate) {
 				top:11,
 				height:30,
 				width:50,
-				text:Ti.App.DateLent.secondsToHm(incomingData[i].start_time)
+				text:win.services.dateLent.secondsToHm(incomingData[i].start_time)
 			});
 			if (Titanium.Platform.name != 'iPhone OS') {
 				begin_time.right = 22;
@@ -124,7 +124,7 @@ function showEventsForDay(showDate) {
 		
 		win.tableview.data = data;
 		
-		Ti.App.ActivityIndicator.stop();
+		win.services.activityIndicator.stop();
 	};
 	xhr.send();
 }
@@ -166,7 +166,7 @@ function getTitle() {
 		return lang['today'];
 	}
 	
-	return Ti.App.DateLent.outputNiceDate(datum);
+	return win.services.dateLent.outputNiceDate(datum);
 }
 
 //
@@ -180,7 +180,8 @@ win.tableview.addEventListener('click', function(e)
 		return;
 	
 	var winDetail = Titanium.UI.createWindow({
-		url:'event.js'
+		url:'event.js',
+		services: win.services
 	});
 	
 	// passing the event uid
@@ -194,19 +195,20 @@ win.imagePrev.addEventListener('click', function()
 {
 	datum = getPrevDay(datum);
 	win.labelDate.text = getTitle(datum);
-	showEventsForDay(Ti.App.DateLent.outputDate(datum));
+	showEventsForDay(win.services.dateLent.outputDate(datum));
 });
 win.imageNext.addEventListener('click', function()
 {	
 	datum = getNextDay(datum);
 	win.labelDate.text = getTitle(datum);
-	showEventsForDay(Ti.App.DateLent.outputDate(datum));
+	showEventsForDay(win.services.dateLent.outputDate(datum));
 });
 win.searchNavButton.addEventListener('click', function(e)
 {
 	var winSearch = Titanium.UI.createWindow({
 		url:'search.js',
-		title:lang['search']
+		title:lang['search'],
+		services: services
 	});
 	Titanium.UI.currentTab.open(winSearch,{animated:true});
 });
@@ -224,7 +226,7 @@ win.b.addEventListener('click', function(e)
 {
 	datum = pickerDate;
 	win.labelDate.text = getTitle(datum);
-	showEventsForDay(Ti.App.DateLent.outputDate(datum));
+	showEventsForDay(win.services.dateLent.outputDate(datum));
 	
 	win.picker.hide();
 	win.b.hide();
@@ -246,7 +248,8 @@ if (Titanium.Platform.name != 'iPhone OS') {
 	    menuItem_search.addEventListener("click", function(e) {
 	        var winSearch = Titanium.UI.createWindow({
 				url:'search.js',
-				title:lang['search']
+				title:lang['search'],
+				services: win.services
 			});
 			Titanium.UI.currentTab.open(winSearch,{animated:true});
 	    });

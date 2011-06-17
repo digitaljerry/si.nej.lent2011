@@ -116,7 +116,7 @@ function view_init(win) {
 	
 	// default date to show on start
 	win.labelDate.text = getTitle(datum);
-	showEventsForDay(Ti.App.DateLent.outputDate(datum));
+	showEventsForDay(win.services.dateLent.outputDate(datum));
 	
 	win.add(win.tableview);
 }
