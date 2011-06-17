@@ -20,42 +20,48 @@ var win2 = Titanium.UI.createWindow({
     title:lang['win_stages'],
     backgroundColor:'#fff',
 	url:'controller/stages.js',
-	orientationModes: appOrientationModes
+	orientationModes: appOrientationModes,
+	exitOnClose:true
 });
 
 var win3 = Titanium.UI.createWindow({  
     title:lang['win_news'],
     backgroundColor:'#fff',
 	url:'news.js',
-	orientationModes: appOrientationModes
+	orientationModes: appOrientationModes,
+	exitOnClose:true
 });
 
 var win4 = Titanium.UI.createWindow({  
     title:lang['win_favorites'],
     backgroundColor:'#fff',
 	url:'controller/favorites.js',
-	orientationModes: appOrientationModes
+	orientationModes: appOrientationModes,
+	exitOnClose:true
 });
 
 var win5 = Titanium.UI.createWindow({  
     title:lang['win_info'],
     backgroundColor:'#fff',
 	url:'controller/info.js',
-	orientationModes: appOrientationModes
+	orientationModes: appOrientationModes,
+	exitOnClose:true
 });
 
 var win6 = Titanium.UI.createWindow({  
     title:lang['win_settings'],
     backgroundColor:'#fff',
 	url:'controller/settings.js',
-	orientationModes: appOrientationModes
+	orientationModes: appOrientationModes,
+	exitOnClose:true
 });
 
 var win7 = Titanium.UI.createWindow({  
     title:lang['win_about'],
     backgroundColor:'#fff',
 	url:'controller/about.js',
-	orientationModes: appOrientationModes
+	orientationModes: appOrientationModes,
+	exitOnClose:true
 });
 
 // create tab group
