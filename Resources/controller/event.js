@@ -242,17 +242,19 @@ if ( win.disableFav != true ) {
 		});
 	}
 } else {
-	activity = Ti.Android.currentActivity;
-	activity.onCreateOptionsMenu = function(e) {
-	    var menu = e.menu;
-	    var menuItem_refresh = menu.add({ title: lang['programme_favorites'] });
-	    menuItem_refresh.addEventListener("click", function(e) {
-	    	// only if right button was clicked
-	    	a_remove.buttonNames = [lang['remove'],lang['cancel']];
-			a_remove.cancel = 1;
-			a_remove.show();
-	    });
-	};
+	if (Titanium.Platform.name != 'iPhone OS') {
+		activity = Ti.Android.currentActivity;
+		activity.onCreateOptionsMenu = function(e) {
+		    var menu = e.menu;
+		    var menuItem_refresh = menu.add({ title: lang['programme_favorites'] });
+		    menuItem_refresh.addEventListener("click", function(e) {
+		    	// only if right button was clicked
+		    	a_remove.buttonNames = [lang['remove'],lang['cancel']];
+				a_remove.cancel = 1;
+				a_remove.show();
+		    });
+		};
+	}
 }
 
 a.addEventListener('click', function(e) {
