@@ -77,6 +77,9 @@ function fetchNews() {
 					selectedBackgroundColor:'#e9ddc2',
 					backgroundSelectedColor:'#e9ddc2'
 					});
+				if (Titanium.Platform.name != 'iPhone OS') {
+					row.height = 100;
+				}
 				
 				label_title = Ti.UI.createLabel({
 					color:'#576996',
@@ -103,7 +106,7 @@ function fetchNews() {
 				});
 				if (Titanium.Platform.name != 'iPhone OS') {
 					label_desc.top = 50;
-					label_desc.height = 30;
+					label_desc.height = 35;
 				}
 				row.add(label_desc);
 				
@@ -130,7 +133,7 @@ function fetchNews() {
 			}
 			tableview = Titanium.UI.createTableView({data:data,backgroundColor:'transparent',selectedBackgroundColor:'#e9ddc2',backgroundSelectedColor:'#e9ddc2'});
 			if (Titanium.Platform.name != 'iPhone OS') {
-				win.tableview.separatorColor = 'black';
+				tableview.separatorColor = 'black';
 			}
 			Titanium.UI.currentWindow.add(tableview);
 			tableview.addEventListener('click',function(e)

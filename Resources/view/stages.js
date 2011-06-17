@@ -57,7 +57,7 @@ function view_init(win) {
 	
 	var data = new Array();
 	for(var i in stages) {
-		data.push({title:stages[i].name, uid:stages[i].uid, hasChild:true});
+		data.push({title:stages[i].name, uid:stages[i].uid, hasChild:true, color:'#576996'});
 	}
 	win.tableview.data = data;
 	
