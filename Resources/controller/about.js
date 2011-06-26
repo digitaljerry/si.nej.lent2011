@@ -64,6 +64,22 @@ win.imageCompany.addEventListener('click', function() {
 	a.show();
 });
 
+win.imageSponsor.addEventListener('click', function() {
+	a = Titanium.UI.createAlertDialog({
+		message:lang['info_sponsor'],
+		buttonNames: [lang['visit'],lang['cancel']],
+		cancel:1
+	});
+	
+	a.addEventListener('click', function(e) {
+		if ( e.index == 0 ) {
+			Ti.Platform.openURL('http://www.maribor2012.info');
+		}
+	});
+	
+	a.show();
+});
+
 win.label_author.addEventListener('click', function() {
 	a = Titanium.UI.createAlertDialog({
 		message:lang['info_details'],

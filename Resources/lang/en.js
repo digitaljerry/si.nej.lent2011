@@ -60,6 +60,7 @@ lang['favorites_no_events'] = 'You don\' have any favorite events.';
 lang['info_author'] = 'info@agenda.si';
 lang['info_description'] = '';
 lang['info_agenda'] = 'Official mobile application was developed by Agenda Open Systems, development sponsor for Festival Lent.';
+lang['info_sponsor'] = 'Visit website Maribor 2012?';
 lang['info_titanium'] = 'Powered by open source framework Appcelerator Titanium, a valuable tool for development of iOS and Android-based applications.';
 lang['info_opensource'] = 'Are you a developer, interested in the project\'s source code?\n\nAvailable on http://github.com/nej/si.nej.lent2011';
 lang['info_details'] = 'Do you want to find out more?';

@@ -62,6 +62,7 @@ lang['favorites_no_events'] = 'Zaenkrat še nimate priljubljenih predstav.';
 lang['info_author'] = 'info@agenda.si';
 lang['info_description'] = '';
 lang['info_agenda'] = 'Uradno mobilno aplikacijo izdelalo podjetje Agenda Open Systems, ki tudi že vrsto let razvija spletni portal Festivala Lent.';
+lang['info_sponsor'] = 'Obiščo spletno stran Maribor 2012?';
 lang['info_titanium'] = 'Podprto z odprtokodnim ogrodjem Appcelerator Titanium za razvoj mobilnih aplikacij na iOS in Android platformah.';
 lang['info_opensource'] = 'Si razvijalec in te zanima razvoj mobilnih aplikacij?\n\nCelotna koda dosegljiva na http://github.com/nej/si.nej.lent2011';
 lang['info_details'] = 'Želite izvedeti več?';

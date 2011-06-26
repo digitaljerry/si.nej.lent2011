@@ -19,7 +19,7 @@ function view_init(win) {
 	
 	win.imageApp = Ti.UI.createImageView({
 		image:'../images/logo_lent2011.png',
-		top:30,
+		top:20,
 		left:25,
 		height:72,
 		width:72
@@ -29,7 +29,7 @@ function view_init(win) {
 	}
 	
 	win.label_title = Titanium.UI.createLabel({
-		top:40,
+		top:30,
 		height:30,
 		width:'auto',
 		color:'#576996',
@@ -41,10 +41,10 @@ function view_init(win) {
 		if (Titanium.Platform.displayCaps.density == 'low') {
 			win.label_title.height = win.label_title.height*Titanium.App.Properties.getDouble('lowResDelimiter')+5;
 			win.label_title.font.fontSize = 18;
-			win.label_title.top = 25;
+			win.label_title.top = 15;
 		} else if (Titanium.Platform.displayCaps.density == 'high') {
 			win.label_title.font.fontSize = 24;
-			win.label_title.top = 25;
+			win.label_title.top = 15;
 		}
 	} else {
 		win.label_title.left = 110;
@@ -52,7 +52,7 @@ function view_init(win) {
 	win.add(win.label_title);
 	
 	win.label_author = Titanium.UI.createLabel({
-		top:70,
+		top:60,
 		height:30,
 		width:'auto',
 		font:{fontSize:16,fontFamily:'Arial'},
@@ -63,7 +63,7 @@ function view_init(win) {
 		if (Titanium.Platform.displayCaps.density == 'low') {
 			win.label_author.height = win.label_author.height*Titanium.App.Properties.getDouble('lowResDelimiter')+3;
 			win.label_author.font.fontSize = 14;
-			win.label_author.top = 50;
+			win.label_author.top = 40;
 		} else if (Titanium.Platform.displayCaps.density == 'high') {
 			win.label_author.font.fontSize = 20;
 		}
@@ -72,29 +72,12 @@ function view_init(win) {
 	}
 	win.add(win.label_author);
 	
-	win.label_desc = Titanium.UI.createLabel({
-		top:130,
-		height:50,
-		left:30,
-		width:'auto',
-		font:{fontSize:14,fontFamily:'Arial'},
-		textAlign:'left',
-		text:lang['info_description']
-	});
-	if (Titanium.Platform.name != 'iPhone OS') {
-		if (Titanium.Platform.displayCaps.density == 'low') {
-			win.label_desc.height = win.label_desc.height*Titanium.App.Properties.getDouble('lowResDelimiter');
-			win.label_desc.font.fontSize = 12;
-		}
-	}
-	win.add(win.label_desc);
-	
 	win.imageFramework = Ti.UI.createImageView({
 		image:'../images/logo_titanium.png',
-		bottom:110,
-		left:40,
-		height:90,
-		width:90
+		bottom:95,
+		left:80,
+		height:50,
+		width:50
 	});
 	if (Titanium.Platform.name != 'iPhone OS') {
 		if (Titanium.Platform.displayCaps.density == 'low') {
@@ -106,10 +89,10 @@ function view_init(win) {
 	
 	win.imageOS = Ti.UI.createImageView({
 		image:'../images/logo_OS.png',
-		bottom:100,
-		right:40,
-		height:110,
-		width:110
+		bottom:85,
+		right:80,
+		height:65,
+		width:65
 	});
 	if (Titanium.Platform.name != 'iPhone OS') {
 		if (Titanium.Platform.displayCaps.density == 'low') {
@@ -119,11 +102,25 @@ function view_init(win) {
 	}
 	win.add(win.imageOS);
 	
+	win.imageSponsor = Ti.UI.createImageView({
+		image:'../images/logo_epk.png',
+		bottom:165,
+		height:75,
+		width:175
+	});
+	if (Titanium.Platform.name != 'iPhone OS') {
+		if (Titanium.Platform.displayCaps.density == 'low') {
+			win.imageSponsor.height = win.imageSponsor.height*Titanium.App.Properties.getDouble('lowResDelimiter');
+			win.imageSponsor.width = win.imageSponsor.width*Titanium.App.Properties.getDouble('lowResDelimiter');
+		}
+	}
+	win.add(win.imageSponsor);
+	
 	win.imageCompany = Ti.UI.createImageView({
 		image:'../images/logo_agenda.png',
 		bottom:30,
-		height:60,
-		width:250
+		height:48,
+		width:200
 	});
 	if (Titanium.Platform.name != 'iPhone OS') {
 		if (Titanium.Platform.displayCaps.density == 'low') {
