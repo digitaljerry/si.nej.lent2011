@@ -208,7 +208,7 @@ win.searchNavButton.addEventListener('click', function(e)
 	var winSearch = Titanium.UI.createWindow({
 		url:'search.js',
 		title:lang['search'],
-		services: services
+		services: win.services
 	});
 	Titanium.UI.currentTab.open(winSearch,{animated:true});
 });
