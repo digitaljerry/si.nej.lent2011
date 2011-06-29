@@ -21,7 +21,7 @@
     <statusbar-hidden>false</statusbar-hidden>
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
-    <analytics>true</analytics>
+    <analytics>false</analytics>
     <guid>178455be-5cb4-439f-b522-9d2a77bc613b</guid>
     <property name="ti.android.google.map.api.key">00Oll_T4CtujJq0kBllZWR-ZAcFjM7usRW-5Kuw</property>
 	<iphone>
